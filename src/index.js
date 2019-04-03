@@ -9,23 +9,31 @@ import { Provider } from 'react-redux';
 
 
 const initialState = {
-  cool: false
+  cool: false,
+  cow: "bill",
+  counter: 0
 }
 function reducer(state=initialState, action){
   console.log(state, action)
   switch(action.type) {
     case "COOL":
     return {...state, cool: !state.cool}
+    case "COW":
+    return {...state, cow: "steve"}
+    case "ADD_TO_COUNTER":
+    return {...state, counter: state.counter+1}
+
+    default:
+    return state;
   }
+
 }
 
 const store = createStore(reducer)
 
 ReactDOM.render(
   <Provider store={store}>
-  // <Router>
     <App />
-    // </Router>
   </Provider>
   , document.getElementById('root'));
 

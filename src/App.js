@@ -3,27 +3,44 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 
+import MainContainer from './MainContainer';
+import Login from './Login';
+
+
+
 class App extends Component {
+
+  handleClick = () => {
+    this.props.dispatch({ type: "COOL" })
+    this.props.dispatch({ type: "COW" })
+    this.props.dispatch({ type: "ADD_TO_COUNTER" })
+
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      <div>
+        <header>
+          <button onClick={this.handleClick}> hi </button>
         </header>
+          <Login/>
+          <MainContainer/>
       </div>
     );
   }
+
+
 }
 
-export default App;
+function mapStateToProps(state) {
+  console.log('%c mapStateToProps', 'color: yellow', state);
+  return {
+    cool: state.cool,
+    cow: state.cow,
+    counter: state.counter
+  }
+}
+
+const HOC = connect(mapStateToProps)
+export default HOC(App);
