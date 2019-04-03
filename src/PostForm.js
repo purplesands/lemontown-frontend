@@ -21,19 +21,15 @@ class PostForm extends Component {
           location_id:1
         })
       }).then(r=>r.json())
-      .then(console.log)
-
-      this.setState({
-        content: "",
-      });
-    }
+        .then(r=>this.props.updatePosts())
+        this.setState({
+          content: "",
+        });
+      }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state.content)
   }
-
-
 
   render() {
     return (

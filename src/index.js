@@ -5,36 +5,19 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { createStore } from 'redux';
+import store from './store';
 import { Provider } from 'react-redux';
+import { ActionCableProvider } from 'react-actioncable-provider'
 
 
-const initialState = {
-  cool: false,
-  cow: "bill",
-  counter: 0
-}
-function reducer(state=initialState, action){
-  console.log(state, action)
-  switch(action.type) {
-    case "COOL":
-    return {...state, cool: !state.cool}
-    case "COW":
-    return {...state, cow: "steve"}
-    case "ADD_TO_COUNTER":
-    return {...state, counter: state.counter+1}
 
-    default:
-    return state;
-  }
-
-}
-
-const store = createStore(reducer)
 
 ReactDOM.render(
+  <ActionCableProvider url={'ws://localhost:3000/cable'}>
   <Provider store={store}>
     <App />
   </Provider>
+  </ActionCableProvider>
   , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

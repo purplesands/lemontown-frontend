@@ -14,7 +14,6 @@ class App extends Component {
     this.props.dispatch({ type: "COOL" })
     this.props.dispatch({ type: "COW" })
     this.props.dispatch({ type: "ADD_TO_COUNTER" })
-
   }
 
 
