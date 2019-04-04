@@ -10,13 +10,6 @@ import Login from './Login';
 
 class App extends Component {
 
-  handleClick = () => {
-    this.props.dispatch({ type: "COOL" })
-    this.props.dispatch({ type: "COW" })
-    this.props.dispatch({ type: "ADD_TO_COUNTER" })
-  }
-
-
   render() {
     return (
       <div>
@@ -24,7 +17,12 @@ class App extends Component {
           <button onClick={this.handleClick}> hi </button>
         </header>
           <Login/>
+          {(this.props.currentUser !='')
+            ?
           <MainContainer/>
+            :
+          null
+          }
       </div>
     );
   }
@@ -35,9 +33,7 @@ class App extends Component {
 function mapStateToProps(state) {
   console.log('%c mapStateToProps', 'color: yellow', state);
   return {
-    cool: state.cool,
-    cow: state.cow,
-    counter: state.counter
+    currentUser: state.currentUser,
   }
 }
 
