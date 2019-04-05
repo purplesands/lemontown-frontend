@@ -18,7 +18,12 @@ class App extends Component {
         <header>
           <button onClick={this.handleClick}> hi </button>
         </header>
+        {(!this.props.currentUser)
+          ?
           <Login/>
+          :
+          <button onClick={()=>this.props.dispatch({ type: "UPDATE_USER", payload: null})}>logout!</button>
+        }
           {(this.props.currentUser)
             ?
           <MainContainer/>

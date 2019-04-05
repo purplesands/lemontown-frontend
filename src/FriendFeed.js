@@ -11,19 +11,19 @@ class FriendFeed extends React.Component {
     friendEntries:[]
   }
 
-fetchFriends=()=>{
-  fetch('http://localhost:3000/followings')
-  .then(r=>r.json())
-  .then(r=>{this.setState({
-    friends: this.filterFriends(r)
-  })})
-}
-
-filterFriends=(arr)=>{
-  return arr.filter(friend=>{
-    return friend.user_id === this.props.currentUser.id
-  })
-}
+// fetchFriends=()=>{
+//   fetch('http://localhost:3000/followings')
+//   .then(r=>r.json())
+//   .then(r=>{this.setState({
+//     friends: this.filterFriends(r)
+//   })})
+// }
+//
+// filterFriends=(arr)=>{
+//   return arr.filter(friend=>{
+//     return friend.user_id === this.props.currentUser.id
+//   })
+// }
 
 fetchEntries=()=>{
   fetch('http://localhost:3000/entries')
@@ -31,7 +31,7 @@ fetchEntries=()=>{
   .then(r=>{this.setState({
     entries: r
   },()=> this.setState({
-    friendEntries: this.matchEntries(this.state.entries, this.state.friends)
+    friendEntries: this.matchEntries(this.state.entries, this.props.followings)
     }))
   })
 }
@@ -49,13 +49,13 @@ matchEntries = (entries, friends) => {
 }
 
 renderFriendEntries=()=>{
+  debugger
   return this.state.friendEntries.map(entry=>{
     return <EntryCard {...entry}/>
   })
 }
 
 componentDidMount(){
-  this.fetchFriends()
   this.fetchEntries()
 }
 
@@ -75,7 +75,8 @@ return (
 
 function mapStateToProps(state) {
   return {
-    currentUser:state.currentUser
+    currentUser:state.currentUser,
+    followings:state.followings
   }
 }
 

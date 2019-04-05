@@ -51,7 +51,6 @@ class PostForm extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('%c mapStateToProps', 'color: yellow', state);
   return {
     currentUser: state.currentUser,
   }

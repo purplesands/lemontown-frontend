@@ -33,7 +33,6 @@ const renderComponent = ()=>{
   }
 }
 
-
 const handleFollow=(e)=>{
   e.preventDefault();
   fetch('http://localhost:3000/followings', {
@@ -47,7 +46,21 @@ const handleFollow=(e)=>{
       followed_user_id:2
     })
   }).then(r=>r.json())
-  .then(props.dispatch({ type: "UPDATE_USER", payload: props.currentUser}))
+  .then(r=>updateFollowers())
+  }
+
+const updateFollowers=()=>{
+  fetch('http://localhost:3000/users', {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body:JSON.stringify({
+      username: props.currentUser.username,
+      })
+    }).then(r=>r.json())
+    .then(user=>props.dispatch({ type: "UPDATE_USER", payload:user}))
   }
 
 return (
@@ -69,7 +82,9 @@ function mapStateToProps(state) {
   console.log('%c maincontainer', 'color: blue', state);
   return {
     currentUser: state.currentUser,
-    activeLocation: state.activeLocation
+    addFollowing: state.currentUser.followed_users + 1,
+    activeLocation: state.activeLocation,
+    followings:state.followings
   }
 }
 

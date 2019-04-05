@@ -4,17 +4,23 @@ import { connect } from 'react-redux';
 
 class ProfileCard extends Component {
 
+state= {
+  followings:[]
+}
+
 handleClick=()=>{
   console.log(this.props)
 }
 
+componentDidMount(){
+}
   render() {
-
     return (
       <div>
-      <button onClick={this.handleClick}>what does this do</button>
-        {this.props.currentUser.username}
-        {this.props.currentUser.followed_users.length}
+      <button onClick={this.handleClick}>check the props</button>
+        <p>{this.props.currentUser.username}</p>
+        <p>following:{this.props.currentUser.followed_users.length}</p>
+        <p>followers:{this.props.currentUser.follower_users.length}</p>
       </div>
     );
   }
@@ -23,6 +29,8 @@ handleClick=()=>{
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
+    followings:state.followings,
+    followers:state.followers
   }
 }
 

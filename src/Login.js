@@ -9,7 +9,6 @@ class Login extends React.Component {
   }
 
   handleSubmit = (e) => {
-
       e.preventDefault();
       fetch('http://localhost:3000/users', {
         method: "POST",
@@ -26,8 +25,6 @@ class Login extends React.Component {
         username:'',
         password:''
       }))
-
-
     }
 
   handleChange = (e) => {
@@ -54,7 +51,6 @@ class Login extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log('%c login', 'color: red', state);
   return {
     currentUser:state.currentUser
   }
