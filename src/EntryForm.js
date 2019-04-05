@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
-class PostForm extends Component {
+class EntryForm extends Component {
 
   state= {
-    content: '',
-    posts:[]
+    content: ''
   }
 
   handleSubmit = (e) => {
       e.preventDefault();
-      fetch('http://localhost:3000/posts', {
+      fetch('http://localhost:3000/entries', {
         method: "POST",
         headers: {
           'Accept': 'application/json',
@@ -19,13 +18,12 @@ class PostForm extends Component {
         },
         body:JSON.stringify({
           content: this.state.content,
-          user_id:this.props.currentUser.id,
-          location_id:this.props.location
+          user_id:this.props.currentUser.id
         })
       }).then(r=>r.json())
-        .then(r=>this.props.updatePosts())
+        .then(r=>this.props.updateEntries())
         this.setState({
-          content: "",
+          content: ''
         });
       }
 
@@ -51,11 +49,10 @@ class PostForm extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('%c mapStateToProps', 'color: yellow', state);
   return {
     currentUser: state.currentUser,
   }
 }
 
 const HOC = connect(mapStateToProps)
-export default HOC(PostForm);
+export default HOC(EntryForm);

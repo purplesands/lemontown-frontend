@@ -9,6 +9,7 @@ class Login extends React.Component {
   }
 
   handleSubmit = (e) => {
+
       e.preventDefault();
       fetch('http://localhost:3000/users', {
         method: "POST",
@@ -20,7 +21,7 @@ class Login extends React.Component {
           username: this.state.username,
         })
       }).then(r=>r.json())
-      .then(user=>this.props.dispatch({ type: "UPDATE_USER", payload:user.username}))
+      .then(user=>this.props.dispatch({ type: "UPDATE_USER", payload:user}))
       .then(r=>this.setState({
         username:'',
         password:''

@@ -1,12 +1,83 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import EntryCard from './EntryCard';
 
-const FriendFeed = (props) => {
 
+class FriendFeed extends React.Component {
 
+  state={
+    friends:[],
+    entries:[],
+    friendEntries:[]
+  }
+
+fetchFriends=()=>{
+  fetch('http://localhost:3000/followings')
+  .then(r=>r.json())
+  .then(r=>{this.setState({
+    friends: this.filterFriends(r)
+  })})
+}
+
+filterFriends=(arr)=>{
+  return arr.filter(friend=>{
+    return friend.user_id === this.props.currentUser.id
+  })
+}
+
+fetchEntries=()=>{
+  fetch('http://localhost:3000/entries')
+  .then(r=>r.json())
+  .then(r=>{this.setState({
+    entries: r
+  },()=> this.setState({
+    friendEntries: this.matchEntries(this.state.entries, this.state.friends)
+    }))
+  })
+}
+
+matchEntries = (entries, friends) => {
+  let friendEntries = []
+  for (var i = 0; i < friends.length; i++) {
+    for (var y = 0; y < entries.length; y++) {
+      if (entries[y].user_id === friends[i].followed_user_id) {
+        friendEntries.push(entries[y])
+      }
+    }
+  }
+  return friendEntries
+}
+
+renderFriendEntries=()=>{
+  return this.state.friendEntries.map(entry=>{
+    return <EntryCard {...entry}/>
+  })
+}
+
+componentDidMount(){
+  this.fetchFriends()
+  this.fetchEntries()
+}
+
+fun=()=>{
+  console.log(this.state)
+}
+
+render(){
 return (
     <div>
-      friend feed
+    <button onClick={this.fun}>fun</button>
+      {this.renderFriendEntries()}
     </div>
   );
 }
-export default FriendFeed
+}
+
+function mapStateToProps(state) {
+  return {
+    currentUser:state.currentUser
+  }
+}
+
+const HOC = connect(mapStateToProps)
+export default HOC(FriendFeed);

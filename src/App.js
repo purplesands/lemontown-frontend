@@ -17,7 +17,7 @@ class App extends Component {
           <button onClick={this.handleClick}> hi </button>
         </header>
           <Login/>
-          {(this.props.currentUser !='')
+          {(this.props.currentUser)
             ?
           <MainContainer/>
             :
