@@ -2,7 +2,7 @@ import types from './types'
 
 const initialState = {
   posts:[],
-  currentUser: {id: 2, username: "cool guy"},
+  currentUser: null,
   activeLocation: null
 }
 

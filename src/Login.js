@@ -56,7 +56,7 @@ class Login extends React.Component {
 function mapStateToProps(state) {
   console.log('%c login', 'color: red', state);
   return {
-    currentUser:state.username
+    currentUser:state.currentUser
   }
 }
 

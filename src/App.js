@@ -4,6 +4,8 @@ import './App.css';
 import { connect } from 'react-redux';
 
 import MainContainer from './MainContainer';
+import ProfileCard from './ProfileCard';
+
 import Login from './Login';
 
 
@@ -21,7 +23,7 @@ class App extends Component {
             ?
           <MainContainer/>
             :
-          null
+            null
           }
       </div>
     );

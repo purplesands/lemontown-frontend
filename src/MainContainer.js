@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import ProfileCard from './ProfileCard';
+
 import UserFeed from './UserFeed';
 import FriendFeed from './FriendFeed';
 import LocationOne from './LocationOne';
@@ -32,14 +34,32 @@ const renderComponent = ()=>{
 }
 
 
+const handleFollow=(e)=>{
+  e.preventDefault();
+  fetch('http://localhost:3000/followings', {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body:JSON.stringify({
+      user_id:props.currentUser.id,
+      followed_user_id:2
+    })
+  }).then(r=>r.json())
+  .then(props.dispatch({ type: "UPDATE_USER", payload: props.currentUser}))
+  }
 
 return (
     <div>
     <p>welcome {props.currentUser.username}</p>
+    <ProfileCard />
       <button value="UserFeed" onClick={handleClick}>user feed</button>
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>
       <button value="LocationOne" onClick={handleClick}>location 1</button>
       <button value="LocationTwo" onClick={handleClick}>location 2</button>
+      <button value="FollowGuy" onClick={handleFollow}>Follow guy 2</button>
+
       {renderComponent()}
     </div>
   );
