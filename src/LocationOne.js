@@ -41,7 +41,7 @@ class LocationOne extends React.Component {
 
  renderPosts = (arr) =>{
   return  arr.map(post=>{
-      return <PostCard {...post} />
+      return <PostCard {...post} updatePosts={this.fetchPosts}/>
     })
   }
 

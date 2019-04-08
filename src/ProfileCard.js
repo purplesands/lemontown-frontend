@@ -13,6 +13,7 @@ handleClick=()=>{
 }
 
 componentDidMount(){
+
 }
   render() {
     return (
@@ -30,7 +31,8 @@ function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
     followings:state.followings,
-    followers:state.followers
+    followers:state.followers,
+
   }
 }
 

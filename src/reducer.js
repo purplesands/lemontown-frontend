@@ -4,8 +4,7 @@ const initialState = {
   posts:[],
   currentUser: null,
   activeLocation: null,
-  followings:[],
-  followers:[]
+  userToView: null
 }
 
 
@@ -18,16 +17,13 @@ export default function reducer(state=initialState, action){
     console.log('cool')
     case "UPDATE_USER":
     console.log('before,', state.currentUser)
-    debugger
     return { ...state, currentUser: action.payload }
-    debugger
     console.log('after,', state.currentUser)
     case "CHANGE_LOCATION":
     return { ...state, activeLocation: action.payload }
     console.log(state.activeLocation)
-    case "UPDATE_FOLLOWER_COUNT":
-    state.currentUser.followed_users++
-    return { ...state, currentUser: state.currentUser }
+    case "UPDATE_USER_TO_VIEW":
+    return { ...state, userToView: action.payload }
 
     // case "SET_FOLLOWINGS":
     // return {...state, followings: action.payload}

@@ -7,6 +7,8 @@ import FriendFeed from './FriendFeed';
 import LocationOne from './LocationOne';
 import LocationTwo from './LocationTwo';
 import UserList from './UserList';
+import OtherUserFeed from './OtherUserFeed';
+
 
 
 const MainContainer = (props) => {
@@ -25,9 +27,13 @@ const renderComponent = ()=>{
     return <FriendFeed/>
   } else if (props.activeLocation==="LocationOne") {
     return <LocationOne/>
-    debugger
   } else if (props.activeLocation==="LocationTwo") {
     return <LocationTwo/>
+  } else if (props.activeLocation==="OtherUserFeed") {
+    return <OtherUserFeed handleFollow={handleFollow} handleUnfollow={handleUnfollow}/>
+  } else if (props.activeLocation==="OtherUserFeed") {
+    return <UserList />
+
   } else {
     return null
   }
@@ -43,25 +49,31 @@ const handleFollow=(e)=>{
     },
     body:JSON.stringify({
       user_id:props.currentUser.id,
-      followed_user_id:2
+      followed_user_id:props.userToView.id
     })
   }).then(r=>r.json())
   .then(r=>updateFollowers())
   }
 
-const updateFollowers=()=>{
-  fetch('http://localhost:3000/users', {
-    method: "POST",
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body:JSON.stringify({
-      username: props.currentUser.username,
-      })
-    }).then(r=>r.json())
-    .then(user=>props.dispatch({ type: "UPDATE_USER", payload:user}))
+const handleUnfollow=(e)=>{
+  fetch(`http://localhost:3000/followings/${e.id}`, {
+      method: "DELETE"})
+    .then(r=>updateFollowers())
   }
+
+  const updateFollowers =()=>{
+    fetch(`http://localhost:3000/users/${props.currentUser.id}`)
+    .then(r=>r.json())
+    .then(user=>props.dispatch({ type: "UPDATE_USER", payload:user}))
+    .then(r=>updateUserToViewFollowers())
+  }
+
+  const updateUserToViewFollowers =()=>{
+    fetch(`http://localhost:3000/users/${props.userToView.id}`)
+    .then(r=>r.json())
+    .then(user=>props.dispatch({ type: "UPDATE_USER_TO_VIEW", payload:user}))
+  }
+
 
 return (
     <div>
@@ -71,8 +83,6 @@ return (
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>
       <button value="LocationOne" onClick={handleClick}>location 1</button>
       <button value="LocationTwo" onClick={handleClick}>location 2</button>
-      <button value="FollowGuy" onClick={handleFollow}>Follow guy 2</button>
-
       {renderComponent()}
     </div>
   );
@@ -84,7 +94,7 @@ function mapStateToProps(state) {
     currentUser: state.currentUser,
     addFollowing: state.currentUser.followed_users + 1,
     activeLocation: state.activeLocation,
-    followings:state.followings
+    userToView: state.userToView
   }
 }
 

@@ -8,66 +8,52 @@ class FriendFeed extends React.Component {
   state={
     friends:[],
     entries:[],
-    friendEntries:[]
+    followingEntries:[]
   }
 
-// fetchFriends=()=>{
-//   fetch('http://localhost:3000/followings')
-//   .then(r=>r.json())
-//   .then(r=>{this.setState({
-//     friends: this.filterFriends(r)
-//   })})
-// }
-//
-// filterFriends=(arr)=>{
-//   return arr.filter(friend=>{
-//     return friend.user_id === this.props.currentUser.id
-//   })
-// }
+  fetchEntries=()=>{
+    fetch('http://localhost:3000/entries')
+    .then(r=>r.json())
+    .then(r=>{this.setState({
+      entries: r
+    },()=> this.setState({
+      followingEntries: this.matchEntries(this.state.entries, this.props.currentUser.followed_users)
+      }))
+    })
+  }
 
-fetchEntries=()=>{
-  fetch('http://localhost:3000/entries')
-  .then(r=>r.json())
-  .then(r=>{this.setState({
-    entries: r
-  },()=> this.setState({
-    friendEntries: this.matchEntries(this.state.entries, this.props.followings)
-    }))
-  })
-}
-
-matchEntries = (entries, friends) => {
-  let friendEntries = []
-  for (var i = 0; i < friends.length; i++) {
-    for (var y = 0; y < entries.length; y++) {
-      if (entries[y].user_id === friends[i].followed_user_id) {
-        friendEntries.push(entries[y])
+  matchEntries = (entries, following) => {
+    debugger
+    let followingEntries = []
+    for (var i = 0; i < following.length; i++) {
+      for (var y = 0; y < entries.length; y++) {
+        if (entries[y].user_id === following[i].id) {
+          followingEntries.push(entries[y])
+        }
       }
     }
+    return followingEntries
   }
-  return friendEntries
-}
 
-renderFriendEntries=()=>{
-  debugger
-  return this.state.friendEntries.map(entry=>{
-    return <EntryCard {...entry}/>
-  })
-}
+  renderFollowingEntries=()=>{
+    return this.state.followingEntries.map(entry=>{
+      return <EntryCard {...entry}/>
+    })
+  }
 
-componentDidMount(){
-  this.fetchEntries()
-}
+  componentDidMount(){
+    this.fetchEntries()
+  }
 
-fun=()=>{
-  console.log(this.state)
-}
+  fun=()=>{
+    console.log(this.state)
+  }
 
 render(){
 return (
     <div>
     <button onClick={this.fun}>fun</button>
-      {this.renderFriendEntries()}
+      {this.renderFollowingEntries()}
     </div>
   );
 }

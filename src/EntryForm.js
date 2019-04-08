@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 class EntryForm extends Component {
 
   state= {
-    content: ''
+    content: '',
+    characters:500
   }
 
   handleSubmit = (e) => {
@@ -28,21 +29,25 @@ class EntryForm extends Component {
       }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value, characters:this.state.characters-this.state.content.length });
   }
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-            <input
+            <textarea
               type="text"
               name="content"
               value={this.state.content}
               onChange={this.handleChange}
+              rows="4" cols="50"
+              maxlength="500"
+              minlength="1"
             />
           <input type="submit" value="post" />
         </form>
+        {this.state.characters} left
       </div>
     );
   }
