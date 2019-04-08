@@ -5,7 +5,8 @@ const initialState = {
   currentUser: null,
   activeLocation: null,
   userToView: null,
-  todaysWords: []
+  todaysWords: [],
+  today: {}
 }
 
 
@@ -25,9 +26,10 @@ export default function reducer(state=initialState, action){
     console.log(state.activeLocation)
     case "UPDATE_USER_TO_VIEW":
     return { ...state, userToView: action.payload }
-    case "ADD_WORDS":
+    case "ADD_WORD":
     return { ...state, todaysWords:[...state.todaysWords, action.payload] }
-    debugger
+    case "SET_DATE":
+    return {...state, today:action.payload}
     // case "SET_FOLLOWINGS":
     // return {...state, followings: action.payload}
     // case "SET_FOLLOWERS":

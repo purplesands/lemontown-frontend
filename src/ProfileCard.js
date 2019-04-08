@@ -29,10 +29,7 @@ componentDidMount(){
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser,
-    followings:state.followings,
-    followers:state.followers,
-
+    currentUser: state.currentUser
   }
 }
 

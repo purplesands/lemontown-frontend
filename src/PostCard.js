@@ -1,5 +1,6 @@
 import React from 'react';
 import UserCard from './UserCard';
+import { connect } from 'react-redux';
 
 class PostCard extends React.Component {
 
@@ -25,7 +26,6 @@ class PostCard extends React.Component {
     }
 
   handleComment=(e)=>{
-    debugger
     console.log(this.state)
     e.preventDefault();
     fetch('http://localhost:3000/post_comments', {
@@ -63,10 +63,10 @@ render() {
       {this.renderPost()}
       <form onSubmit={this.handleComment}>
       <select class="dropdown" onChange={this.handleChange}>
-        <option value="goo">goo</option>
-        <option value="goo">goo</option>
-        <option value="cat">cat</option>
-        <option value="steve">steve</option>
+        <option value="pick">pick</option>
+        <option value={this.props.today.word1}>{this.props.today.word1}</option>
+        <option value={this.props.today.word2}>{this.props.today.word2}</option>
+        <option value={this.props.today.word3}>{this.props.today.word3}</option>
       </select>
       <input type="submit" name="text" value="comment" />
       </form>
@@ -81,4 +81,12 @@ render() {
     );
   }
 }
-export default PostCard
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+    today:state.today
+  }
+}
+
+const HOC = connect(mapStateToProps)
+export default HOC(PostCard);

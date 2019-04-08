@@ -8,7 +8,7 @@ class PostForm extends Component {
     content: '',
     posts:[],
     characters:75,
-    isImage: null
+    isImage: false
   }
 
   handleSubmit = (e) => {
@@ -27,30 +27,27 @@ class PostForm extends Component {
           is_image: this.state.isImage
         })
       }).then(r=>r.json())
-        .then(r=>this.props.updatePosts())
+        .then(r=>{
+          debugger
+          this.props.updatePosts()})
         this.setState({
           content: "",
-        });
+        }) ;
       }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value, characters:75-this.state.content.length });
   }
 
-  setPostTypeToImage=()=>{
-    this.setState({isImage:true})
-  }
-
-  setPostTypeToText=()=>{
-    this.setState({isImage:false})
+  setPostType=()=>{
+    this.setState({isImage:!this.state.isImage})
   }
 
 
   render() {
     return (
       <div>
-      <button onClick={this.setPostTypeToText}>post text</button>
-      <button onClick={this.setPostTypeToImage}>post image</button>
+      <button onClick={this.setPostType}>{(this.state.isImage===true) ? "want text?" : "an image?"}</button>
       {(this.state.isImage===false)
         ?
         <form onSubmit={this.handleSubmit}>
@@ -86,7 +83,7 @@ class PostForm extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser,
+    currentUser: state.currentUser
   }
 }
 
