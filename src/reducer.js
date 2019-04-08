@@ -4,7 +4,8 @@ const initialState = {
   posts:[],
   currentUser: null,
   activeLocation: null,
-  userToView: null
+  userToView: null,
+  todaysWords: []
 }
 
 
@@ -24,7 +25,9 @@ export default function reducer(state=initialState, action){
     console.log(state.activeLocation)
     case "UPDATE_USER_TO_VIEW":
     return { ...state, userToView: action.payload }
-
+    case "ADD_WORDS":
+    return { ...state, todaysWords:[...state.todaysWords, action.payload] }
+    debugger
     // case "SET_FOLLOWINGS":
     // return {...state, followings: action.payload}
     // case "SET_FOLLOWERS":

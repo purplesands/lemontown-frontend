@@ -50,7 +50,6 @@ class LocationOne extends React.Component {
     this.fetchLocation()
   }
 
-
 render(){
   return (
       <div>

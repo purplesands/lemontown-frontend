@@ -74,11 +74,24 @@ const handleUnfollow=(e)=>{
     .then(user=>props.dispatch({ type: "UPDATE_USER_TO_VIEW", payload:user}))
   }
 
+const getWords=()=>{
+  fetch(`https://wordsapiv1.p.rapidapi.com/words/?random=true`, {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
+      'X-RapidAPI-Key':'4d90375dd6mshbfa9800b3e51019p1ebfd0jsn92f7ebed7441'
+    }}).then(r=>r.json())
+    .then(r=>{
+      debugger
+      props.dispatch({ type: "ADD_WORDS", payload:r})
+    })
+  }
 
 return (
     <div>
     <p>welcome {props.currentUser.username}</p>
     <ProfileCard />
+    <button value="wordgrab" onClick={getWords}>words?</button>
       <button value="UserFeed" onClick={handleClick}>user feed</button>
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>
       <button value="LocationOne" onClick={handleClick}>location 1</button>
@@ -94,7 +107,9 @@ function mapStateToProps(state) {
     currentUser: state.currentUser,
     addFollowing: state.currentUser.followed_users + 1,
     activeLocation: state.activeLocation,
-    userToView: state.userToView
+    userToView: state.userToView,
+    today: state.today,
+    todaysWords: state.todaysWords
   }
 }
 
