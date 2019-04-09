@@ -57,7 +57,6 @@ class PostCard extends React.Component {
   }
 
 render() {
-  debugger
   return (
       <div className="postCard">
       <p style={{"font-weight":"bold"}} onClick={this.renderProfileCard}>{this.props.user.username}</p>

@@ -8,7 +8,8 @@ import { ActionCableConsumer } from 'react-actioncable-provider'
 class LocationOne extends React.Component {
   state={
     posts: [],
-    location: {}
+    location: {},
+    days:[]
   }
 
   fetchLocation = () =>{
@@ -17,12 +18,12 @@ class LocationOne extends React.Component {
     .then(r=>{
       this.setState({
         location: r
-      })
-    }
-  )
-}
+        })
+      }
+    )
+  }
 
-   fetchPosts = () =>{
+  fetchPosts = () =>{
      fetch('http://localhost:3000/posts')
      .then(r=>r.json())
      .then(r=>{
@@ -32,8 +33,6 @@ class LocationOne extends React.Component {
      }
    )
   }
-
-
 
   setPosts=(arr)=>{
     let cool = arr.filter(post=>{
@@ -66,9 +65,9 @@ render(){
         onReceived={
           this.fetchPosts
         }
-
       />
         <h1>{this.state.location.name}</h1>
+
           <PostForm updatePosts={this.fetchPosts} location={1} />
           {this.renderPosts(this.state.posts)}
       </div>

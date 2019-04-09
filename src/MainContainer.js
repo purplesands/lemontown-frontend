@@ -9,6 +9,8 @@ import LocationTwo from './LocationTwo';
 import UserList from './UserList';
 import OtherUserFeed from './OtherUserFeed';
 import WordCard from './WordCard';
+import ArchivedDate from './ArchivedDate';
+
 
 
 const MainContainer = (props) => {
@@ -33,7 +35,8 @@ const renderComponent = ()=>{
     return <OtherUserFeed handleFollow={handleFollow} handleUnfollow={handleUnfollow}/>
   } else if (props.activeLocation==="UserList") {
     return <UserList handleFollow={handleFollow} handleUnfollow={handleUnfollow}/>
-  } else if (props.activeLocation==="FollowerList") {
+  } else if (props.activeLocation==="ArchivedDate") {
+    return <ArchivedDate />
     // return <FollowerList />
 
   } else {
@@ -76,33 +79,77 @@ const handleUnfollow=(e)=>{
     .then(user=>props.dispatch({ type: "UPDATE_USER_TO_VIEW", payload:user}))
   }
 
+  const renderDate=()=>{
+    let date = props.today.date
+    let monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+    let day = date.substr(8,2)
+    let monthIndex = date.substr(5,2)
+    let year = date.substr(0, 4);
+  return day + ' ' + monthNames[parseInt(monthIndex)] + ' ' + year;
+}
+
+const handleChange=(e)=>{
+  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
+  props.dispatch({ type: "UPDATE_DATE_TO_VIEW", payload:e.target.value})
+}
+
+const handleSubmit=(e)=>{
+  e.preventDefault()
+  if (props.activeLocation==="ArchivedDate") {
+  props.dispatch({ type: "CHANGE_LOCATION", payload:null})
+} else {
+  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
+}
+}
+
+const archivedPosts=()=>{
+  return(
+  <form onSubmit={(e)=>handleSubmit(e)}>
+    <select class="dropdown" onChange={handleChange}>
+      <option value="pick">see daily archives</option>
+      {props.days.map(day=>{
+      return  <option value={day.id}>{day.date}</option>
+      })}
+    </select>
+    <input type="submit" name="text" value="hmm" />
+  </form>
+  )
+}
 
 return (
     <div>
+    <p>today is {renderDate()}</p>
     <p>welcome {props.currentUser.username}</p>
+    <p>{archivedPosts()}</p>
     <WordCard />
     <ProfileCard />
-    <button value="wordgrab" >nothing right now</button>
+    <button value="wordgrab">nothing right now</button>
       <button value="UserFeed" onClick={handleClick}>user feed</button>
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>
       <button value="LocationOne" onClick={handleClick}>location 1</button>
       <button value="LocationTwo" onClick={handleClick}>location 2</button>
       <button value="UserList" onClick={handleClick}>all users</button>
-
       {renderComponent()}
     </div>
   );
 }
 
 function mapStateToProps(state) {
-  console.log('%c maincontainer', 'color: blue', state);
   return {
     currentUser: state.currentUser,
     addFollowing: state.currentUser.followed_users + 1,
     activeLocation: state.activeLocation,
     userToView: state.userToView,
     today: state.today,
-    todaysWords: state.todaysWords
+    todaysWords: state.todaysWords,
+    days:state.days,
+    dateToView:state.dateToView
+
   }
 }
 
