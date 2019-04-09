@@ -31,8 +31,11 @@ const renderComponent = ()=>{
     return <LocationTwo/>
   } else if (props.activeLocation==="OtherUserFeed") {
     return <OtherUserFeed handleFollow={handleFollow} handleUnfollow={handleUnfollow}/>
-  } else if (props.activeLocation==="OtherUserFeed") {
-    return <UserList />
+  } else if (props.activeLocation==="UserList") {
+    return <UserList handleFollow={handleFollow} handleUnfollow={handleUnfollow}/>
+  } else if (props.activeLocation==="FollowerList") {
+    // return <FollowerList />
+
   } else {
     return null
   }
@@ -84,6 +87,8 @@ return (
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>
       <button value="LocationOne" onClick={handleClick}>location 1</button>
       <button value="LocationTwo" onClick={handleClick}>location 2</button>
+      <button value="UserList" onClick={handleClick}>all users</button>
+
       {renderComponent()}
     </div>
   );

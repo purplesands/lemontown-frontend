@@ -5,10 +5,7 @@ import { connect } from 'react-redux';
 
 import MainContainer from './MainContainer';
 import ProfileCard from './ProfileCard';
-
 import Login from './Login';
-
-
 
 class App extends Component {
 
@@ -25,7 +22,6 @@ class App extends Component {
     }
 
     checkDay=()=>{
-      debugger
       fetch('http://localhost:3000/days')
       .then(r=>r.json())
       .then(r=>{
@@ -36,17 +32,12 @@ class App extends Component {
 
   currentDate=()=>{
     let today = new Date();
-     let dd = today.getDate();
-     let mm = today.getMonth()+1; //January is 0!
-     let yyyy = today.getFullYear();
-
-     if(dd<10) {
-         dd = '0'+dd
-     }
-     if(mm<10) {
-         mm = '0'+mm
-     }
-     today = mm + '-' + dd + '-' + yyyy;
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; //January is 0!
+    let yyyy = today.getFullYear();
+    if(dd<10) {dd = '0'+dd}
+    if(mm<10) {mm = '0'+mm}
+    today = mm + '-' + dd + '-' + yyyy;
     return today
   }
 
@@ -68,7 +59,6 @@ class App extends Component {
   }
 
   setDate=()=>{
-    debugger
     (this.props.todaysWords.length===3 && this.props.today.date !== this.currentDate()) ?
     this.newDay() :
     console.log('ha ')

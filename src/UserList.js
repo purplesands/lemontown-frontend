@@ -1,4 +1,5 @@
 import React from 'react';
+import UserCard from './UserCard';
 
 class UserList extends React.Component {
 
@@ -6,6 +7,11 @@ class UserList extends React.Component {
     users:[]
   }
 
+renderList=(arr)=>{
+  return arr.map(user=>{
+  return <UserCard {...user} handleFollow={this.props.handleFollow} handleUnfollow={this.props.handleUnfollow}/>
+  })
+}
 
 componentDidMount(){
   this.fetchUsers()
@@ -13,15 +19,20 @@ componentDidMount(){
 fetchUsers(){
   fetch('http://localhost:3000/users')
   .then(r=>r.json())
-  .then(r=>this.setState({
-    users:{...this.state.users, r}
-  }))
+  .then(r=>{
+    this.setState({
+    users:r
+  })})
+}
+
+cool=()=>{
+  debugger
 }
 
 render(){
   return (
       <div>
-        user list
+        {this.renderList(this.state.users)}
       </div>
     );
   }

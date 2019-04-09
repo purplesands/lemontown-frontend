@@ -12,7 +12,6 @@ class PostForm extends Component {
   }
 
   handleSubmit = (e) => {
-    debugger
       e.preventDefault();
       fetch('http://localhost:3000/posts', {
         method: "POST",
@@ -28,7 +27,6 @@ class PostForm extends Component {
         })
       }).then(r=>r.json())
         .then(r=>{
-          debugger
           this.props.updatePosts()})
         this.setState({
           content: "",
