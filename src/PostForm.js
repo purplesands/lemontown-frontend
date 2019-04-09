@@ -12,6 +12,7 @@ class PostForm extends Component {
   }
 
   handleSubmit = (e) => {
+    debugger
       e.preventDefault();
       fetch('http://localhost:3000/posts', {
         method: "POST",
@@ -23,7 +24,8 @@ class PostForm extends Component {
           content: this.state.content,
           user_id:this.props.currentUser.id,
           location_id:this.props.location,
-          is_image: this.state.isImage
+          is_image: this.state.isImage,
+          day_id: this.props.today.id
         })
       }).then(r=>r.json())
         .then(r=>{
@@ -81,7 +83,8 @@ class PostForm extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    today: state.today
   }
 }
 

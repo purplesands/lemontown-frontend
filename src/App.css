@@ -2,7 +2,13 @@
   text-align: center;
 }
 
-div.postCard {
+.postCard .postComment {
+  position: relative;
+  color: red;
+}
+
+
+.postCard {
   border-color: blue;
   border-width: 1.5px;
   border-style: dotted;

@@ -52,11 +52,12 @@ class PostCard extends React.Component {
 
   renderComments=(e)=>{
     return this.props.post_comments.map(c=>{
-    return  <p>{c.content}</p>
+    return  <td className="postComment">{c.content}</td>
     })
   }
 
 render() {
+  debugger
   return (
       <div className="postCard">
       <p style={{"font-weight":"bold"}} onClick={this.renderProfileCard}>{this.props.user.username}</p>
