@@ -30,6 +30,16 @@ class App extends Component {
       )
     }
 
+   fetchDays = () =>{
+    fetch('http://localhost:3000/days')
+      .then(r=>r.json())
+      .then(r=>{
+      this.props.dispatch({ type: "SET_DAYS", payload: r})
+        })
+      }
+
+
+
   currentDate=()=>{
     let today = new Date();
     let dd = today.getDate();
@@ -66,6 +76,7 @@ class App extends Component {
 
   componentDidMount=()=>{
     this.checkDay()
+    this.fetchDays()
     this.getWord()
     this.getWord()
     this.getWord()
@@ -98,7 +109,6 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('%c mapStateToProps', 'color: yellow', state);
   return {
     currentUser: state.currentUser,
     todaysWords: state.todaysWords,
