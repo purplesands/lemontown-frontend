@@ -27,16 +27,24 @@ class LocationOne extends React.Component {
      .then(r=>r.json())
      .then(r=>{
        this.setState({
-         posts: this.filterPosts(r.reverse())
+         posts: this.setPosts(r.reverse())
        })
      }
    )
   }
 
-  filterPosts=(arr)=>{
-   return arr.filter(post=>{
-    return post.location_id === 1}
-  )}
+
+
+  setPosts=(arr)=>{
+    let cool = arr.filter(post=>{
+      return post.location_id === 1
+    })
+    return cool.filter(post=>{
+      return post.day_id === this.props.today.id
+    })
+  }
+
+
 
 
  renderPosts = (arr) =>{
@@ -46,8 +54,8 @@ class LocationOne extends React.Component {
   }
 
   componentDidMount(){
-    this.fetchPosts()
     this.fetchLocation()
+    this.fetchPosts()
   }
 
 render(){
@@ -67,12 +75,13 @@ render(){
     );
   }
 }
-// function mapStateToProps(state) {
-//   console.log('%c mapStateToProps', 'color: yellow', state);
-//   return {
-//     posts:state.posts
-//   }
-// }
-//
-// const HOC = connect(mapStateToProps)
-export default LocationOne;
+function mapStateToProps(state) {
+  console.log('%c mapStateToProps', 'color: yellow', state);
+  return {
+    today:state.today,
+    location:state.activeLocation
+  }
+}
+
+const HOC = connect(mapStateToProps)
+export default HOC(LocationOne);
