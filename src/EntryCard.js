@@ -3,6 +3,7 @@ import UserCard from './UserCard';
 import renderHTML from 'react-render-html'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import { connect } from 'react-redux';
+import Useful from './Useful'
 
 
 class EntryCard extends React.Component {
@@ -44,9 +45,13 @@ class EntryCard extends React.Component {
       .then(r=> this.props.fetchEntries())
     }
 
+// randomNumber(){
+//   return Math.floor(Math.random() * 10)
+// }
+
 renderComments=()=>{
   return this.props.entry_comments.map(comment=>{
-    return <p className="entryComment">{comment.content}</p>
+    return <p style={{letterSpacing:`${Useful.randomNumber(10)}px`}} className="entryComment">{comment.content}</p>
   })
 }
 

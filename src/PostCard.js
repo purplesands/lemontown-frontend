@@ -1,6 +1,7 @@
 import React from 'react';
 import UserCard from './UserCard';
 import { connect } from 'react-redux';
+import Useful from './Useful'
 
 class PostCard extends React.Component {
 
@@ -17,7 +18,7 @@ class PostCard extends React.Component {
 
   renderPost = () =>{
     if (this.props.is_image === false) {
-      return <div> <p>{this.props.content} </p>
+      return <div> <p style={{letterSpacing:`${Useful.randomNumber(5)}px`}}>{this.props.content} </p>
       <p>{this.props.date}</p></div>
      } else {
         return <div><img src={this.props.content} alt="post"></img>
@@ -52,14 +53,14 @@ class PostCard extends React.Component {
 
   renderComments=(e)=>{
     return this.props.post_comments.map(c=>{
-    return  <td className="postComment">{c.content}</td>
+    return  <td style={{letterSpacing:`${Useful.randomNumber(4)}px`}} className="postComment">{c.content}</td>
     })
   }
 
 render() {
   return (
       <div className="postCard">
-      <p style={{"font-weight":"bold"}} onClick={this.renderProfileCard}>{this.props.user.username}</p>
+      <p style={{letterSpacing:`${Useful.randomNumber(2)}px`}} onClick={this.renderProfileCard}>{this.props.user.username}</p>
       {this.renderPost()}
       <form onSubmit={this.handleComment}>
       <select class="dropdown" onChange={this.handleChange}>
