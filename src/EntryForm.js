@@ -1,10 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import 'react-quill/dist/quill.snow.css';
+import ReactQuill, { Quill, Mixin, Toolbar } from 'react-quill'
+import renderHTML from 'react-render-html'
 
 class EntryForm extends Component {
 
+  // constructor(props) {
+  //     super(props)
+  //     this.state = { text: '' } // You can also pass a Quill Delta here
+  //     this.handleChange = this.handleChange.bind(this)
+  //   }
+
+handleChange(value) {
+  this.setState({ text: value })
+}
+
+
+
+  //
   state= {
+    title: '',
     content: '',
     characters:500
   }
@@ -27,32 +43,65 @@ class EntryForm extends Component {
           content: ''
         });
       }
-
+  //
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value, characters:500-e.target.value.length });
+    this.setState({content: e})
+    console.log(this.state.content)
   }
+  //
+  // componentDidMount(){
+  //   this.quill()
+  // }
+modules = {
+    toolbar: [
+      [{ 'header': '1'}, {'header': '2'}, { 'font': ['serif', 'monospace'] }],
+      [{size: []}],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'},
+       {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false,
+    }
+  }
+  /*
+   * Quill editor formats
+   * See https://quilljs.com/docs/formats/
+   */
+  formats = [
+    'header', 'font', 'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image', 'video'
+  ]
+
+
+
+
 
   render() {
     return (
-
-      <div>
+      <div className="text-editor">
         <form onSubmit={this.handleSubmit}>
-            <textarea
-              type="text"
-              name="content"
-              value={this.state.content}
-              onChange={this.handleChange}
-              rows="4" cols="50"
-              maxlength="500"
-              minlength="1"
-            />
-          <input type="submit" value="post" />
-        </form>
-        {this.state.characters} left
-      </div>
-    );
-  }
+          <ReactQuill value={this.state.content}
+                      onChange={this.handleChange}
+                      theme="snow"
+                      modules={this.modules}
+                      formats={this.formats}
+                      />
+        <input type="submit" value="post" />
+      </form>
+    </div>
+
+
+
+    )}
 }
+
+
 
 function mapStateToProps(state) {
   return {
