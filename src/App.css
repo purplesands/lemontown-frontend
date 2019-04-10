@@ -7,19 +7,55 @@
   color: red;
 }
 
+.entryCard .username {
+  position: relative;
+  color: red;
+  font-size: 10px;
+  float: right;
+  padding-right:50px;
+}
 
-.postCard {
+.entryCard .date {
+  position: relative;
+  color: green;
+  font-size: 10px;
+  float: right;
+  padding-right:80px;
+}
+
+.entryCard .avatar {
+  position: static;
+  color: green;
+  font-size: 10px;
+  float: right;
+  padding-right:10px;
+  width:64px;
+  height: 64px;
+}
+
+
+
+.postCard, .entryCard {
   border-color: blue;
   border-width: 1.5px;
   border-style: dotted;
-  padding-top: 50px;
+  /* padding-top: 50px;
   padding-right: 30px;
-  padding-bottom: 50px;
+  padding-bottom: 50px;*/
   padding-left: 80px;
   height: 60%;
   width: 50%;
+  overflow: auto;
+
 
 }
+
+#editor-container {
+  height: 375px;
+}
+
+
+
 
 div.userListCard {
   border-color: black;

@@ -36,7 +36,7 @@ class PostForm extends Component {
       }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value, characters:75-this.state.content.length });
+    this.setState({ [e.target.name]: e.target.value, characters:75-e.target.value.length });
   }
 
   setPostType=()=>{

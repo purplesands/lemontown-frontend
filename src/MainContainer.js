@@ -87,10 +87,10 @@ const handleUnfollow=(e)=>{
       "August", "September", "October",
       "November", "December"
     ];
-    let day = date.substr(8,2)
-    let monthIndex = date.substr(5,2)
+    let day = date.substr(5,2)
+    let monthIndex = date.substr(8,2)
     let year = date.substr(0, 4);
-  return day + ' ' + monthNames[parseInt(monthIndex)] + ' ' + year;
+  return day + ' ' + monthNames[parseInt(monthIndex-1)] + ' ' + year;
 }
 
 const handleChange=(e)=>{
@@ -128,7 +128,6 @@ return (
     <p>{archivedPosts()}</p>
     <WordCard />
     <ProfileCard />
-    <button value="wordgrab">nothing right now</button>
       <button value="UserFeed" onClick={handleClick}>user feed</button>
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>
       <button value="LocationOne" onClick={handleClick}>location 1</button>

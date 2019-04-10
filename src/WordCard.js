@@ -29,9 +29,7 @@ render() {
 return (
   (this.props.today) ?
     <div>
-      <p> {this.props.today.word1}</p>
-      <p> {this.props.today.word2}</p>
-      <p> {this.props.today.word3}</p>
+      <p> {this.props.today.word1},{this.props.today.word2},{this.props.today.word3}</p>
     </div>
     : null
   );
