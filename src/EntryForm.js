@@ -3,22 +3,12 @@ import { connect } from 'react-redux';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill, { Quill, Mixin, Toolbar } from 'react-quill'
 import renderHTML from 'react-render-html'
+// var Font = Quill.import('formats/font');
+// Font.whitelist = ['Ubuntu', 'Raleway', 'Roboto'];
+//
 
 class EntryForm extends Component {
 
-  // constructor(props) {
-  //     super(props)
-  //     this.state = { text: '' } // You can also pass a Quill Delta here
-  //     this.handleChange = this.handleChange.bind(this)
-  //   }
-
-handleChange(value) {
-  this.setState({ text: value })
-}
-
-
-
-  //
   state= {
     title: '',
     content: '',
@@ -48,41 +38,14 @@ handleChange(value) {
     this.setState({content: e})
     console.log(this.state.content)
   }
-  //
-  // componentDidMount(){
-  //   this.quill()
-  // }
-modules = {
-    toolbar: [
-      [{ 'header': '1'}, {'header': '2'}, { 'font': ['serif', 'monospace'] }],
-      [{size: []}],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'},
-       {'indent': '-1'}, {'indent': '+1'}],
-      ['link', 'image', 'video'],
-      ['clean']
-    ],
-    clipboard: {
-      // toggle to add extra line breaks when pasting HTML:
-      matchVisual: false,
-    }
+
+
+
+  modules = {
+    toolbar: toolbarOptions
   }
-  /*
-   * Quill editor formats
-   * See https://quilljs.com/docs/formats/
-   */
-  formats = [
-    'header', 'font', 'size',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image', 'video'
-  ]
 
-
-
-
-
-  render() {
+render() {
     return (
       <div className="text-editor">
         <form onSubmit={this.handleSubmit}>
@@ -90,22 +53,59 @@ modules = {
                       onChange={this.handleChange}
                       theme="snow"
                       modules={this.modules}
-                      formats={this.formats}
+                      // formats={this.formats}
                       />
         <input type="submit" value="post" />
       </form>
     </div>
-
-
-
-    )}
+  )}
 }
 
+// EntryForm.modules = {
+//   toolbar: [
+//     [{ 'header': '1'}, {'header': '2'}, { 'font': Font.whitelist }],
+//     [{size: []}],
+//     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+//     [{'list': 'ordered'}, {'list': 'bullet'},
+//      {'indent': '-1'}, {'indent': '+1'}],
+//     ['link', 'image', 'video'],
+//     ['clean']
+//   ]
+// }
+// /*
+//  * Quill editor formats
+//  * See https://quilljs.com/docs/formats/
+//  */
+// EntryForm.formats = [
+//   'header', 'font', 'size',
+//   'bold', 'italic', 'underline', 'strike', 'blockquote',
+//   'list', 'bullet', 'indent',
+//   'link', 'image', 'video'
+// ]
+//
+var toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
 
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
+
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  [{ 'color': ['maroon', 'steelblue'] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': ['monospace', 'serif'] }],
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
+];
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser,
+    currentUser: state.currentUser
   }
 }
 

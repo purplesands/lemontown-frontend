@@ -32,7 +32,7 @@ class FriendFeed extends React.Component {
         }
       }
     }
-    return followingEntries
+    return followingEntries.reverse()
   }
 
   renderFollowingEntries=()=>{
