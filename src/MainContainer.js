@@ -10,6 +10,8 @@ import UserList from './UserList';
 import OtherUserFeed from './OtherUserFeed';
 import WordCard from './WordCard';
 import ArchivedDate from './ArchivedDate';
+import ProfilePage from './ProfilePage';
+
 
 
 
@@ -37,6 +39,9 @@ const renderComponent = ()=>{
     return <UserList handleFollow={handleFollow} handleUnfollow={handleUnfollow}/>
   } else if (props.activeLocation==="ArchivedDate") {
     return <ArchivedDate />
+  } else if (props.activeLocation==="ProfilePage") {
+    return <ProfilePage />
+
     // return <FollowerList />
   } else {
     return null

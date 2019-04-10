@@ -34,7 +34,6 @@ const handleClick=(e)=>{
 }
 
 const handleChange=(e)=>{
-  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
   props.dispatch({ type: "UPDATE_DATE_TO_VIEW", payload:e.target.value})
 }
 
@@ -42,6 +41,7 @@ const handleSubmit=(e)=>{
   e.preventDefault()
   if (props.activeLocation==="ArchivedDate") {
   props.dispatch({ type: "CHANGE_LOCATION", payload:null})
+  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
 } else {
   props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
 }
@@ -51,7 +51,7 @@ const archivedPosts=()=>{
   return(
   <form onSubmit={(e)=>handleSubmit(e)}>
     <select class="dropdown" onChange={handleChange}>
-      <option value="pick">see daily archives</option>
+      <option value="pick">archived posts</option>
       {props.days.map(day=>{
       return  <option value={day.id}>{day.date.split().reverse().join()}</option>
       })}
@@ -69,12 +69,15 @@ return (
     <div className="navBar">
     <button onClick={logout}>logout!</button>
     <p>today is {renderDate()}</p>
-    <p>{archivedPosts()}</p>
       <button value="UserFeed" onClick={handleClick}>user feed</button>
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>
       <button value="LocationOne" onClick={handleClick}>location 1</button>
       <button value="LocationTwo" onClick={handleClick}>location 2</button>
       <button value="UserList" onClick={handleClick}>all users</button>
+      <button value="ProfilePage" onClick={handleClick}>my profile</button>
+      <p>{archivedPosts()}</p>
+
+
     </div>
   );
 }

@@ -2,8 +2,7 @@ import React from 'react';
 import UserCard from './UserCard';
 import renderHTML from 'react-render-html'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-
-
+import { connect } from 'react-redux';
 
 
 class EntryCard extends React.Component {
@@ -19,6 +18,26 @@ class EntryCard extends React.Component {
     })
   }
 
+  handleComment=(e)=>{
+    e.preventDefault()
+    fetch('http://localhost:3000/entry_comments', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify({
+        content: e.target.comment.value,
+        user_id: this.props.currentUser.id,
+        entry_id:this.props.id
+        })
+      }).then(r=>r.json())
+      .then(this.getComments())
+    }
+
+getComments=()=>{
+  debugger
+}
 
 
 render() {
@@ -28,6 +47,13 @@ render() {
       <p className="content">{ReactHtmlParser(this.props.content)} </p>
       <img className="avatar" src={this.props.user.avatar}></img>
       <p className="date">{this.props.date}</p>
+      <form onSubmit={this.handleComment}>
+        <label>
+          <input type="text" name="comment" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+
       {(this.state.isClicked)
         ?
           <UserCard {...this.props} />
@@ -39,4 +65,12 @@ render() {
     );
   }
 }
-export default EntryCard
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+const HOC = connect(mapStateToProps)
+export default HOC(EntryCard);
