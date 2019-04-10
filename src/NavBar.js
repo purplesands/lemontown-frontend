@@ -53,7 +53,7 @@ const archivedPosts=()=>{
     <select class="dropdown" onChange={handleChange}>
       <option value="pick">archived posts</option>
       {props.days.map(day=>{
-      return  <option value={day.id}>{day.date.split().reverse().join()}</option>
+      return  <option value={day.id}>{day.date}</option>
       })}
     </select>
     <input type="submit" name="text" value="hmm" />

@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 }
-span.ql-font-serif {
+.ql-font-serif {
   font-family: serif;
 }
 
@@ -9,8 +9,13 @@ span.ql-font-serif {
   font-family: monospace;
 }
 
-span.ql-font-monospace {
+.ql-font-monospace {
   font-family: monospace;
+}
+
+.entryComment {
+  font-size:8px;
+  color: purple;
 }
 
 

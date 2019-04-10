@@ -9,6 +9,7 @@ class EntryCard extends React.Component {
 
   state = {
     isClicked: false,
+    comment: ''
   }
 
   handleClick = () => {
@@ -16,6 +17,13 @@ class EntryCard extends React.Component {
     this.setState({
       isClicked: !this.state.isClicked
     })
+  }
+
+  handleChange=(e)=>{
+    this.setState({
+      comment: e.target.value
+    })
+    console.log(this.state.comment)
   }
 
   handleComment=(e)=>{
@@ -27,32 +35,41 @@ class EntryCard extends React.Component {
         'Content-Type': 'application/json'
       },
       body:JSON.stringify({
-        content: e.target.comment.value,
+        content: this.state.comment,
         user_id: this.props.currentUser.id,
         entry_id:this.props.id
         })
       }).then(r=>r.json())
-      .then(this.getComments())
+      .then(r=>this.setState({comment:''}))
+      .then(r=> this.props.fetchEntries())
     }
 
-getComments=()=>{
-  debugger
+renderComments=()=>{
+  return this.props.entry_comments.map(comment=>{
+    return <p className="entryComment">{comment.content}</p>
+  })
 }
 
 
 render() {
   return (
-      <div className="entryCard" onClick={this.handleClick}>
+      <div className="entryCard">
       <p className="username"> {this.props.user.username}</p>
       <p className="content">{ReactHtmlParser(this.props.content)} </p>
       <img className="avatar" src={this.props.user.avatar}></img>
       <p className="date">{this.props.date}</p>
-      <form onSubmit={this.handleComment}>
+      <div>{this.renderComments()}</div>
+
+      {(this.props.currentUser.id===this.props.user.id) ?
+        null
+        :
+        <form onSubmit={this.handleComment} onChange={this.handleChange}>
         <label>
-          <input type="text" name="comment" />
+          <input type="text" name="comment" value={this.state.comment} minLength="1" maxLength="20" />
         </label>
         <input type="submit" value="Submit" />
       </form>
+    }
 
       {(this.state.isClicked)
         ?
@@ -68,7 +85,8 @@ render() {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    activeLocation: state.activeLocation
   }
 }
 
