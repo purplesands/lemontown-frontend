@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import EntryCard from './EntryCard';
 import EntryForm from './EntryForm';
+import renderHTML from 'react-render-html'
+
 
 class UserFeed extends React.Component {
 
