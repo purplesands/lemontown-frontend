@@ -23,7 +23,6 @@ class FriendFeed extends React.Component {
   }
 
   matchEntries = (entries, following) => {
-    debugger
     let followingEntries = []
     for (var i = 0; i < following.length; i++) {
       for (var y = 0; y < entries.length; y++) {

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import MainContainer from './MainContainer';
 import ProfileCard from './ProfileCard';
 import Login from './Login';
+import NavBar from './NavBar';
 
 class App extends Component {
 
@@ -87,14 +88,13 @@ class App extends Component {
     return (
       <div>
         <header>
-        tbd nav bar
-        </header>
         {(!this.props.currentUser)
           ?
           <Login/>
           :
-          <button onClick={()=>this.props.dispatch({ type: "UPDATE_USER", payload: null})}>logout!</button>
+          <NavBar/>
         }
+        </header>
           {(this.props.currentUser)
             ?
           <MainContainer/>

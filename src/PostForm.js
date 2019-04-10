@@ -12,7 +12,6 @@ class PostForm extends Component {
   }
 
   handleSubmit = (e) => {
-    debugger
       e.preventDefault();
       fetch('http://localhost:3000/posts', {
         method: "POST",

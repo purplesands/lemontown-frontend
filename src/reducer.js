@@ -13,8 +13,6 @@ const initialState = {
 export default function reducer(state=initialState, action){
   console.log(state, action)
   switch(action.type) {
-    case "UPDATE_POSTS":
-    console.log('cool')
     case "UPDATE_USER":
     console.log('before,', state.currentUser)
     return { ...state, currentUser: action.payload }
@@ -32,6 +30,8 @@ export default function reducer(state=initialState, action){
     return {...state, days:action.payload}
     case "UPDATE_DATE_TO_VIEW":
     return {...state, dateToView:action.payload}
+    case "LOGOUT":
+    return {...initialState, today:state.today, days:state.days}
 
     // case "SET_FOLLOWINGS":
     // return {...state, followings: action.payload}

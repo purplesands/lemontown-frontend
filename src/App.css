@@ -1,17 +1,33 @@
 .App {
   text-align: center;
 }
+span.ql-font-serif {
+  font-family: serif;
+}
 
 .ql-editor {
-  font-family: serif
+  font-family: monospace;
 }
 
 span.ql-font-monospace {
   font-family: monospace;
 }
 
-span.ql-font-serif {
-  font-family: serif;
+
+.profileCard {
+  float:right;
+  position:relative;
+  width: 215;
+  border: 3px solid steelblue;
+  padding: 10px;
+}
+
+.mainContainer {
+  position:static;
+  margin-right:10%;
+  width: 80%;
+  border: 3px solid gainsboro;
+  padding: 20px;
 }
 
 
@@ -39,12 +55,20 @@ span.ql-font-serif {
 
 .entryCard .avatar {
   position: static;
-  color: green;
   float: right;
   padding-right:10px;
   width:64px;
   height: 64px;
 }
+
+.profileCard .avatar {
+  position: static;
+  float: right;
+  padding-right:10px;
+  width:64px;
+  height: 64px;
+}
+
 
 
 
