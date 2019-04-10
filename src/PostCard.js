@@ -10,9 +10,9 @@ class PostCard extends React.Component {
   }
 
   renderProfileCard = () => {
-      this.setState({
-        isClicked: !this.state.isClicked
-      })
+    this.setState({
+      isClicked: !this.state.isClicked
+    })
   }
 
   renderPost = () =>{

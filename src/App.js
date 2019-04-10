@@ -87,7 +87,7 @@ class App extends Component {
     return (
       <div>
         <header>
-          <button onClick={this.handleClick}> hi </button>
+        tbd nav bar
         </header>
         {(!this.props.currentUser)
           ?
@@ -109,6 +109,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('%c mapStateToProps', 'color: yellow', state);
   return {
     currentUser: state.currentUser,
     todaysWords: state.todaysWords,

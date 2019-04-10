@@ -29,11 +29,12 @@ class EntryForm extends Component {
       }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value, characters:this.state.characters-this.state.content.length });
+    this.setState({ [e.target.name]: e.target.value, characters:500-e.target.value.length });
   }
 
   render() {
     return (
+
       <div>
         <form onSubmit={this.handleSubmit}>
             <textarea
