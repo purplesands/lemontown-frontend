@@ -8,15 +8,19 @@ import { createStore } from 'redux';
 import store from './store';
 import { Provider } from 'react-redux';
 import { ActionCableProvider } from 'react-actioncable-provider'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 
 
 
 
 ReactDOM.render(
   <ActionCableProvider url={'ws://localhost:3000/cable'}>
-  <Provider store={store}>
-    <App />
-  </Provider>
+    <Provider store={store}>
+      <Router>
+          <Route path="/" component={App} />
+      </Router>
+    </Provider>
   </ActionCableProvider>
   , document.getElementById('root'));
 

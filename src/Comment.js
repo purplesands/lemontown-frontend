@@ -6,9 +6,11 @@ import Useful from './Useful'
 
 class Comment extends React.Component {
 
+
+
 render() {
   return (
-      <p className="entryComment" style={{letterSpacing:`${Useful.letterSpacing(10)}px`}}>
+      <p className="entryComment" style={{letterSpacing:`${Useful.letterSpacing(7)}px`}}>
         {this.props.content}
       </p>
     );

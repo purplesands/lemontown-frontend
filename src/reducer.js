@@ -31,6 +31,8 @@ export default function reducer(state=initialState, action){
     case "UPDATE_DATE_TO_VIEW":
     return {...state, dateToView:action.payload}
     case "LOGOUT":
+    localStorage.removeItem('jwt')
+    debugger
     return {...initialState, today:state.today, days:state.days}
 
     // case "SET_FOLLOWINGS":

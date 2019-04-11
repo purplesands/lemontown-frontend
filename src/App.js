@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom'
+
 
 import MainContainer from './MainContainer';
 import ProfileCard from './ProfileCard';
 import Login from './Login';
 import NavBar from './NavBar';
+import Register from './Register';
+
 
 class App extends Component {
 
@@ -81,16 +85,40 @@ class App extends Component {
     this.getWord()
     this.getWord()
     this.getWord()
-    setTimeout(this.setDate, 2000)
+    this.setDate()
+
+    const jwt = localStorage.getItem('jwt')
+
+    if (jwt){
+      fetch("http://localhost:3000/auto_login", {
+        headers: {
+          "Authorization": jwt
+        }
+      })
+        .then(r =>
+          r.json())
+        .then(r => {
+          if (r.errors) {
+            alert(r.errors)
+          } else {
+            this.props.dispatch({ type: "UPDATE_USER", payload: r})      }
+        })
+    }
+
   }
 
   render() {
     return (
+      <Switch>
       <div>
         <header>
+        <Route path="/login" render={routerProps => <Login {...routerProps} />} />
         {(!this.props.currentUser)
           ?
+          <div>
           <Login/>
+          <Register/>
+          </div>
           :
           <NavBar/>
         }
@@ -102,6 +130,8 @@ class App extends Component {
             null
           }
       </div>
+      </Switch>
+
     );
   }
 

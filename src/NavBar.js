@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
+
 import ProfileCard from './ProfileCard';
 
 import UserFeed from './UserFeed';
@@ -67,7 +69,7 @@ const logout=()=>{
 
 return (
     <div className="navBar">
-    <button onClick={logout}>logout!</button>
+    <button className="item" to="/login" onClick={logout}>logout!</button>
     <p>today is {renderDate()}</p>
       <button value="UserFeed" onClick={handleClick}>user feed</button>
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>

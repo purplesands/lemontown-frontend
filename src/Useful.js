@@ -6,5 +6,9 @@ class Useful extends React.Component {
     return Math.floor(Math.random() * num)
   }
 
+  static lineSpacing(num){
+    return Math.random() * num
+  }
+
 }
 export default Useful
