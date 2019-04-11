@@ -1,16 +1,17 @@
 import React from 'react';
 import UserCard from './UserCard';
-import renderHTML from 'react-render-html'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import { connect } from 'react-redux';
 import Useful from './Useful'
+import Comment from './Comment'
 
 
 class EntryCard extends React.Component {
 
   state = {
     isClicked: false,
-    comment: ''
+    comment: '',
+    num: null
   }
 
   handleClick = () => {
@@ -45,13 +46,17 @@ class EntryCard extends React.Component {
       .then(r=> this.props.fetchEntries())
     }
 
-// randomNumber(){
+// letterSpacing(){
 //   return Math.floor(Math.random() * 10)
 // }
 
+componentDidMount(){
+  this.setState({num:Useful.letterSpacing(10)})
+}
+
 renderComments=()=>{
   return this.props.entry_comments.map(comment=>{
-    return <p style={{letterSpacing:`${Useful.randomNumber(10)}px`}} className="entryComment">{comment.content}</p>
+    return <Comment {...comment} />
   })
 }
 

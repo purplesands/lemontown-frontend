@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'react-quill/dist/quill.snow.css';
-import ReactQuill, { Quill, Mixin, Toolbar } from 'react-quill'
+import ReactQuill, { Quill, Toolbar } from 'react-quill'
 import renderHTML from 'react-render-html'
-// var Font = Quill.import('formats/font');
-// Font.whitelist = ['Ubuntu', 'Raleway', 'Roboto'];
-//
+
 
 class EntryForm extends Component {
 
@@ -38,8 +36,6 @@ class EntryForm extends Component {
     this.setState({content: e})
     console.log(this.state.content)
   }
-
-
 
   modules = {
     toolbar: toolbarOptions
@@ -85,16 +81,11 @@ render() {
 //
 var toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  ['blockquote', 'code-block'],
-
-  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
   [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
   [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  [{ 'direction': 'rtl' }],                         // text direction
 
   [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
   [{ 'color': ['maroon', 'steelblue'] }, { 'background': [] }],          // dropdown with defaults from theme
   [{ 'font': ['monospace', 'serif'] }],
