@@ -65,7 +65,7 @@ render(){
       />
         <h1>{this.state.location.name}</h1>
 
-          <PostForm updatePosts={this.fetchPosts} location={2} />
+          <div className="locationTwoPostForm"><PostForm updatePosts={this.fetchPosts} location={2} /></div>
           {this.renderPosts(this.state.posts)}
       </div>
     );

@@ -18,7 +18,7 @@ ReactDOM.render(
   <ActionCableProvider url={'ws://localhost:3000/cable'}>
     <Provider store={store}>
       <Router>
-          <Route path="/" component={App} />
+          <Route path="/" component={App}/>
       </Router>
     </Provider>
   </ActionCableProvider>

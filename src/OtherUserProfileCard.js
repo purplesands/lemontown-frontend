@@ -40,13 +40,12 @@ componentDidMount(){
   render() {
     return (
       <div>
-      <button onClick={this.handleClick}>check the props</button>
         <p>{this.props.userToView.username}</p>
         <p>following:{this.props.userToView.followed_users.length}</p>
         <p>followers:{this.props.userToView.follower_users.length}</p>
         {(this.props.userToView.id === this.props.currentUser.id) ?
         null
-          : 
+          :
         <button onClick={this.handleClick}>{((this.state.followStatus==true) ? "unfollow?" : "follow?")}</button>
        }
       </div>

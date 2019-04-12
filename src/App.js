@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 
 
 import MainContainer from './MainContainer';
@@ -10,6 +10,7 @@ import ProfileCard from './ProfileCard';
 import Login from './Login';
 import NavBar from './NavBar';
 import Register from './Register';
+import WelcomePage from './WelcomePage'
 
 
 class App extends Component {
@@ -79,32 +80,35 @@ class App extends Component {
     console.log('ha ')
   }
 
-  componentDidMount=()=>{
-    this.checkDay()
-    this.fetchDays()
-    this.getWord()
-    this.getWord()
-    this.getWord()
-    this.setDate()
-
+  fetchUser=()=>{
     const jwt = localStorage.getItem('jwt')
-
     if (jwt){
       fetch("http://localhost:3000/auto_login", {
         headers: {
           "Authorization": jwt
         }
       })
-        .then(r =>
-          r.json())
+        .then(r =>r.json())
         .then(r => {
           if (r.errors) {
             alert(r.errors)
           } else {
-            this.props.dispatch({ type: "UPDATE_USER", payload: r})      }
+            this.props.dispatch({ type: "UPDATE_USER", payload: r}) }
         })
     }
+  }
 
+
+
+
+  componentDidMount=()=>{
+    this.fetchDays()
+    this.getWord()
+    this.getWord()
+    this.getWord()
+    this.checkDay()
+    setTimeout(this.setDate,2000)
+    this.fetchUser()
   }
 
   render() {
@@ -112,12 +116,10 @@ class App extends Component {
       <Switch>
       <div>
         <header>
-        <Route path="/login" render={routerProps => <Login {...routerProps} />} />
         {(!this.props.currentUser)
           ?
           <div>
-          <Login/>
-          <Register/>
+          <WelcomePage />
           </div>
           :
           <NavBar/>

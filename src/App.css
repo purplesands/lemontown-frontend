@@ -1,4 +1,5 @@
 .App {
+  background-color:blue;
 }
 
 .ql-font-serif {
@@ -10,7 +11,6 @@
   overflow: hidden;
   overflow-y: scroll;
   overflow-x: scroll;
-  font-family: monospace;
 }
 
 .ql-font-monospace {
@@ -33,7 +33,16 @@
   font-size:32px;
 }
 
+.titlePage {
+  font-size:60px;
+  text-decoration: underline overline wavy mediumpurple;
+  font-family: 'Varela Round', sans-serif;
+  color:navy;
+  position:relative;
+  top:0;
+  left:0;
 
+}
 
 
 .entryComment {
@@ -43,13 +52,17 @@
 
 
 .profileCard {
-  position:relative;
+  position:absolute;
+  top: 0;
+  right:0;
   align:right;
-  margin-right:10%;
   width: 20%;
   width: 215;
   border: 3px solid steelblue;
   padding: 10px;
+  position: absolute;
+  color: red;
+
 }
 
 .mainContainer {
@@ -101,6 +114,15 @@
 
 }
 
+.locationTwoPostForm {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-bottom:10px;
+  padding-right:10px;
+
+}
+
 /* .entryCard .entryComment:hover {
   transform: rotate(-7deg);
   -webkit-transition-duration: 2s;
@@ -118,9 +140,11 @@
 
 
 .postCard, .entryCard {
-  border-color: blue;
-  border-width: 1.5px;
-  border-style: dotted;
+  border-color: #BCA7EC;
+  border-width: 1.3px;
+  border-style: inset;
+  border-radius: 5px;
+
   /* padding-top: 50px;
   padding-right: 30px;
   padding-bottom: 50px;*/

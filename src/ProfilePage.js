@@ -15,7 +15,6 @@ class ProfilePage extends Component {
   }
 
   handleEdit=(e)=>{
-    debugger
     fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
       method: "PATCH",
       headers: {
@@ -28,7 +27,6 @@ class ProfilePage extends Component {
       })
     }).then(r=>r.json())
     .then(user=>{
-      debugger
       this.props.dispatch({ type: "UPDATE_USER", payload: user})
     })
 
@@ -46,19 +44,27 @@ class ProfilePage extends Component {
       {(!this.state.editStatus) ?
         <div>
       <button onClick={this.toggleEdit}>edit details</button>
+      <img src={this.props.currentUser.avatar} alt="avatar"></img>
         <p> {this.props.currentUser.username}</p>
         <p> {this.props.currentUser.bio}</p>
         </div>
     :
     <div>
       <button onClick={this.handleEdit}>save</button>
+      <img src={this.props.currentUser.avatar} alt="avatar"></img>
+      <p className="profilePage edit">avatar:<p><input type="text"
+                name="avatar"
+                value={this.props.currentUser.avatar}
+                onChange={this.updateAttributes}
+                  /></p></p>
+
       <p className="profilePage edit">handle:<p><input type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.updateAttributes}
                 maxLength="12"
                   /></p></p>
-      <p className="profilePage edit">bio:<input type="text"
+      <p><p className="profilePage edit">bio:</p><input type="text"
                 name="bio"
                 value={this.state.bio}
                 onChange={this.updateAttributes}

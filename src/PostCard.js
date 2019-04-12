@@ -18,11 +18,9 @@ class PostCard extends React.Component {
 
   renderPost = () =>{
     if (this.props.is_image === false) {
-      return <div> <p style={{letterSpacing:`${Useful.letterSpacing(5)}px`}}>{this.props.content} </p>
-      <p>{this.props.date}</p></div>
+      return <div> <p className="postContent">{this.props.content} </p></div>
      } else {
-        return <div><img src={this.props.content} alt="post"></img>
-        <p>{this.props.date}</p></div>
+        return <div><img src={this.props.content} alt="post"></img></div>
       }
     }
 
@@ -60,8 +58,9 @@ class PostCard extends React.Component {
 render() {
   return (
       <div className="postCard">
-      <p style={{letterSpacing:`${Useful.letterSpacing(2)}px`}} onClick={this.renderProfileCard}>{this.props.user.username}</p>
       {this.renderPost()}
+      <p style={{letterSpacing:`${Useful.letterSpacing(2)}px`}} onClick={this.renderProfileCard}>{this.props.user.username}</p>
+      <p className="postDate">{this.props.date}</p>
       <form onSubmit={this.handleComment}>
       <select class="dropdown" onChange={this.handleChange}>
         <option value="pick">pick</option>

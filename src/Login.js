@@ -23,10 +23,8 @@ class Login extends React.Component {
       }).then(r=>r.json())
       .then(r=>{
         if (r.errors) {
-          debugger
           alert(r.errors)
         } else {
-          debugger
       this.props.dispatch({ type: "UPDATE_USER", payload:r.user})
       localStorage.setItem('jwt', r.jwt)
       // this.props.history.push(`/users/${r.user.id}`)
