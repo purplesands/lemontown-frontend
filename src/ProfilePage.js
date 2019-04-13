@@ -7,7 +7,8 @@ class ProfilePage extends Component {
   state={
     editStatus:false,
     username : this.props.currentUser.username,
-    bio: this.props.currentUser.bio
+    bio: this.props.currentUser.bio,
+    avatar: this.props.currentUser.avatar
   }
 
   toggleEdit=()=>{
@@ -23,7 +24,8 @@ class ProfilePage extends Component {
       },
       body:JSON.stringify({
         username: this.state.username,
-        bio: this.state.bio
+        bio: this.state.bio,
+        avatar: this.state.avatar
       })
     }).then(r=>r.json())
     .then(user=>{
@@ -44,7 +46,7 @@ class ProfilePage extends Component {
       {(!this.state.editStatus) ?
         <div>
       <button onClick={this.toggleEdit}>edit details</button>
-      <img src={this.props.currentUser.avatar} alt="avatar"></img>
+      <img className="profilePageAvatar" src={this.props.currentUser.avatar} alt="avatar"></img>
         <p> {this.props.currentUser.username}</p>
         <p> {this.props.currentUser.bio}</p>
         </div>

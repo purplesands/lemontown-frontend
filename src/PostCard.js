@@ -51,7 +51,7 @@ class PostCard extends React.Component {
 
   renderComments=(e)=>{
     return this.props.post_comments.map(c=>{
-    return  <td style={{letterSpacing:`${Useful.letterSpacing(4)}px`}} className="postComment">{c.content}</td>
+    return  <p style={{letterSpacing:"3px"}} className="postComment">{c.content}</p>
     })
   }
 
@@ -59,7 +59,7 @@ render() {
   return (
       <div className="postCard">
       {this.renderPost()}
-      <p style={{letterSpacing:`${Useful.letterSpacing(2)}px`}} onClick={this.renderProfileCard}>{this.props.user.username}</p>
+      <p style={{letterSpacing:"2px"}} onClick={this.renderProfileCard}>{this.props.user.username}</p>
       <p className="postDate">{this.props.date}</p>
       <form onSubmit={this.handleComment}>
       <select class="dropdown" onChange={this.handleChange}>

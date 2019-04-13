@@ -10,7 +10,6 @@ class ProfileCard extends Component {
         <p>{this.props.currentUser.username}</p>
         <img className="avatar" src={this.props.currentUser.avatar} alt={this.props.currentUser.username}></img>
         <p>following:{this.props.currentUser.followed_users.length}</p>
-        <p>followers:{this.props.currentUser.follower_users.length}</p>
       </div>
     );
   }

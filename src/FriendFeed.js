@@ -51,7 +51,6 @@ class FriendFeed extends React.Component {
 render(){
 return (
     <div>
-    <button onClick={this.fun}>fun</button>
       {this.renderFollowingEntries()}
     </div>
   );

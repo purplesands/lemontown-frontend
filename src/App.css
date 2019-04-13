@@ -2,6 +2,35 @@
   background-color:blue;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: peachpuff;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 9px papayawhip;
+}
+
+button:hover {background-color: seashell}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 .ql-font-serif {
   font-family: serif;
 }
@@ -41,9 +70,7 @@
   position:relative;
   top:0;
   left:0;
-
 }
-
 
 .entryComment {
   font-size:8px;
@@ -56,12 +83,12 @@
   top: 0;
   right:0;
   align:right;
-  width: 20%;
-  width: 215;
-  border: 3px solid steelblue;
+  width: 10%;
+  border: 3px groove peachpuff;
   padding: 10px;
-  position: absolute;
-  color: red;
+  color: cornflowerblue;
+  border-radius: 5%;
+  background-color: seashell;
 
 }
 
@@ -107,10 +134,12 @@
 .profileCard .avatar {
   position: static;
   float: right;
-  padding-right:10px;
+  /* padding-right:10px; */
   width:64px;
   height: 64px;
-  border-radius: 55%;
+  border-radius: 50%;
+  border-style: ridge;
+  border-color: beige;
 
 }
 
@@ -157,25 +186,10 @@
   animation-iteration-count: infinite;
 }
 
-
-
-
-
-
 div.userListCard {
   border-color: black;
   border-width: 1px;
   border-style: dotted;
   height: 10%;
   width: 30%;
-}
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

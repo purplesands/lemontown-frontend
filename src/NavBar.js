@@ -2,8 +2,6 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { NavLink, Route, Switch } from 'react-router-dom';
-
-
 import ProfileCard from './ProfileCard';
 
 import UserFeed from './UserFeed';
