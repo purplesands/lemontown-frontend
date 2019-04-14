@@ -45,8 +45,9 @@ class LocationTwo extends Component {
   }
 
  renderPosts = (arr) =>{
+   let x=1
   return  arr.map(post=>{
-      return <td><PostCard {...post} updatePosts={this.fetchPosts}/></td>
+      return <td><PostCard id={x++} {...post} updatePosts={this.fetchPosts}/></td>
     })
   }
 
@@ -66,7 +67,6 @@ render(){
         }
       />
         <h1>{this.state.location.name}</h1>
-
           <div className="locationTwoPostForm"><PostForm updatePosts={this.fetchPosts} location={2} /></div>
           <div className="flex-container">{this.renderPosts(this.state.posts)}</div>
           </Fragment>

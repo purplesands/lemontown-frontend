@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import UserCard from './UserCard';
 import { connect } from 'react-redux';
 import Useful from './Useful'
+import AnimationTest from './AnimationTest'
 
 class PostCard extends React.Component {
 
@@ -18,7 +19,7 @@ class PostCard extends React.Component {
 
   renderPost = () =>{
     if (this.props.is_image === false) {
-      return <div> <p className="postContent">{this.props.content} </p></div>
+      return
      } else {
         return <div><img src={this.props.content} alt="post"></img></div>
       }
@@ -51,34 +52,20 @@ class PostCard extends React.Component {
 
   renderComments=(e)=>{
     return this.props.post_comments.map(c=>{
-    return  <p style={{letterSpacing:"3px"}} className="postComment">{c.content}</p>
+    return  <p style={{letterSpacing:"5px"}} className="postComment">{c.content}</p>
     })
   }
 
+
 render() {
   return (
-      <div className="postCard">
-      {this.renderPost()}
-      <p style={{letterSpacing:"2px"}} onClick={this.renderProfileCard}>{this.props.user.username}</p>
-      <p className="postDate">{this.props.date}</p>
-      <form onSubmit={this.handleComment}>
-      <select class="dropdown" onChange={this.handleChange}>
-        <option value="pick">pick</option>
-        <option value={this.props.today.word1}>{this.props.today.word1}</option>
-        <option value={this.props.today.word2}>{this.props.today.word2}</option>
-        <option value={this.props.today.word3}>{this.props.today.word3}</option>
-      </select>
-      <input type="submit" name="text" value="comment" />
-      </form>
-      <p>{this.renderComments()}</p>
-      {(this.state.isClicked)
-        ?
-          <UserCard {...this.props} />
-        :
-          null
-      }
-      </div>
+    <Fragment>
+    <div className="postCard">
+<AnimationTest cool={this.props} renderComments={this.renderComments} handleChange={this.handleChange} handleComment={this.handleComment}/>
+</div>
+</Fragment>
     );
+
   }
 }
 function mapStateToProps(state) {

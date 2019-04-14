@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
 class Useful extends React.Component {
 
@@ -10,19 +11,14 @@ class Useful extends React.Component {
     return Math.random() * num
   }
 
-  static renderDate=(date)=>{
-    let monthNames = [
-      "January", "February", "March",
-      "April", "May", "June", "July",
-      "August", "September", "October",
-      "November", "December"
-    ];
-    let day = date.substr(5,2)
-    let monthIndex = date.substr(8,2)
-    let year = date.substr(0, 4);
-  return day + ' ' + monthNames[parseInt(monthIndex-1)] + ' ' + year;
+}
+
+function mapStateToProps(state) {
+  return {
+    today: state.today
+  }
 }
 
 
-}
-export default Useful
+const HOC = connect(mapStateToProps)
+export default HOC(Useful);

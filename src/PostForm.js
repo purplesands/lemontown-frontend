@@ -45,7 +45,7 @@ class PostForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="postForm">
       <button onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
       {(this.state.isImage===false)
         ?
@@ -60,7 +60,7 @@ class PostForm extends Component {
               minlength="1"
               onKeyUp={this.typing}
             />
-          <input type="submit" name="text" value="💬" />
+          <button type="submit" name="text" value="💬" />
           {this.state.characters}
         </form>
         :
