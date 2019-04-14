@@ -7,7 +7,8 @@ const initialState = {
   userToView: null,
   todaysWords: [],
   today: {},
-  dateToView: {}
+  dateToView: {},
+  currentDate: null
 }
 
 export default function reducer(state=initialState, action){
@@ -33,6 +34,8 @@ export default function reducer(state=initialState, action){
     case "LOGOUT":
     localStorage.removeItem('jwt')
     return {...initialState, today:state.today, days:state.days}
+    case "SET_CURRENT_DATE":
+    return {...initialState, currentDate:action.payload}
 
     // case "SET_FOLLOWINGS":
     // return {...state, followings: action.payload}
