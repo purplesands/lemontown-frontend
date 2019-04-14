@@ -8,7 +8,8 @@ class PostForm extends Component {
     content: '',
     posts:[],
     characters:75,
-    isImage: false
+    isImage: false,
+    typing: false
   }
 
   handleSubmit = (e) => {
@@ -42,11 +43,10 @@ class PostForm extends Component {
     this.setState({isImage:!this.state.isImage})
   }
 
-
   render() {
     return (
-      <div>
-      <button onClick={this.setPostType}>{(this.state.isImage===true) ? "want text?" : "an image?"}</button>
+      <div className="postForm">
+      <button onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
       {(this.state.isImage===false)
         ?
         <form onSubmit={this.handleSubmit}>
@@ -58,8 +58,9 @@ class PostForm extends Component {
               rows="3" cols="30"
               maxlength="75"
               minlength="1"
+              onKeyUp={this.typing}
             />
-          <input type="submit" name="text" value="post" />
+          <button type="submit" name="text" value="💬" />
           {this.state.characters}
         </form>
         :

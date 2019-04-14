@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Fragment, Component  } from 'react';
 import PostForm from './PostForm'
 import PostCard from './PostCard'
+import CanvasDraw from "react-canvas-draw";
 
 import { connect } from 'react-redux';
 import { ActionCableConsumer } from 'react-actioncable-provider'
 
-class LocationTwo extends React.Component {
+class LocationTwo extends Component {
   state={
     posts: [],
     location: {},
@@ -43,23 +44,22 @@ class LocationTwo extends React.Component {
     })
   }
 
-
-
-
  renderPosts = (arr) =>{
+   let x=1
   return  arr.map(post=>{
-      return <PostCard {...post} updatePosts={this.fetchPosts}/>
+      return <td><PostCard id={x++} {...post} updatePosts={this.fetchPosts}/></td>
     })
   }
 
   componentDidMount(){
     this.fetchLocation()
     this.fetchPosts()
-  }
+
+    }
 
 render(){
   return (
-      <div>
+      <Fragment>
       <ActionCableConsumer
         channel={{ channel: 'LocationTwoFeedChannel'}}
         onReceived={
@@ -67,10 +67,9 @@ render(){
         }
       />
         <h1>{this.state.location.name}</h1>
-
-          <PostForm updatePosts={this.fetchPosts} location={2} />
-          {this.renderPosts(this.state.posts)}
-      </div>
+          <div className="locationTwoPostForm"><PostForm updatePosts={this.fetchPosts} location={2} /></div>
+          <div className="flex-container">{this.renderPosts(this.state.posts)}</div>
+          </Fragment>
     );
   }
 }

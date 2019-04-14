@@ -10,22 +10,30 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
       e.preventDefault();
-      fetch('http://localhost:3000/users', {
+      fetch('http://localhost:3000/login', {
         method: "POST",
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
+  				"Accepts": "application/json",
         },
         body:JSON.stringify({
           username: this.state.username,
+          password:this.state.password
         })
       }).then(r=>r.json())
-      .then(user=>this.props.dispatch({ type: "UPDATE_USER", payload:user}))
-      .then(r=>this.setState({
-        username:'',
-        password:''
-      }))
+      .then(r=>{
+        if (r.errors) {
+          alert(r.errors)
+        } else {
+      this.props.dispatch({ type: "UPDATE_USER", payload:r.user})
+      localStorage.setItem('jwt', r.jwt)
+      // this.props.history.push(`/users/${r.user.id}`)
+      this.setState({username:'',password:''})
     }
+  })
+}
+
+
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -43,6 +51,14 @@ class Login extends React.Component {
               onChange={this.handleChange}
               placeholder="username"
             />
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              placeholder="password"
+            />
+
           <input type="submit" value="login" />
         </form>
       </div>

@@ -36,7 +36,7 @@ class FriendFeed extends React.Component {
 
   renderFollowingEntries=()=>{
     return this.state.followingEntries.map(entry=>{
-      return <EntryCard {...entry}/>
+      return <EntryCard {...entry} fetchEntries={this.fetchEntries}/>
     })
   }
 
@@ -51,7 +51,6 @@ class FriendFeed extends React.Component {
 render(){
 return (
     <div>
-    <button onClick={this.fun}>fun</button>
       {this.renderFollowingEntries()}
     </div>
   );

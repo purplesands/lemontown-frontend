@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
+import { Switch, Route, Link } from 'react-router-dom'
+
 
 import MainContainer from './MainContainer';
 import ProfileCard from './ProfileCard';
 import Login from './Login';
 import NavBar from './NavBar';
+import Register from './Register';
+import WelcomePage from './WelcomePage'
+
 
 class App extends Component {
 
@@ -44,7 +49,7 @@ class App extends Component {
   currentDate=()=>{
     let today = new Date();
     let dd = today.getDate();
-    let mm = today.getMonth()+1; //January is 0!
+    let mm = today.getMonth()+1
     let yyyy = today.getFullYear();
     if(dd<10) {dd = '0'+dd}
     if(mm<10) {mm = '0'+mm}
@@ -62,8 +67,7 @@ class App extends Component {
       body:JSON.stringify({
         word1: this.props.todaysWords[0].word,
         word2: this.props.todaysWords[1].word,
-        word3: this.props.todaysWords[2].word,
-        date: this.currentDate()
+        word3: this.props.todaysWords[2].word
       })
     }).then(r=>r.json())
     .then(r=>this.props.dispatch({ type: "SET_DATE", payload: r}))
@@ -75,22 +79,48 @@ class App extends Component {
     console.log('ha ')
   }
 
+  fetchUser=()=>{
+    const jwt = localStorage.getItem('jwt')
+    if (jwt){
+      fetch("http://localhost:3000/auto_login", {
+        headers: {
+          "Authorization": jwt
+        }
+      })
+        .then(r =>r.json())
+        .then(r => {
+          if (r.errors) {
+            alert(r.errors)
+          } else {
+            this.props.dispatch({ type: "UPDATE_USER", payload: r}) }
+        })
+    }
+  }
+
+
+
+
   componentDidMount=()=>{
-    this.checkDay()
+    this.getWord()
+    this.getWord()
+    this.getWord()
     this.fetchDays()
-    this.getWord()
-    this.getWord()
-    this.getWord()
+    this.checkDay()
     setTimeout(this.setDate, 2000)
+    setTimeout(this.fetchUser, 2000)
+
   }
 
   render() {
     return (
+      <Switch>
       <div>
         <header>
         {(!this.props.currentUser)
           ?
-          <Login/>
+          <div>
+          <WelcomePage />
+          </div>
           :
           <NavBar/>
         }
@@ -102,6 +132,8 @@ class App extends Component {
             null
           }
       </div>
+      </Switch>
+
     );
   }
 

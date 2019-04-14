@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
 import 'react-quill/dist/quill.snow.css';
-import ReactQuill, { Quill, Mixin, Toolbar } from 'react-quill'
+import ReactQuill, { Quill, Toolbar } from 'react-quill'
 import renderHTML from 'react-render-html'
-// var Font = Quill.import('formats/font');
-// Font.whitelist = ['Ubuntu', 'Raleway', 'Roboto'];
-//
+
 
 class EntryForm extends Component {
 
   state= {
     title: '',
     content: '',
-    characters:500
+    characters:500,
+    postForm: false
   }
 
   handleSubmit = (e) => {
@@ -39,8 +38,6 @@ class EntryForm extends Component {
     console.log(this.state.content)
   }
 
-
-
   modules = {
     toolbar: toolbarOptions
   }
@@ -48,56 +45,37 @@ class EntryForm extends Component {
 render() {
     return (
       <div className="text-editor">
-        <form onSubmit={this.handleSubmit}>
+      <button classname="newEntryButton" onClick={()=>this.setState({new:!this.state.new})}>
+      {(!!this.state.new) ? "x" : "?"}
+      </button>
+        {(!!this.state.new)
+          ?
+          <form onSubmit={this.handleSubmit}>
+          <input className="newEntrySubmit" type="submit" value="!" />
           <ReactQuill value={this.state.content}
                       onChange={this.handleChange}
                       theme="snow"
                       modules={this.modules}
-                      // formats={this.formats}
                       />
-        <input type="submit" value="post" />
-      </form>
-    </div>
-  )}
+        </form>
+          :
+          null}
+      </div>
+    )
+  }
 }
 
-// EntryForm.modules = {
-//   toolbar: [
-//     [{ 'header': '1'}, {'header': '2'}, { 'font': Font.whitelist }],
-//     [{size: []}],
-//     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-//     [{'list': 'ordered'}, {'list': 'bullet'},
-//      {'indent': '-1'}, {'indent': '+1'}],
-//     ['link', 'image', 'video'],
-//     ['clean']
-//   ]
-// }
-// /*
-//  * Quill editor formats
-//  * See https://quilljs.com/docs/formats/
-//  */
-// EntryForm.formats = [
-//   'header', 'font', 'size',
-//   'bold', 'italic', 'underline', 'strike', 'blockquote',
-//   'list', 'bullet', 'indent',
-//   'link', 'image', 'video'
-// ]
-//
+
 var toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  ['blockquote', 'code-block'],
-
-  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
   [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
   [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  [{ 'direction': 'rtl' }],                         // text direction
 
   [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
   [{ 'color': ['maroon', 'steelblue'] }, { 'background': [] }],          // dropdown with defaults from theme
-  [{ 'font': ['monospace', 'serif'] }],
+  [{ 'font': ['sans serif', 'monospace', 'serif'] }],
   [{ 'align': [] }],
 
   ['clean']                                         // remove formatting button

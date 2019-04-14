@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
+import { NavLink, Route, Switch } from 'react-router-dom';
 import ProfileCard from './ProfileCard';
 
 import UserFeed from './UserFeed';
@@ -19,22 +21,7 @@ const handleClick=(e)=>{
     props.dispatch({ type: "CHANGE_LOCATION", payload:e.target.value})
   }
 
-  const renderDate=()=>{
-    let date = props.today.date
-    let monthNames = [
-      "January", "February", "March",
-      "April", "May", "June", "July",
-      "August", "September", "October",
-      "November", "December"
-    ];
-    let day = date.substr(5,2)
-    let monthIndex = date.substr(8,2)
-    let year = date.substr(0, 4);
-  return day + ' ' + monthNames[parseInt(monthIndex-1)] + ' ' + year;
-}
-
 const handleChange=(e)=>{
-  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
   props.dispatch({ type: "UPDATE_DATE_TO_VIEW", payload:e.target.value})
 }
 
@@ -42,6 +29,7 @@ const handleSubmit=(e)=>{
   e.preventDefault()
   if (props.activeLocation==="ArchivedDate") {
   props.dispatch({ type: "CHANGE_LOCATION", payload:null})
+  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
 } else {
   props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
 }
@@ -51,9 +39,9 @@ const archivedPosts=()=>{
   return(
   <form onSubmit={(e)=>handleSubmit(e)}>
     <select class="dropdown" onChange={handleChange}>
-      <option value="pick">see daily archives</option>
+      <option value="pick">archived posts</option>
       {props.days.map(day=>{
-      return  <option value={day.id}>{day.date.split().reverse().join()}</option>
+      return  <option onSelect={()=>console.log(day.id)} value={day.id}>{day.date}</option>
       })}
     </select>
     <input type="submit" name="text" value="hmm" />
@@ -64,17 +52,41 @@ const archivedPosts=()=>{
 const logout=()=>{
   props.dispatch({ type: "LOGOUT"})
 }
+// const index=()=>{
+//  return <h1>home</h1>
+// }
+//
+// const users=()=>{
+// return <h1>users</h1>
+// }
+//
+// const about=()=>{
+// return <h1>about</h1>
+// }
+//
+// const self=()=>{
+// return <h1>self</h1>
+// }
+//
+//
+// const friends=()=>{
+//   props.dispatch({ type: "CHANGE_LOCATION", payload:"FriendFeed"})
+// }
+
 
 return (
     <div className="navBar">
-    <button onClick={logout}>logout!</button>
-    <p>today is {renderDate()}</p>
-    <p>{archivedPosts()}</p>
+
+    <button className="item" to="/login" onClick={logout}>logout!</button>
       <button value="UserFeed" onClick={handleClick}>user feed</button>
       <button value="FriendFeed" onClick={handleClick}>friend feed</button>
       <button value="LocationOne" onClick={handleClick}>location 1</button>
       <button value="LocationTwo" onClick={handleClick}>location 2</button>
       <button value="UserList" onClick={handleClick}>all users</button>
+      <button value="ProfilePage" onClick={handleClick}>my profile</button>
+      <p>{archivedPosts()}</p>
+
+
     </div>
   );
 }

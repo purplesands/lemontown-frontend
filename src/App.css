@@ -1,29 +1,190 @@
 .App {
-  text-align: center;
+  background-color:blue;
 }
-span.ql-font-serif {
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+
+}
+/* .postContainer{
+  border: 6px solid black;
+  height: 150px;
+  width:100px;
+} */
+
+
+.postImage{
+  height:80px;
+  width:80px;
+  border-radius: 60%;
+}
+
+.postCard{
+  position:relative;
+  height:150px;
+  width:100px;
+}
+body {
+  background: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+#root {
+  overflow: hidden;
+}
+
+
+.card1 {
+  opacity: 0.7;
+  font-family: "Karla", sans-serif;
+  text-align: right;
+
+}
+
+.card2 {
+  font-family: 'Overpass', sans-serif;
+
+  text-align: left;
+
+}
+
+.card3 {
+  opacity: 0.8;
+  position:relative;
+  z-index:10000;
+}
+
+.card4 {
+  position:relative;
+  opacity: 0.7;
+  color: 'Navy';
+
+}
+
+
+p:nth-child(2){
+  color:teal;
+  border: 1px dotted pink
+}
+
+div:nth-child(1){
+  color:pink;
+}
+
+
+
+
+
+
+button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: peachpuff;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 9px papayawhip;
+}
+
+button:hover {background-color: seashell}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.ql-font-serif {
   font-family: serif;
 }
+.ql-editor{
+  min-height: 100px !important;
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
 
-.ql-editor {
+.ql-font-monospace {
   font-family: monospace;
 }
 
-span.ql-font-monospace {
-  font-family: monospace;
+.ql-size-large {
+  font-size:24px;
 }
+
+.ql-size-small {
+  font-size:10px;
+}
+
+.ql-size-medium {
+  font-size:14px;
+}
+
+.ql-size-huge {
+  font-size:32px;
+}
+
+.titlePage {
+  font-size:60px;
+  text-decoration: underline overline wavy mediumpurple;
+  font-family: 'Varela Round', sans-serif;
+  color:navy;
+  position:relative;
+  top:0;
+  left:0;
+}
+
+.entryComment {
+  font-size:8px;
+  color: purple;
+}
+
 
 
 .profileCard {
-  float:right;
-  position:relative;
-  width: 215;
-  border: 3px solid steelblue;
+  position:absolute;
+  top: 0;
+  right:0;
+  align:right;
+  width: 10%;
+  border: 3px groove peachpuff;
   padding: 10px;
+  color: cornflowerblue;
+  border-radius: 5%;
+  background-color: seashell;
+
 }
 
+.wordCard {
+  float:right;
+  right: 0px;
+  width: 20%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+  color: cornflowerblue;
+  border-radius: 5%;
+  background-color: seashell;
+}
+
+
 .mainContainer {
-  position:static;
   margin-right:10%;
   width: 80%;
   border: 3px solid gainsboro;
@@ -31,11 +192,6 @@ span.ql-font-monospace {
 }
 
 
-
-.postCard .postComment {
-  position: relative;
-  color: red;
-}
 
 .entryCard .username {
   position: relative;
@@ -59,23 +215,53 @@ span.ql-font-monospace {
   padding-right:10px;
   width:64px;
   height: 64px;
+  border-radius: 55%;
 }
 
 .profileCard .avatar {
   position: static;
   float: right;
-  padding-right:10px;
+  /* padding-right:10px; */
   width:64px;
   height: 64px;
+  border-radius: 50%;
+  border-style: ridge;
+  border-color: beige;
+
+}
+
+.locationTwoPostForm {
+  position: fixed;
+  z-index:100;
+  bottom: 0;
+  right: 0;
+  padding-bottom:10px;
+  padding-right:10px;
+
+}
+
+/* .entryCard .entryComment:hover {
+  transform: rotate(-7deg);
+  -webkit-transition-duration: 2s;
+
+
+} */
+
+@keyframes example {
+  /* 0% {transform: skewY(0deg);}
+  25% {transform: skewY(-2deg);}
+  50% {transform: skewY(0deg);}
+  75% {transform: skewY(+2deg);} */
+
 }
 
 
+.entryCard {
+  border-color: #BCA7EC;
+  border-width: 1.3px;
+  border-style: inset;
+  border-radius: 5px;
 
-
-.postCard, .entryCard {
-  border-color: blue;
-  border-width: 1.5px;
-  border-style: dotted;
   /* padding-top: 50px;
   padding-right: 30px;
   padding-bottom: 50px;*/
@@ -83,16 +269,10 @@ span.ql-font-monospace {
   height: 60%;
   width: 50%;
   overflow: auto;
-
-
+  animation-name: example;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
-
-#editor-container {
-  height: 375px;
-}
-
-
-
 
 div.userListCard {
   border-color: black;
@@ -100,14 +280,4 @@ div.userListCard {
   border-style: dotted;
   height: 10%;
   width: 30%;
-}
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
