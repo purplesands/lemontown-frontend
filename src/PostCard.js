@@ -8,7 +8,7 @@ class PostCard extends React.Component {
 
   state = {
     isClicked: false,
-    chosenWord:null
+    chosenWord:this.props.today.word1
   }
 
   renderProfileCard = () => {
@@ -61,7 +61,8 @@ render() {
   return (
     <Fragment>
     <div className="postCard">
-<AnimationTest cool={this.props} renderComments={this.renderComments} handleChange={this.handleChange} handleComment={this.handleComment}/>
+<AnimationTest cool={this.props} renderComments={this.renderComments} handleChange={this.handleChange} handleComment={this.handleComment}
+word={this.state.chosenWord}/>
 </div>
 </Fragment>
     );

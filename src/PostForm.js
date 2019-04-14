@@ -60,8 +60,9 @@ class PostForm extends Component {
               minlength="1"
               onKeyUp={this.typing}
             />
-          <button type="submit" name="text" value="💬" />
+          <button type="submit" name="text" value="💬">
           {this.state.characters}
+          </button>
         </form>
         :
         null }

@@ -7,14 +7,15 @@ import './App.css'
 
 
 function AnimationTest(cool) {
-  let userColor = (cool.cool.currentUser.id===cool.cool.user.id) ?  "blue" : "orange"
+
+  let userColor = (cool.cool.currentUser.id===cool.cool.user.id) ?  "blue" : "palevioletred"
   let pos = getPos(document.querySelector('.mainContainer'))
   const calc = (x, y) => [x - pos.x / 2, y - pos.y / 2]
   const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 4}px,0)`
   const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 20}px,0)`
   const trans3 = (x, y) => `translate3d(${x / 10}px,${y / 5}px,0)`
   const trans4 = (x, y) => `translate3d(${x / 3.5}px,${y / 3.5}px,0)`
-  const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: Useful.letterSpacing(15), tension: 20, friction: Useful.letterSpacing(30) } }))
+  const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 20, tension: 20, friction: Useful.letterSpacing(30) } }))
   return (
     <div class="container postContainer" onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>
     <div className="boogie">
@@ -26,12 +27,11 @@ function AnimationTest(cool) {
       <animated.div class="card3 commentBar" style={{ transform: props.xy.interpolate(trans3) }} >
       <form onSubmit={cool.handleComment}>
 <select class="dropdown" onChange={cool.handleChange}>
-  <option value="pick">pick</option>
-  <option value={cool.cool.today.word1}>{cool.cool.today.word1}</option>
+  <option selected="selected" value={cool.cool.today.word1}>{cool.cool.today.word1}</option>
   <option value={cool.cool.today.word2}>{cool.cool.today.word2}</option>
   <option value={cool.cool.today.word3}>{cool.cool.today.word3}</option>
 </select>
-<button type="submit" name="text" value="comment" />
+<button type="submit" name="text" value="comment">{cool.word}</button>
 </form>
 </animated.div>
 :
