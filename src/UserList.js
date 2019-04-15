@@ -31,7 +31,7 @@ cool=()=>{
 
 render(){
   return (
-      <div>
+      <div className="userList">
         {this.renderList(this.state.users)}
       </div>
     );

@@ -12,9 +12,6 @@ import WordCard from './WordCard';
 import ArchivedDate from './ArchivedDate';
 import ProfilePage from './ProfilePage';
 
-
-
-
 const MainContainer = (props) => {
 
 

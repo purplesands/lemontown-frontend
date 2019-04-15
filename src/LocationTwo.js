@@ -59,9 +59,6 @@ class LocationTwo extends Component {
     }
 
 
-
-
-
   filterNewPosts=(array1)=>{
     let newPost = []
     newPost.push(array1[array1.length-1])
@@ -92,7 +89,6 @@ render(){
             this.fetchPosts
           }
         />
-        <h1>{this.state.location.name}</h1>
         <div className="locationTwoPostForm"><PostForm updatePosts={this.fetchPosts} location={2} /></div>
         <div className="flex-container">{this.renderPosts(this.state.posts)}</div>
         <div className="flex-container">{this.renderPosts(this.state.newPosts)}</div>

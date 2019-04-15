@@ -17,18 +17,31 @@ class ArchivedDate extends React.Component {
 
   getPosts=()=>{
     return this.state.posts.map(post=>{
-      return <td>{post.content}</td>
+      if (!post.is_image) {
+      return <p className="archivedPost"> {post.content}
+              <td>{post.content}{post.content}</td>
+              </p>
+            } else {
+            return  <img className="archiveImage" src={post.content} alt={post.content}></img>
+            }
     })
+    return this.state.posts.reverse().map(post=>{
+      return <p className="archivedPost"> {post.content}
+              <td>{post.content}{post.content}</td>
+              </p>
+    })
+
   }
 
   componentDidMount(){
     this.fetchDay()
+    setInterval(this.fetchDay, 1000)
   }
 
   render(){
     return (
-      <div>
-      <td>{this.state.day.word1}</td><td>{this.state.day.word2}</td><td>{this.state.day.word3}</td>
+      <div className="archive">
+      <td>{this.state.day.word1}</td><td>{this.state.day.word2}</td><td>{this.state.day.word3}</td><td>{this.state.day.word4}</td><td>{this.state.day.word5}</td>
       <div>{this.getPosts()}</div>
       </div>
       )

@@ -50,7 +50,7 @@ class FriendFeed extends React.Component {
 
 render(){
 return (
-    <div>
+    <div class="friendFeed">
       {this.renderFollowingEntries()}
     </div>
   );

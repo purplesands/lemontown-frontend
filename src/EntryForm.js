@@ -45,9 +45,6 @@ class EntryForm extends Component {
 render() {
     return (
       <div className="text-editor">
-      <button classname="newEntryButton" onClick={()=>this.setState({new:!this.state.new})}>
-      {(!!this.state.new) ? "x" : "?"}
-      </button>
         {(!!this.state.new)
           ?
           <form onSubmit={this.handleSubmit}>
@@ -57,10 +54,16 @@ render() {
                       modules={this.modules}
                       />
         <button className="newEntrySubmit" type="submit" value="!" style={{float:"right"}}>!</button>
+        <button classname="newEntryButton" onClick={()=>this.setState({new:!this.state.new})}>
+        {(!!this.state.new) ? "x" : "?"}
+        </button>
 
         </form>
           :
-          null}
+          <button classname="newEntryButton" onClick={()=>this.setState({new:!this.state.new})}>
+          {(!!this.state.new) ? "x" : "?"}
+          </button>
+        }
       </div>
     )
   }

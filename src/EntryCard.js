@@ -11,7 +11,9 @@ class EntryCard extends React.Component {
   state = {
     isClicked: false,
     comment: '',
-    num: null
+    num: null,
+    characters:20,
+    show:false
   }
 
   handleClick = () => {
@@ -46,9 +48,6 @@ class EntryCard extends React.Component {
       .then(r=> this.props.fetchEntries())
     }
 
-// letterSpacing(){
-//   return Math.floor(Math.random() * 10)
-// }
 
 componentDidMount(){
   this.setState({num:Useful.letterSpacing(10)})
@@ -58,6 +57,12 @@ renderComments=()=>{
   return this.props.entry_comments.map(comment=>{
     return <Comment {...comment} />
   })
+}
+
+handleCommentForm=()=>{
+  this.setState({show:!this.state.show})
+  console.log(this.state.show)
+
 }
 
 
@@ -72,14 +77,18 @@ render() {
 
       {(this.props.currentUser.id===this.props.user.id) ?
         null
-        :
-        <form onSubmit={this.handleComment} onChange={this.handleChange}>
-        <label>
-          <input type="text" name="comment" value={this.state.comment} minLength="1" maxLength="20" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+        : (!this.state.show) ?
+        <button className="entryComment" onClick={this.handleCommentForm}>?</button>
+      :
+      <form className="commentForm" onSubmit={this.handleComment} onChange={this.handleChange}>
+      <label>
+        <input type="text" name="comment" value={this.state.comment} minLength="1" maxLength="20" />
+      </label>
+      <button className="entryComment" type="submit">{this.state.characters-this.state.comment.length}</button>
+    </form>
+
     }
+
 
       {(this.state.isClicked)
         ?

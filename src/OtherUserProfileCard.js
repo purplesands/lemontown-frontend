@@ -41,6 +41,7 @@ componentDidMount(){
     return (
       <div>
         <p>{this.props.userToView.username}</p>
+        <img className="user avatar" src={this.props.userToView.avatar} alt="avatar"></img>
         <p>following:{this.props.userToView.followed_users.length}</p>
         <p>followers:{this.props.userToView.follower_users.length}</p>
         {(this.props.userToView.id === this.props.currentUser.id) ?
