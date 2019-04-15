@@ -22,29 +22,33 @@ const handleClick=(e)=>{
   }
 
 const handleChange=(e)=>{
+  if (e.target.value==="nothing") {
+  return  null
+} else {
   props.dispatch({ type: "UPDATE_DATE_TO_VIEW", payload:e.target.value})
+  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
+}
 }
 
-const handleSubmit=(e)=>{
-  e.preventDefault()
-  if (props.activeLocation==="ArchivedDate") {
-  props.dispatch({ type: "CHANGE_LOCATION", payload:null})
-  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
-} else {
-  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
-}
-}
+// const handleSubmit=(e)=>{
+//   e.preventDefault()
+//   props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
+// }
 
 const archivedPosts=()=>{
+  let index=0
+  let days = [...props.days]
   return(
-  <form onSubmit={(e)=>handleSubmit(e)}>
-    <select class="dropdown" onChange={handleChange}>
-      <option value="pick">archived posts</option>
-      {props.days.map(day=>{
-      return  <option onSelect={()=>console.log(day.id)} value={day.id}>{day.date}</option>
+  <form >
+  <div class="archiveMenu">
+    <select onChange={handleChange}>
+      <option value="nothing">older</option>
+      {days.reverse().splice(-1, days.length-1).map(day=>{
+        index++
+      return  <option onSelect={()=>console.log(day.id)} value={day.id}>{index} {(index===1) ? "day" : "days"} ago</option>
       })}
     </select>
-    <input type="submit" name="text" value="hmm" />
+    </div>
   </form>
   )
 }
@@ -76,17 +80,14 @@ const logout=()=>{
 
 return (
     <div className="navBar">
-
-    <button className="item" to="/login" onClick={logout}>logout!</button>
-      <button value="UserFeed" onClick={handleClick}>user feed</button>
-      <button value="FriendFeed" onClick={handleClick}>friend feed</button>
-      <button value="LocationOne" onClick={handleClick}>location 1</button>
-      <button value="LocationTwo" onClick={handleClick}>location 2</button>
-      <button value="UserList" onClick={handleClick}>all users</button>
-      <button value="ProfilePage" onClick={handleClick}>my profile</button>
-      <p>{archivedPosts()}</p>
-
-
+      <td>  <button className="nav" value="UserFeed" onClick={handleClick}>{props.currentUser.username}</button></td>
+      <td>  <button className="nav" value="FriendFeed" onClick={handleClick}>friend feed</button></td>
+      <td>  <button className="nav" value="LocationOne" onClick={handleClick}>location 1</button></td>
+      <td>  <button className="nav" value="LocationTwo" onClick={handleClick}>chat</button></td>
+      <td>  <button className="nav" value="UserList" onClick={handleClick}>all users</button></td>
+      <td>  <button className="nav" value="ProfilePage" onClick={handleClick}>my profile</button></td>
+      <td>  <p>{archivedPosts()}</p></td>
+      <td>  <button className="logout" to="/login" onClick={logout}>leave</button></td>
     </div>
   );
 }

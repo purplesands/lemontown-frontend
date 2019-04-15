@@ -32,6 +32,7 @@ componentDidMount(){
     (this.props.user) ?
       <div className="postUserCard">
         <p>{this.props.user.username}</p>
+        <img className="user avatar" src={this.props.user.avatar} alt="avatar"></img>
         <p className="followingList">following:{this.props.user.followed_users.length}</p>
         <p className="followerList">followers:{this.props.user.follower_users.length}</p>
         <button onClick={this.handleClick}>see full profile!</button>
@@ -39,9 +40,10 @@ componentDidMount(){
       :
       <div className="userListCard">
         <p>{this.props.username}</p>
+        <img className="user avatar" src={this.props.avatar} alt="avatar"></img>
         <p className="followingList" onClick={this.showFollowers}>following:{this.props.followed_users.length}</p>
         <p className="followerList">followers:{this.props.follower_users.length}</p>
-        <button onClick={this.handleClick}>see full profile!</button>
+        <button onClick={this.handleClick}>see</button>
       </div>
 
     );

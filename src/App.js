@@ -54,7 +54,7 @@ class App extends Component {
     if(dd<10) {dd = '0'+dd}
     if(mm<10) {mm = '0'+mm}
     today = mm + '-' + dd + '-' + yyyy;
-    return today
+    this.props.dispatch({ type: "SET_CURRENT_DATE", payload: today})
   }
 
    newDay=()=>{
@@ -67,14 +67,17 @@ class App extends Component {
       body:JSON.stringify({
         word1: this.props.todaysWords[0].word,
         word2: this.props.todaysWords[1].word,
-        word3: this.props.todaysWords[2].word
+        word3: this.props.todaysWords[2].word,
+        word4: this.props.todaysWords[3].word,
+        word5: this.props.todaysWords[4].word,
+        date: this.props.currentDate
       })
     }).then(r=>r.json())
     .then(r=>this.props.dispatch({ type: "SET_DATE", payload: r}))
   }
 
   setDate=()=>{
-    (this.props.todaysWords.length===3 && this.props.today.date !== this.currentDate()) ?
+    (this.props.todaysWords.length===5 && this.props.today.date !== this.props.currentDate) ?
     this.newDay() :
     console.log('ha ')
   }
@@ -101,13 +104,16 @@ class App extends Component {
 
 
   componentDidMount=()=>{
+    this.currentDate()
+    this.getWord()
+    this.getWord()
     this.getWord()
     this.getWord()
     this.getWord()
     this.fetchDays()
     this.checkDay()
-    setTimeout(this.setDate, 2000)
-    setTimeout(this.fetchUser, 2000)
+    setTimeout(this.setDate, 5000)
+    setTimeout(this.fetchUser, 5000)
 
   }
 
@@ -145,7 +151,8 @@ function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
     todaysWords: state.todaysWords,
-    today:state.today
+    today:state.today,
+    currentDate:state.currentDate
   }
 }
 

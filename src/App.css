@@ -9,14 +9,35 @@
   align-items: center;
   justify-content: center;
   flex-direction: row-reverse;
+  min-height: 250px;
+  min-width:400px
 
 }
+textarea{
+  resize: none;
+}
+
+div.text-editor{
+  max-width: 760px
+}
+
 /* .postContainer{
   border: 6px solid black;
   height: 150px;
   width:100px;
 } */
+.commentForm {
+  display: block;
+  margin-left: auto;
+  margin-top:auto;
+  width: 50%;
+}
+button:entryComment {
+  float:right;
+  margin-left: auto;
+  margin-top:auto;
 
+}
 
 .postImage{
   height:80px;
@@ -28,6 +49,10 @@
   position:relative;
   height:150px;
   width:100px;
+}
+
+.textBox {
+  height:100%;
 }
 body {
   background: transparent;
@@ -54,9 +79,8 @@ body {
 
 .card2 {
   font-family: 'Overpass', sans-serif;
-
+  opacity:0.9;
   text-align: left;
-
 }
 
 .card3 {
@@ -67,25 +91,23 @@ body {
 
 .card4 {
   position:relative;
-  opacity: 0.7;
-  color: 'Navy';
+  opacity: 0.8;
+  color: navy;
+}
 
+div.userList {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 
-p:nth-child(2){
+/* p:nth-child(2){
   color:teal;
-  border: 1px dotted pink
-}
+} */
 
-div:nth-child(1){
+/* div:nth-child(1){
   color:pink;
-}
-
-
-
-
-
+} */
 
 button {
   display: inline-block;
@@ -98,23 +120,45 @@ button {
   color: black;
   background-color: peachpuff;
   border: none;
-  border-radius: 50px;
+  border-radius: 30px;
   box-shadow: 0 9px papayawhip;
 }
 
-button:hover {background-color: seashell}
+button.entryComment {
+  padding: 8px 12px;
+}
+
+button:hover, button.logout:hover, button.entryComment:hover, .archiveMenu:hover {
+  background-color: seashell
+}
 
 button:active {
-  background-color: #3e8e41;
+  background-color: mistyrose;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+button.focus {
+    background-color:  lavenderblush;
+}
+
+button.logout {
+  position:relative;
+  background-color: palegoldenrod;
+
+  /* float:right; */
+}
+button.archiveButton {
+  padding: 10px 12px;
+
+  /* float:right; */
+}
+
 
 .ql-font-serif {
   font-family: serif;
 }
 .ql-editor{
-  min-height: 100px !important;
+  min-height: 120px !important;
   max-height: 300px;
   overflow: hidden;
   overflow-y: scroll;
@@ -173,25 +217,51 @@ button:active {
 }
 
 .wordCard {
-  float:right;
-  right: 0px;
+  position:fixed;
+  top:2;
+  right:0;
+  padding-top:10%;
   width: 20%;
   border: 3px solid #73AD21;
-  padding: 10px;
   color: cornflowerblue;
   border-radius: 5%;
   background-color: seashell;
 }
 
 
+.archiveMenu {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: thistle;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 9px papayawhip;
+}
+
+.archiveMenu select {
+    width: 130%;
+    border: none;
+    box-shadow: black;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.archiveMenu select:focus {
+    outline: none;
+}
+
 .mainContainer {
   margin-right:10%;
   width: 80%;
-  border: 3px solid gainsboro;
-  padding: 20px;
+  /* border: 3px dotted gainsboro; */
 }
-
-
 
 .entryCard .username {
   position: relative;
@@ -229,6 +299,17 @@ button:active {
   border-color: beige;
 
 }
+.user.avatar {
+  float: left;
+  position:relative;
+  width:64px;
+  height: 64px;
+  border-radius: 50%;
+  border-style: ridge;
+  border-color: beige;
+
+}
+
 
 .locationTwoPostForm {
   position: fixed;
@@ -247,13 +328,59 @@ button:active {
 
 } */
 
-@keyframes example {
-  /* 0% {transform: skewY(0deg);}
-  25% {transform: skewY(-2deg);}
-  50% {transform: skewY(0deg);}
-  75% {transform: skewY(+2deg);} */
+/* @keyframes example {
+  0% {transform: matrix(0.586,0.8,-0.8,0.586,40,40)}
+  20% {transform: matrix(0.6,1,-0.8,0.4,30,50)}
+  40% {transform: matrix(0.7,2,-0.8,0.2,20,60)}
+  60% {transform: matrix(0.7,2,-0.8,0.2,20,60)}
+  80% {transform: matrix(0.6,1,-0.8,0.4,30,50)}
+  100% {transform: matrix(0.586,0.8,-0.8,0.586,40,40)}
+
+} */
+
+.archivedPost:nth-child(1){
+  color:blue;
+  text-align:right;
+  line-height:1px;
+}
+.archivedPost:nth-child(2){
+  color:red;
+  text-align:right;
+  letter-spacing:6px;
+}
+.archivedPost:nth-child(3){
+  text-align:center;
+}
+.archivedPost:nth-child(4){
+  text-align:left;
+}
+.archivedPost:nth-child(5){
+  text-align:center;
+}
+
+
+.archivedPost {
+  font-family: "karla", sans-serif;
+  letter-spacing: 4px;
+}
+
+.archivedPost {
+  animation-name: cool;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 
 }
+@keyframes cool {
+  0% {transform:rotateX(20);}
+  100% {transform:rotateX(180);}
+
+}
+
+.archive:hover {
+  transform:skewX(20deg);
+  transform:skewY(20deg);
+}
+
 
 
 .entryCard {
@@ -274,10 +401,26 @@ button:active {
   animation-iteration-count: infinite;
 }
 
+
 div.userListCard {
   border-color: black;
   border-width: 1px;
   border-style: dotted;
   height: 10%;
   width: 30%;
+}
+
+div.userListCard:hover {
+  z-index:1
+}
+
+
+img.archiveImage {
+  max-height:200px;
+  max-width:200px;
+}
+
+div.navBar {
+  height:100%;
+  width:100%;
 }

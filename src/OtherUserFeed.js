@@ -34,7 +34,7 @@ class OtherUserFeed extends React.Component {
 
   renderEntries=()=>{
     return this.state.entries.map(e=>{
-      return <EntryCard {...e} />
+      return <EntryCard {...e} fetchEntries={this.fetchEntries}/>
     })
 
   }
