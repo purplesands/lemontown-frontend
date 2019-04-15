@@ -37,61 +37,52 @@ class LocationTwo extends Component {
   }
 
   setPosts=(arr)=>{
-    let cool = arr.filter(post=>{
-      return post.location_id === 2
-    })
-    return cool.filter(post=>{
+    // let cool = arr.filter(post=>{
+    //   return post.location_id === 2
+    // })
+    return arr.filter(post=>{
       return post.day_id === this.props.today.id
     })
   }
 
  renderPosts = (arr) =>{
   return  arr.map(post=>{
-      return <td><PostCard {...post} updatePosts={this.fetchPosts}/></td>
+      return <td><PostCard key={post.id} {...post} updatePosts={this.fetchPosts}/></td>
     })
   }
 
-  newPost=()=>{
-    fetch('http://localhost:3000/posts')
-    .then(r=>r.json())
-    .then(r=> this.filterNewPosts(r))
-
-    }
-
-
-  filterNewPosts=(array1)=>{
-    let newPost = []
-    newPost.push(array1[array1.length-1])
-    debugger
-    this.setState({
-      newPosts: [...this.state.newPosts, newPost]
-    })
-    // if (newPost != null){
-    //
-    //   return <td><PostCard {...newPost} updatePosts={this.fetchPosts}/></td>
-    // } else {
-    //   return null
-    // }
-  }
 
   componentDidMount(){
     this.fetchLocation()
     this.fetchPosts()
-
     }
+
+
+    addPost = (post) => {
+      debugger
+      // if (post.id === null) {
+        this.fetchPosts()
+      // } else {
+      //   fetch(`http://localhost:3000/posts/${post.id}`)
+      //   .then(r=>r.json())
+      //   .then(post=>  this.setState({
+      //     newPosts:[...this.state.newPosts,post]
+      //   }))
+      // }
+    };
 
 render(){
   return (
       <Fragment>
         <ActionCableConsumer
           channel={{ channel: 'LocationTwoFeedChannel'}}
-          onReceived={
-            this.fetchPosts
-          }
+          onReceived={this.fetchPosts}
         />
         <div className="locationTwoPostForm"><PostForm updatePosts={this.fetchPosts} location={2} /></div>
-        <div className="flex-container">{this.renderPosts(this.state.posts)}</div>
-        <div className="flex-container">{this.renderPosts(this.state.newPosts)}</div>
+        <div className="flex-container">
+        {this.renderPosts(this.state.posts)}
+        </div>
+
       </Fragment>
     );
   }
@@ -100,7 +91,9 @@ function mapStateToProps(state) {
   console.log('%c mapStateToProps', 'color: yellow', state);
   return {
     today:state.today,
-    location:state.activeLocation
+    location:state.activeLocation,
+    currentUser: state.currentUser
+
   }
 }
 

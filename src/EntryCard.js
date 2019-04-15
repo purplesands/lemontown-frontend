@@ -84,7 +84,7 @@ render() {
       <label>
         <input type="text" name="comment" value={this.state.comment} minLength="1" maxLength="20" />
       </label>
-      <button className="entryComment" type="submit">{this.state.characters-this.state.comment.length}</button>
+      <button className="entryComment" type="submit" onSubmit={e=>this.handleComment(e)}>{this.state.characters-this.state.comment.length}</button>
     </form>
 
     }

@@ -61,13 +61,16 @@ class PostCard extends React.Component {
   }
 
 
+shouldComponentUpdate(nextProps, nextState){
+  return (this.props.post_comments.length==nextProps.post_comments.length && nextState.chosenWord==this.state.chosenWord) ?  false :  true
+}
 
 
 render() {
   return (
     <Fragment>
       <div className="postCard">
-        <AnimationTest cool={this.props} renderComments={this.renderComments} handleChange={this.handleChange} handleComment={this.handleComment}
+        <AnimationTest key={this.props.id} cool={this.props} renderComments={this.renderComments} handleChange={this.handleChange} handleComment={this.handleComment}
         word={this.state.chosenWord}/>
       </div>
     </Fragment>

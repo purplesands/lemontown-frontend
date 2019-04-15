@@ -1,5 +1,4 @@
-import ReactDOM from 'react-dom'
-import React, { useState } from 'react'
+import React  from 'react'
 import Useful from './Useful'
 import { useSpring, animated } from 'react-spring'
 import './App.css'
@@ -8,8 +7,8 @@ import './App.css'
 
 function AnimationTest(cool) {
 
-  let userColor = (cool.cool.currentUser.id===cool.cool.user.id) ?  "mediumvioletred" : "darkblue"
-  let postColor = (cool.cool.currentUser.id===cool.cool.user.id) ? "palevioletred" : "dodgerblue"
+  let userColor = (cool.cool.currentUser.id===cool.cool.user_id )  ?  "mediumvioletred" : "darkblue"
+  let postColor = (cool.cool.currentUser.id===cool.cool.user_id) ? "palevioletred" : "dodgerblue"
   let pos = getPos(document.querySelector('.mainContainer'))
   const calc = (x, y) => [x - pos.x / 2, y - pos.y / 1.5]
   const trans1 = (x, y) => `translate3d(${x / 11}px,${y / 9}px,0)`
@@ -22,9 +21,9 @@ function AnimationTest(cool) {
     <div className="boogie">
       <animated.div class="card1 username" style={{ transform: props.xy.interpolate(trans1) }} >      <p style={{color:userColor}} >{cool.cool.user.username}</p>
 </animated.div></div>
-      <animated.div class="card2 content" style={{ transform: props.xy.interpolate(trans2) }} >       {(cool.cool.is_image)? <img className="postImage" src={cool.cool.content}></img> : <p style={{color:postColor}}>{cool.cool.content}</p>}
+      <animated.div class="card2 content" style={{ transform: props.xy.interpolate(trans2) }} >       {(cool.cool.is_image)? <img className="postImage" src={cool.cool.content} alt={cool.cool.content}></img> : <p style={{color:postColor}}>{cool.cool.content}</p>}
 </animated.div>
-{!(cool.cool.currentUser.id===cool.cool.user.id) ?
+{!(cool.cool.currentUser.id===cool.cool.user_id) ?
       <animated.div class="card3 commentBar" style={{ transform: props.xy.interpolate(trans3) }} >
       <form onSubmit={cool.handleComment}>
 <select class="dropdown" onChange={cool.handleChange}>

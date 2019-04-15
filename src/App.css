@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: row-reverse;
-  min-height: 250px;
+  min-height: 500px;
   min-width:400px
 
 }
@@ -260,6 +260,7 @@ button.archiveButton {
 .mainContainer {
   margin-right:10%;
   width: 80%;
+  min-height:400px
   /* border: 3px dotted gainsboro; */
 }
 

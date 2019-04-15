@@ -1,8 +1,7 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'react-quill/dist/quill.snow.css';
-import ReactQuill, { Quill, Toolbar } from 'react-quill'
-import renderHTML from 'react-render-html'
+import ReactQuill from 'react-quill'
 
 
 class EntryForm extends Component {

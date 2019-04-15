@@ -1,7 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
-import { NavLink, Route, Switch } from 'react-router-dom';
 import ProfileCard from './ProfileCard';
 
 import UserFeed from './UserFeed';
@@ -40,12 +38,12 @@ const archivedPosts=()=>{
   let days = [...props.days]
   return(
   <form >
-  <div class="archiveMenu">
+  <div className="archiveMenu">
     <select onChange={handleChange}>
       <option value="nothing">older</option>
       {days.reverse().splice(-1, days.length-1).map(day=>{
         index++
-      return  <option onSelect={()=>console.log(day.id)} value={day.id}>{index} {(index===1) ? "day" : "days"} ago</option>
+      return  <option key={day.id} onSelect={()=>console.log(day.id)} value={day.id}>{index} {(index===1) ? "day" : "days"} ago</option>
       })}
     </select>
     </div>
@@ -79,16 +77,20 @@ const logout=()=>{
 
 
 return (
-    <div className="navBar">
-      <td>  <button className="nav" value="UserFeed" onClick={handleClick}>{props.currentUser.username}</button></td>
-      <td>  <button className="nav" value="FriendFeed" onClick={handleClick}>friend feed</button></td>
-      <td>  <button className="nav" value="LocationOne" onClick={handleClick}>location 1</button></td>
-      <td>  <button className="nav" value="LocationTwo" onClick={handleClick}>chat</button></td>
-      <td>  <button className="nav" value="UserList" onClick={handleClick}>all users</button></td>
-      <td>  <button className="nav" value="ProfilePage" onClick={handleClick}>my profile</button></td>
-      <td>  <p>{archivedPosts()}</p></td>
-      <td>  <button className="logout" to="/login" onClick={logout}>leave</button></td>
-    </div>
+    <table className="navBar">
+      <tbody>
+        <tr>
+          <td>  <button className="nav" value="UserFeed" onClick={handleClick}>{props.currentUser.username}</button></td>
+          <td>  <button className="nav" value="FriendFeed" onClick={handleClick}>friend feed</button></td>
+          <td>  <button className="nav" value="LocationOne" onClick={handleClick}>location 1</button></td>
+          <td>  <button className="nav" value="LocationTwo" onClick={handleClick}>chat</button></td>
+          <td>  <button className="nav" value="UserList" onClick={handleClick}>all users</button></td>
+          <td>  <button className="nav" value="ProfilePage" onClick={handleClick}>my profile</button></td>
+          <td>  {archivedPosts()}</td>
+          <td>  <button className="logout" to="/login" onClick={logout}>leave</button></td>
+        </tr>
+      </tbody>
+    </table>
   );
 }
 
