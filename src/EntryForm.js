@@ -51,12 +51,13 @@ render() {
         {(!!this.state.new)
           ?
           <form onSubmit={this.handleSubmit}>
-          <input className="newEntrySubmit" type="submit" value="!" />
           <ReactQuill value={this.state.content}
                       onChange={this.handleChange}
                       theme="snow"
                       modules={this.modules}
                       />
+        <button className="newEntrySubmit" type="submit" value="!" style={{float:"right"}}>!</button>
+
         </form>
           :
           null}

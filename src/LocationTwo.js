@@ -86,18 +86,17 @@ class LocationTwo extends Component {
 render(){
   return (
       <Fragment>
-      <ActionCableConsumer
-        channel={{ channel: 'LocationTwoFeedChannel'}}
-        onReceived={
-          this.fetchPosts
-        }
-      />
+        <ActionCableConsumer
+          channel={{ channel: 'LocationTwoFeedChannel'}}
+          onReceived={
+            this.fetchPosts
+          }
+        />
         <h1>{this.state.location.name}</h1>
-          <div className="locationTwoPostForm"><PostForm updatePosts={this.fetchPosts} location={2} /></div>
-          <div className="flex-container">{this.renderPosts(this.state.posts)}</div>
-          <div className="flex-container">{this.renderPosts(this.state.newPosts)}</div>
-
-          </Fragment>
+        <div className="locationTwoPostForm"><PostForm updatePosts={this.fetchPosts} location={2} /></div>
+        <div className="flex-container">{this.renderPosts(this.state.posts)}</div>
+        <div className="flex-container">{this.renderPosts(this.state.newPosts)}</div>
+      </Fragment>
     );
   }
 }

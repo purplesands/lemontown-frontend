@@ -46,7 +46,6 @@ class PostForm extends Component {
   render() {
     return (
       <div className="postForm">
-      <button onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
       {(this.state.isImage===false)
         ?
         <form onSubmit={this.handleSubmit}>
@@ -55,14 +54,17 @@ class PostForm extends Component {
               name="content"
               value={this.state.content}
               onChange={this.handleChange}
-              rows="3" cols="30"
+              rows="3" cols="24"
               maxlength="75"
               minlength="1"
               onKeyUp={this.typing}
+              className="textBox"
             />
-          <button type="submit" name="text" value="💬">
-          {this.state.characters}
-          </button>
+            <button type="submit" name="text" value="💬">
+            {this.state.characters}
+            </button>
+
+          <button onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
         </form>
         :
         null }
@@ -73,7 +75,7 @@ class PostForm extends Component {
         name="content"
         onChange={this.handleChange}
         ></input>
-        <input type="submit" name="image" value="post image" />
+        <button type="submit" name="image" value="" />
         </form>
         :
         null }

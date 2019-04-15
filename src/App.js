@@ -68,6 +68,8 @@ class App extends Component {
         word1: this.props.todaysWords[0].word,
         word2: this.props.todaysWords[1].word,
         word3: this.props.todaysWords[2].word,
+        word4: this.props.todaysWords[3].word,
+        word5: this.props.todaysWords[4].word,
         date: this.props.currentDate
       })
     }).then(r=>r.json())
@@ -75,7 +77,7 @@ class App extends Component {
   }
 
   setDate=()=>{
-    (this.props.todaysWords.length===3 && this.props.today.date !== this.props.currentDate) ?
+    (this.props.todaysWords.length===5 && this.props.today.date !== this.props.currentDate) ?
     this.newDay() :
     console.log('ha ')
   }
@@ -106,10 +108,12 @@ class App extends Component {
     this.getWord()
     this.getWord()
     this.getWord()
+    this.getWord()
+    this.getWord()
     this.fetchDays()
     this.checkDay()
-    setTimeout(this.setDate, 4000)
-    setTimeout(this.fetchUser, 4000)
+    setTimeout(this.setDate, 5000)
+    setTimeout(this.fetchUser, 5000)
 
   }
 

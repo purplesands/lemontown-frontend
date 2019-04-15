@@ -34,7 +34,7 @@ return (
   (this.props.today) ?
     <div className="wordCard">
       <p>{this.props.today.date}</p>
-      <p> {this.props.today.word1}, {this.props.today.word2}, {this.props.today.word3}</p>
+      <p> {this.props.today.word1}, {this.props.today.word2}, {this.props.today.word3}, {this.props.today.word4}, {this.props.today.word5}</p>
     </div>
     : null
   );

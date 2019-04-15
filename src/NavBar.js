@@ -78,12 +78,12 @@ return (
     <div className="navBar">
 
     <button className="item" to="/login" onClick={logout}>logout!</button>
-      <button value="UserFeed" onClick={handleClick}>user feed</button>
-      <button value="FriendFeed" onClick={handleClick}>friend feed</button>
-      <button value="LocationOne" onClick={handleClick}>location 1</button>
-      <button value="LocationTwo" onClick={handleClick}>location 2</button>
-      <button value="UserList" onClick={handleClick}>all users</button>
-      <button value="ProfilePage" onClick={handleClick}>my profile</button>
+      <button className="nav" value="UserFeed" onClick={handleClick}>user feed</button>
+      <button className="nav" value="FriendFeed" onClick={handleClick}>friend feed</button>
+      <button className="nav" value="LocationOne" onClick={handleClick}>location 1</button>
+      <button className="nav" value="LocationTwo" onClick={handleClick}>location 2</button>
+      <button className="nav" value="UserList" onClick={handleClick}>all users</button>
+      <button className="nav" value="ProfilePage" onClick={handleClick}>my profile</button>
       <p>{archivedPosts()}</p>
 
 
