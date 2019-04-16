@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import ProfileCard from './ProfileCard';
 
@@ -14,12 +14,6 @@ import ProfilePage from './ProfilePage';
 
 const MainContainer = (props) => {
 
-
-const handleClick=(e)=>{
-    console.log(e.target.value)
-    console.log(props.currentUser)
-    props.dispatch({ type: "CHANGE_LOCATION", payload:e.target.value})
-  }
 
 const renderComponent = ()=>{
   if (props.activeLocation==="UserFeed") {

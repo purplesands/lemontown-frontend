@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import Useful from './Useful'
 import Login from './Login'
 import Register from './Register'
-import { Link } from 'react-router-dom'
 
 
 class WelcomePage extends React.Component {

@@ -5,7 +5,7 @@ import PostCard from './PostCard'
 import { connect } from 'react-redux';
 import { ActionCableConsumer } from 'react-actioncable-provider'
 
-class LocationOne extends React.Component {
+class LocationOne extends React.PureComponent {
   state={
     posts: [],
     location: {},
@@ -28,7 +28,8 @@ class LocationOne extends React.Component {
      .then(r=>r.json())
      .then(r=>{
        this.setState({
-         posts: this.setPosts(r.reverse())
+         posts: this.setPosts(r.reverse()),
+         newPosts: []
        })
      }
    )
@@ -55,11 +56,16 @@ class LocationOne extends React.Component {
   componentDidMount(){
     this.fetchLocation()
     this.fetchPosts()
+
+
   }
+
+
 
 render(){
   return (
       <div>
+
       <ActionCableConsumer
         channel={{ channel: 'LocationOneFeedChannel'}}
         onReceived={
@@ -67,20 +73,21 @@ render(){
         }
       />
         <h1>{this.state.location.name}</h1>
-
           <PostForm updatePosts={this.fetchPosts} location={1} />
           {this.renderPosts(this.state.posts)}
       </div>
     );
   }
+
 }
 function mapStateToProps(state) {
-  console.log('%c mapStateToProps', 'color: yellow', state);
   return {
     today:state.today,
     location:state.activeLocation
   }
 }
+
+
 
 const HOC = connect(mapStateToProps)
 export default HOC(LocationOne);

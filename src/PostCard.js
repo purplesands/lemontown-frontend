@@ -26,7 +26,6 @@ class PostCard extends React.Component {
     }
 
   handleComment=(e)=>{
-    console.log(this.state)
     e.preventDefault();
     fetch('http://localhost:3000/post_comments', {
       method: "POST",
@@ -40,8 +39,6 @@ class PostCard extends React.Component {
         post_id:this.props.id,
       })
     }).then(r=>r.json())
-    .then(r=>this.props.updatePosts())
-
   }
 
   handleChange=(e)=>{
@@ -61,13 +58,16 @@ class PostCard extends React.Component {
   }
 
 
+shouldComponentUpdate(nextProps, nextState){
+  return (this.props.post_comments.length==nextProps.post_comments.length && nextState.chosenWord == this.state.chosenWord) ?  false :  true
+}
 
 
 render() {
   return (
     <Fragment>
       <div className="postCard">
-        <AnimationTest cool={this.props} renderComments={this.renderComments} handleChange={this.handleChange} handleComment={this.handleComment}
+        <AnimationTest key={this.props.id} cool={this.props} renderComments={this.renderComments} handleChange={this.handleChange} handleComment={this.handleComment}
         word={this.state.chosenWord}/>
       </div>
     </Fragment>

@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import EntryCard from './EntryCard';
-import EntryForm from './EntryForm';
 import OtherUserProfileCard from './OtherUserProfileCard';
 
 

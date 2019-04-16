@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { Switch, Route, Link } from 'react-router-dom'
 
 
 import MainContainer from './MainContainer';
-import ProfileCard from './ProfileCard';
 import Login from './Login';
 import NavBar from './NavBar';
 import Register from './Register';
@@ -119,7 +117,6 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
       <div>
         <header>
         {(!this.props.currentUser)
@@ -138,7 +135,6 @@ class App extends Component {
             null
           }
       </div>
-      </Switch>
 
     );
   }
@@ -147,7 +143,6 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('%c mapStateToProps', 'color: yellow', state);
   return {
     currentUser: state.currentUser,
     todaysWords: state.todaysWords,
