@@ -63,7 +63,7 @@ class PostForm extends Component {
               className="textBox"
             /></p>
             <div className="chatBtns">
-          <button className="messageBtn" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
+          <button className="actionBtn two" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
           <button className="messageBtn" type="submit" name="text" value="💬">
           {this.state.characters}
           </button>
@@ -81,7 +81,7 @@ class PostForm extends Component {
         onChange={this.handleChange}
         ></input></p>
         <div className="chatBtns">
-        <button className="messageBtn" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
+        <button className="actionBtn two" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
         <button className="messageBtn" type="submit" name="image" value="ok" >ok</button>
         </div>
 

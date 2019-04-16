@@ -158,9 +158,6 @@ button.nav:focus {
     background-color:lavenderblush;
 }
 
-button.postBtn:focus {
-    background-color:lavenderblush;
-}
 
 button.postBtn:focus {
     background-color:lavenderblush;
@@ -238,13 +235,22 @@ button.archiveButton {
 
 .navBar{
   position:fixed;
-  top:-20px;
+  top:-15px;
   margin:auto;
   z-index:900;
 }
 .wordCard{
   animation: old 4s infinite;
 
+}
+
+button.profileBtn{
+  padding: 9px 15px;
+  letter-spacing: 1.5px;
+}
+
+.userName{
+  font-size:20px;
 }
 
 
@@ -322,14 +328,24 @@ div.chatBtns {
 }
 button.actionBtn {
   position:relative;
-  background-color: #D48383;
+  background-color: #DEABAB;
   border: none;
   border-radius: 30px;
   box-shadow: 0 5px rosybrown;
   right:-5px;
   padding: 9px 18px;
   letter-spacing: 1.5px;
-  color:lavender;
+  color:linen;
+}
+button.actionBtn.two {
+  position:relative;
+  right:-30px;
+  bottom:10px;
+  float:right;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 30px;
+  letter-spacing: 1.5px;
 }
 
 button.messageBtn {
@@ -338,14 +354,27 @@ button.messageBtn {
   bottom:10px;
   float:right;
   padding: 9px 18px;
-  color:indigo;
-  background-color: #F0E1FD;
+  color:#064ECA;
+  background-color: #F0E7F0;
   border: none;
   border-radius: 30px;
   box-shadow: 0 5px #EAD4EA;
   letter-spacing: 1.5px;
+}
+
+div.wordCard .words {
+  font-family:'karla', sans-serif;
+  font-style: italic;
+  text-shadow: 2px 2px #EF3A3A;
+
+}
 
 
+div.wordCard .date {
+  font-size:15px;
+  font-family:'karla', sans-serif;
+  float:right;
+  text-shadow: 2px 2px #EF3A3A;
 }
 
 

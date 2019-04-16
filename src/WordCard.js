@@ -22,8 +22,8 @@ return monthNames[parseInt(monthIndex-1)] + ' ' + day + ', ' + year;
 return (
   (props.today) ?
     <div className="wordCard">
-      <p className="words"> {props.today.word1}, {props.today.word2}, {props.today.word3}, {props.today.word4}, {props.today.word5}</p>
       <p className="date">{renderDate()}</p>
+      <p className="words"> {props.today.word1}, {props.today.word2}, {props.today.word3}, {props.today.word4}, {props.today.word5}</p>
     </div>
     : null
   );
