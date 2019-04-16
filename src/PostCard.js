@@ -62,7 +62,7 @@ class PostCard extends React.Component {
 
 
 shouldComponentUpdate(nextProps, nextState){
-  return (this.props.post_comments.length==nextProps.post_comments.length && nextState.chosenWord==this.state.chosenWord) ?  false :  true
+  return (this.props.post_comments.length==nextProps.post_comments.length && nextState.chosenWord == this.state.chosenWord) ?  false :  true
 }
 
 

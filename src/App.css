@@ -10,8 +10,8 @@
   justify-content: center;
   flex-direction: row-reverse;
   min-height: 500px;
-  min-width:400px
-
+  min-width:400px;
+  height:100vh;
 }
 textarea{
   resize: none;

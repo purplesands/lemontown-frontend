@@ -1,16 +1,3 @@
-import React from 'react'
-import { connect } from 'react-redux';
-
-class Useful extends React.Component {
-
-  static letterSpacing(num){
-    return Math.floor(Math.random() * num)
-  }
-
-  static lineSpacing(num){
-    return Math.random() * num
-  }
-}
 
 const birds=['http://orientalbirdimages.org/images/data/mongolia_2015085.jpg',
 'http://orientalbirdimages.org/images/data/bloodphaesantselapass1.jpg',
@@ -39,13 +26,4 @@ const birds=['http://orientalbirdimages.org/images/data/mongolia_2015085.jpg',
 'https://pbs.twimg.com/media/D3gceTdWkAEhqUQ.jpg',
 'https://pbs.twimg.com/media/D3bS0nfXoAUil7B.jpg',
 'https://pbs.twimg.com/media/D3XkqLZXoAA3S14.jpg']
-
-function mapStateToProps(state) {
-  return {
-    today: state.today
-  }
-}
-
-
-const HOC = connect(mapStateToProps)
-export default HOC(Useful);
+export default birds
