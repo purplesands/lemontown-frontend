@@ -36,12 +36,13 @@ const handleChange=(e)=>{
 const archivedPosts=()=>{
   let index=0
   let days = [...props.days]
+  days.reverse().splice(0, 1)
   return(
   <form >
   <div className="archiveMenu">
     <select onChange={handleChange}>
       <option value="nothing">older</option>
-      {days.reverse().splice(-1, days.length-1).map(day=>{
+      {days.map(day=>{
         index++
       return  <option key={day.id} onSelect={()=>console.log(day.id)} value={day.id}>{index} {(index===1) ? "day" : "days"} ago</option>
       })}
