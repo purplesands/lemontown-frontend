@@ -27,6 +27,7 @@ class LocationTwo extends React.Component {
   }
 
   fetchPosts = () =>{
+    debugger
      fetch('http://localhost:3000/posts')
      .then(r=>r.json())
      .then(r=>{
@@ -38,10 +39,10 @@ class LocationTwo extends React.Component {
   }
 
   setPosts=(arr)=>{
-    // let cool = arr.filter(post=>{
-    //   return post.location_id === 2
-    // })
-    return arr.filter(post=>{
+    let cool = arr.filter(post=>{
+      return post.location_id === 2
+    })
+    return cool.filter(post=>{
       return post.day_id === this.props.today.id
     })
   }
@@ -58,15 +59,34 @@ class LocationTwo extends React.Component {
     this.fetchPosts()
     }
 
+  updateComment=(comment)=>{
+    let posts = [...this.state.posts]
+    let newPosts = [...this.state.newPosts]
+    if (posts.find(post=>comment.post_id===post.id)) {
+        let index =(posts.findIndex(post=>comment.post_id===post.id))
+        let postToUpdate = posts.splice(index,1)
+        postToUpdate[0].post_comments= [...postToUpdate[0].post_comments, comment]
+        posts.splice(index, 0, postToUpdate[0])
+        this.setState({posts:posts})
+    } else if (newPosts.find(post=>comment.post_id===post.id)) {
+        let index =(newPosts.findIndex(post=>comment.post_id===post.id))
+        let postToUpdate = newPosts.splice(index,1)
+        postToUpdate[0].post_comments= [...postToUpdate[0].post_comments, comment]
+        newPosts.splice(index, 0, postToUpdate[0])
+        this.setState({newPosts:newPosts})
+    }
+  }
+
+
 
     addPost = (post) => {
       if (post.id === null) {
-        this.fetchPosts()
+        this.updateComment(post)
       } else {
         fetch(`http://localhost:3000/posts/${post.id}`)
         .then(r=>r.json())
         .then(post=> this.setState({
-          posts:[post, ...this.state.posts]
+          newPosts:[post, ...this.state.newPosts]
         }))
       }
     };
@@ -74,18 +94,16 @@ class LocationTwo extends React.Component {
     handleDelete=(e)=>{
       e.preventDefault()
       let toDelete = []
-      let posts = [...this.state.posts].reverse().splice(0,10)
-      posts.map(post=>{
-        return toDelete.push(post.id)
-      })
+      let posts = [...this.state.posts].reverse()
+      toDelete=posts.splice(0,5)
+      this.setState({posts:posts})
       debugger
       var i;
         for (i = 0; i < toDelete.length; i++) {
-          fetch(`http://localhost:3000/posts/${toDelete[i]}`,{
+          fetch(`http://localhost:3000/posts/${toDelete[i].id}`,{
             method: "DELETE"
           })
         }
-        this.fetchPosts()
     }
 
     handleBird=(e)=>{
@@ -106,8 +124,17 @@ class LocationTwo extends React.Component {
           })
         }).then(r=>r.json())
         .then(post=>{
-          this.fetchPosts()})
+          this.setState({posts:[post, ...this.state.posts]})})
     }
+
+    cool(){
+
+      const postSound = new Sound("src/assets/post1.wav")
+      const postSound2 = new Sound("src/assets/post2.wav")
+      postSound.play()
+    }
+
+
 
 
 render(){
@@ -117,12 +144,15 @@ render(){
           channel={{ channel: 'LocationTwoFeedChannel'}}
           onReceived={post=>this.addPost(post)}
         />
+        <button onClick={this.cool}>cool</button>
+
         <button onClick={this.handleDelete}>bin</button>
         <button onClick={this.handleBird}>bird</button>
         <button onClick={this.handleVegetable}>veg</button>
 
-        <div className="locationTwoPostForm"><PostForm updatePosts={this.fetchPosts} location={2} /></div>
+        <div className="locationTwoPostForm"><PostForm addPost={this.addPost} updatePosts={this.fetchPosts} location={2} /></div>
         <div className="flex-container">
+        {this.renderPosts(this.state.newPosts)}
         {this.renderPosts(this.state.posts)}
 
         </div>
@@ -131,6 +161,24 @@ render(){
     );
   }
 }
+
+function Sound(src) {
+this.sound = document.createElement("audio")
+this.sound.src = src
+this.sound.setAttribute("preload", "auto")
+this.sound.setAttribute("controls", "none")
+this.sound.style.display = "none"
+document.body.appendChild(this.sound)
+}
+
+Sound.prototype.play = function(){
+this.sound.play();
+}
+
+Sound.prototype.stop = function(){
+this.sound.pause();
+}
+
 function mapStateToProps(state) {
   return {
     today:state.today,

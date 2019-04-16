@@ -26,7 +26,6 @@ class PostCard extends React.Component {
     }
 
   handleComment=(e)=>{
-    console.log(this.state)
     e.preventDefault();
     fetch('http://localhost:3000/post_comments', {
       method: "POST",
@@ -40,8 +39,6 @@ class PostCard extends React.Component {
         post_id:this.props.id,
       })
     }).then(r=>r.json())
-    .then(r=>this.props.updatePosts())
-
   }
 
   handleChange=(e)=>{

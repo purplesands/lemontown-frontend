@@ -28,8 +28,6 @@ class PostForm extends Component {
           day_id: this.props.today.id
         })
       }).then(r=>r.json())
-        .then(r=>{
-          this.props.updatePosts()})
         this.setState({
           content: "",
         }) ;

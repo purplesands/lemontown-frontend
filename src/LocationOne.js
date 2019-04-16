@@ -56,11 +56,16 @@ class LocationOne extends React.PureComponent {
   componentDidMount(){
     this.fetchLocation()
     this.fetchPosts()
+
+
   }
+
+
 
 render(){
   return (
       <div>
+
       <ActionCableConsumer
         channel={{ channel: 'LocationOneFeedChannel'}}
         onReceived={
@@ -73,6 +78,7 @@ render(){
       </div>
     );
   }
+
 }
 function mapStateToProps(state) {
   return {
@@ -80,6 +86,8 @@ function mapStateToProps(state) {
     location:state.activeLocation
   }
 }
+
+
 
 const HOC = connect(mapStateToProps)
 export default HOC(LocationOne);
