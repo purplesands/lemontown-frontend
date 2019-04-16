@@ -11,6 +11,7 @@ import OtherUserFeed from './OtherUserFeed';
 import WordCard from './WordCard';
 import ArchivedDate from './ArchivedDate';
 import ProfilePage from './ProfilePage';
+import NavBar from './NavBar'
 
 const MainContainer = (props) => {
 
@@ -76,8 +77,6 @@ const handleUnfollow=(e)=>{
 
 return (
     <div>
-    <WordCard />
-    <ProfileCard />
       <div className="mainContainer">{renderComponent()}</div>
     </div>
   );

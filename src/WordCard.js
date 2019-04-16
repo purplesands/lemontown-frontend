@@ -2,43 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Useful from './Useful'
 
-class WordCard extends React.Component {
+const WordCard =(props)=> {
 
-state={
-  definition1: '',
-  definition2: '',
-  definition3:''
-}
 
-componentDidMount(){
-}
-
-renderDate=()=>{
-  debugger
-  let date= this.props.today.date
+const renderDate=()=>{
+  let date= props.today.date
   let monthNames = [
     "January", "February", "March",
     "April", "May", "June", "July",
     "August", "September", "October",
     "November", "December"
   ];
-  debugger
-  let day = date.substr(5,2)
-  let monthIndex = date.substr(8,2)
+  let day = date.substr(8,2)
+  let monthIndex = date.substr(5,2)
   let year = date.substr(0, 4);
-return day + ' ' + monthNames[parseInt(monthIndex-1)] + ' ' + year;
+return monthNames[parseInt(monthIndex-1)] + ' ' + day + ', ' + year;
 }
 
-render() {
 return (
-  (this.props.today) ?
+  (props.today) ?
     <div className="wordCard">
-      <p>{this.props.today.date}</p>
-      <p> {this.props.today.word1}, {this.props.today.word2}, {this.props.today.word3}, {this.props.today.word4}, {this.props.today.word5}</p>
+      <p className="words"> {props.today.word1}, {props.today.word2}, {props.today.word3}, {props.today.word4}, {props.today.word5}</p>
+      <p className="date">{renderDate()}</p>
     </div>
     : null
   );
-}
 }
 
 function mapStateToProps(state) {

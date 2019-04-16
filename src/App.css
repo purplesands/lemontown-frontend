@@ -2,6 +2,35 @@
   background-color:blue;
 }
 
+.archiveMenu {
+  display: inline-block;
+  min-width:40%;
+  padding: 15px 25px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: thistle;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 9px papayawhip;
+}
+
+.archiveMenu select {
+    width: 130%;
+    border: none;
+    box-shadow: black;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.archiveMenu select:focus {
+    outline: none;
+}
+
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -13,6 +42,7 @@
   min-width:400px;
   height:100vh;
 }
+
 textarea{
   resize: none;
 }
@@ -21,22 +51,17 @@ div.text-editor{
   max-width: 760px
 }
 
-/* .postContainer{
-  border: 6px solid black;
-  height: 150px;
-  width:100px;
-} */
 .commentForm {
   display: block;
   margin-left: auto;
   margin-top:auto;
   width: 50%;
 }
+
 button:entryComment {
   float:right;
   margin-left: auto;
   margin-top:auto;
-
 }
 
 .postImage{
@@ -63,18 +88,17 @@ body {
   -ms-user-select: none;
   user-select: none;
   cursor: default;
+  padding-top:60px;
 }
 
 #root {
   overflow: hidden;
 }
 
-
 .card1 {
   opacity: 0.7;
   font-family: "Karla", sans-serif;
   text-align: right;
-
 }
 
 .card2 {
@@ -86,7 +110,7 @@ body {
 .card3 {
   opacity: 0.8;
   position:relative;
-  z-index:10000;
+  z-index:900;
 }
 
 .card4 {
@@ -99,15 +123,6 @@ div.userList {
   display: flex;
   flex-wrap: wrap;
 }
-
-
-/* p:nth-child(2){
-  color:teal;
-} */
-
-/* div:nth-child(1){
-  color:pink;
-} */
 
 button {
   display: inline-block;
@@ -125,11 +140,12 @@ button {
 }
 
 button.entryComment {
-  padding: 8px 12px;
+  padding: 8px 20px;
 }
 
-button:hover, button.logout:hover, button.entryComment:hover, .archiveMenu:hover {
-  background-color: seashell
+button:hover, button.logout:hover, button.entryComment:hover, button .archiveMenu:hover {
+  background-color: seashell;
+  animation: old 10s infinite;
 }
 
 button:active {
@@ -137,22 +153,30 @@ button:active {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-button.focus {
-    background-color:  lavenderblush;
+
+button.nav:focus {
+    background-color:lavenderblush;
+}
+
+button.postBtn:focus {
+    background-color:lavenderblush;
+}
+
+button.postBtn:focus {
+    background-color:lavenderblush;
+}
+button.postBtn{
+  padding: 12px 22px;
 }
 
 button.logout {
   position:relative;
   background-color: palegoldenrod;
 
-  /* float:right; */
 }
 button.archiveButton {
   padding: 10px 12px;
-
-  /* float:right; */
 }
-
 
 .ql-font-serif {
   font-family: serif;
@@ -200,62 +224,30 @@ button.archiveButton {
   color: purple;
 }
 
-
-
 .profileCard {
-  position:absolute;
+  position:fixed;
   top: 0;
   right:0;
+  opacity:1;
   align:right;
-  width: 10%;
-  border: 3px groove peachpuff;
-  padding: 10px;
+  padding-right: 20px;
   color: cornflowerblue;
   border-radius: 5%;
-  background-color: seashell;
-
+  z-index:1000;
 }
 
-.wordCard {
+.navBar{
   position:fixed;
-  top:2;
-  right:0;
-  padding-top:10%;
-  width: 20%;
-  border: 3px solid #73AD21;
-  color: cornflowerblue;
-  border-radius: 5%;
-  background-color: seashell;
+  top:-20px;
+  margin:auto;
+  z-index:900;
+}
+.wordCard{
+  animation: old 4s infinite;
+
 }
 
 
-.archiveMenu {
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 10px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: black;
-  background-color: thistle;
-  border: none;
-  border-radius: 30px;
-  box-shadow: 0 9px papayawhip;
-}
-
-.archiveMenu select {
-    width: 130%;
-    border: none;
-    box-shadow: black;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-}
-
-.archiveMenu select:focus {
-    outline: none;
-}
 
 .mainContainer {
   margin-right:10%;
@@ -314,13 +306,48 @@ button.archiveButton {
 
 .locationTwoPostForm {
   position: fixed;
-  z-index:100;
+  z-index:1000;
   bottom: 0;
   right: 0;
   padding-bottom:10px;
   padding-right:10px;
+  align: right;
 
 }
+div.chatBtns {
+  display:flex;
+  flex-direction:row;
+  position:relative;
+
+}
+button.actionBtn {
+  position:relative;
+  background-color: #D48383;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 5px rosybrown;
+  right:-5px;
+  padding: 9px 18px;
+  letter-spacing: 1.5px;
+  color:lavender;
+}
+
+button.messageBtn {
+  position:relative;
+  right:-30px;
+  bottom:10px;
+  float:right;
+  padding: 9px 18px;
+  color:indigo;
+  background-color: #F0E1FD;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 5px #EAD4EA;
+  letter-spacing: 1.5px;
+
+
+}
+
 
 /* .entryCard .entryComment:hover {
   transform: rotate(-7deg);
@@ -339,13 +366,30 @@ button.archiveButton {
 
 } */
 
+p.oldWords {
+  font-size:2em;
+  animation: old 20s infinite;
+  animation-timing-function: ease-in-out;
+  line-height: 4px;
+  align:right;
+}
+
+@keyframes old {
+  0% {color: indigo;}
+  25% {color: palevioletred;}
+  50% {color: rosybrown;}
+  75%  {color: pink;}
+  100%{color: indigo;}
+}
+
+
 .archivedPost:nth-child(1){
-  color:blue;
+  color:lightsteelblue;
   text-align:right;
   line-height:1px;
 }
 .archivedPost:nth-child(2){
-  color:red;
+  color:rosybrown;
   text-align:right;
   letter-spacing:6px;
 }
@@ -358,7 +402,11 @@ button.archiveButton {
 .archivedPost:nth-child(5){
   text-align:center;
 }
-
+.archive {
+  text-align:center;
+  max-width: 60%;
+  margin:auto;
+}
 
 .archivedPost {
   font-family: "karla", sans-serif;
@@ -378,10 +426,8 @@ button.archiveButton {
 }
 
 .archive:hover {
-  transform:skewX(20deg);
-  transform:skewY(20deg);
+  animation: old 10s infinite;
 }
-
 
 
 .entryCard {
@@ -402,7 +448,6 @@ button.archiveButton {
   animation-iteration-count: infinite;
 }
 
-
 div.userListCard {
   border-color: black;
   border-width: 1px;
@@ -415,13 +460,7 @@ div.userListCard:hover {
   z-index:1
 }
 
-
 img.archiveImage {
   max-height:200px;
   max-width:200px;
-}
-
-div.navBar {
-  height:100%;
-  width:100%;
 }

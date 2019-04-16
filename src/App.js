@@ -110,8 +110,8 @@ class App extends Component {
     this.getWord()
     this.fetchDays()
     this.checkDay()
-    setTimeout(this.setDate, 5000)
-    setTimeout(this.fetchUser, 5000)
+    setTimeout(this.setDate, 4000)
+    setTimeout(this.fetchUser, 4000)
 
   }
 
@@ -121,9 +121,7 @@ class App extends Component {
         <header>
         {(!this.props.currentUser)
           ?
-          <div>
-          <WelcomePage />
-          </div>
+            null
           :
           <NavBar/>
         }
@@ -132,7 +130,7 @@ class App extends Component {
             ?
           <MainContainer/>
             :
-            null
+          <WelcomePage />
           }
       </div>
 

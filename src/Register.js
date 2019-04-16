@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import vegetables from './assets/vegetables'
 
 class Register extends React.Component {
 
   state= {
     username: '',
     password: '',
+    password2: '',
     file_upload: null
   }
 
-  handleSubmit = (e) => {
-      e.preventDefault();
+  createUser = () => {
       fetch('http://localhost:3000/users', {
         method: "POST",
         headers: {
@@ -19,7 +20,8 @@ class Register extends React.Component {
         },
         body:JSON.stringify({
           username:this.state.username,
-          password:this.state.password
+          password:this.state.password,
+          avatar:vegetables[Math.floor(Math.random()*vegetables.length)]
         }),
       }).then(r=>r.json())
       .then(r=>{
@@ -28,10 +30,14 @@ class Register extends React.Component {
         } else {
       this.props.dispatch({ type: "UPDATE_USER", payload:r.user})
       localStorage.setItem('jwt', r.jwt)
-      // this.props.history.push(`/users/${r.user.id}`)
-      this.setState({username:'',password:''})
+      this.setState({username:'',password:'', password2:''})
     }
     })
+  }
+
+  handleSubmit=(e)=>{
+    e.preventDefault();
+    (this.state.password===this.state.password2) ? this.createUser() : alert('try again')
   }
 
   handleChange = (e) => {
@@ -48,24 +54,31 @@ class Register extends React.Component {
   render() {
     return (
       <div>
-      register
         <form onSubmit={this.handleSubmit}>
-            <input
+            <p><input
               type="text"
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
-              placeholder="username"
-            />
-            <input
+              placeholder="name"
+            /></p>
+            <p><input
               type="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
-              placeholder="password"
-            />
+              placeholder="pass"
+            /></p>
+          <p> <input
+              type="password"
+              name="password2"
+              value={this.state.password2}
+              onChange={this.handleChange}
+              placeholder="confirm"
+            /></p>
 
-          <input type="submit" value="register" />
+
+          <button type="submit" value="register">register</button>
         </form>
       </div>
     );
