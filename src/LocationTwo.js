@@ -122,10 +122,7 @@ class LocationTwo extends React.Component {
             is_image: true,
             day_id: this.props.today.id
           })
-        }).then(r=>r.json())
-        .then(post=>{
-          this.setState({posts:[post, ...this.state.posts]})})
-    }
+        }).then(r=>r.json())    }
 
     cool(){
 
