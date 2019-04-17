@@ -27,7 +27,6 @@ class LocationTwo extends React.Component {
   }
 
   fetchPosts = () =>{
-    debugger
      fetch('http://localhost:3000/posts')
      .then(r=>r.json())
      .then(r=>{
@@ -97,7 +96,6 @@ class LocationTwo extends React.Component {
       let posts = [...this.state.posts].reverse()
       toDelete=posts.splice(0,5)
       this.setState({posts:posts})
-      debugger
       var i;
         for (i = 0; i < toDelete.length; i++) {
           fetch(`http://localhost:3000/posts/${toDelete[i].id}`,{
@@ -141,13 +139,7 @@ render(){
           channel={{ channel: 'LocationTwoFeedChannel'}}
           onReceived={post=>this.addPost(post)}
         />
-        <button onClick={this.cool}>cool</button>
-
-        <button onClick={this.handleDelete}>bin</button>
-        <button onClick={this.handleBird}>bird</button>
-        <button onClick={this.handleVegetable}>veg</button>
-
-        <div className="locationTwoPostForm"><PostForm addPost={this.addPost} updatePosts={this.fetchPosts} location={2} /></div>
+        <div className="locationTwoPostForm"><PostForm handleBird={this.handleBird} handleDelete={this.handleDelete} addPost={this.addPost} updatePosts={this.fetchPosts} location={2} /></div>
         <div className="flex-container">
         {this.renderPosts(this.state.newPosts)}
         {this.renderPosts(this.state.posts)}

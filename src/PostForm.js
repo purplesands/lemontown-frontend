@@ -44,39 +44,52 @@ class PostForm extends Component {
   render() {
     return (
       <div className="postForm">
+      <div className="chatBtns actions">
+        <button className="actionBtn" onClick={this.props.handleBird}>bird</button>
+        <button className="actionBtn" onClick={this.props.handleDelete}>too much</button>
+      </div>
       {(this.state.isImage===false)
         ?
         <form onSubmit={this.handleSubmit}>
-            <textarea
+          <p>  <textarea
               type="text"
               name="content"
               value={this.state.content}
               onChange={this.handleChange}
-              rows="3" cols="24"
-              maxlength="75"
-              minlength="1"
+              rows="4" cols="22"
+              maxLength="75"
+              minLength="1"
               onKeyUp={this.typing}
               className="textBox"
-            />
-            <button type="submit" name="text" value="💬">
-            {this.state.characters}
-            </button>
+            /></p>
+            <div className="chatBtns">
+          <button className="actionBtn two" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
+          <button className="messageBtn" type="submit" name="text" value="💬">
+          {this.state.characters}
+          </button>
 
-          <button onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
+          </div>
+
         </form>
         :
         null }
     {(this.state.isImage===true)
       ?
     <form onSubmit={this.handleSubmit}>
-        <input type="text"
+        <p><input type="text"
         name="content"
         onChange={this.handleChange}
-        ></input>
-        <button type="submit" name="image" value="" />
+        ></input></p>
+        <div className="chatBtns">
+        <button className="actionBtn two" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
+        <button className="messageBtn" type="submit" name="image" value="ok" >ok</button>
+        </div>
+
         </form>
+
         :
         null }
+
       </div>
     );
   }

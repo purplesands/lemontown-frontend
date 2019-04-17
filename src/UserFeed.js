@@ -41,7 +41,9 @@ render() {
   return (
       <div>
       <EntryForm updateEntries={this.fetchEntries} />
+      <div className="userPage">
       {this.renderEntries()}
+      </div>
       </div>
     );
   }

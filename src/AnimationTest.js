@@ -38,7 +38,7 @@ function AnimationTest(cool) {
   <option value="another">another</option>
 
 </select>
-<button type="submit" name="text" value="comment">{cool.word}</button>
+<button className="postBtn" type="submit" name="text" value="comment">{cool.word}</button>
 </form>
 </animated.div>
 :

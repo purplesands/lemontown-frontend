@@ -26,4 +26,5 @@ const birds=['http://orientalbirdimages.org/images/data/mongolia_2015085.jpg',
 'https://pbs.twimg.com/media/D3gceTdWkAEhqUQ.jpg',
 'https://pbs.twimg.com/media/D3bS0nfXoAUil7B.jpg',
 'https://pbs.twimg.com/media/D3XkqLZXoAA3S14.jpg']
+
 export default birds

@@ -2,7 +2,7 @@ import React from 'react';
 import UserCard from './UserCard';
 import { connect } from 'react-redux';
 
-class ArchivedDate extends React.Component {
+class ArchivedDate extends React.PureComponent {
 
   state={
     day:{},
@@ -41,7 +41,7 @@ class ArchivedDate extends React.Component {
   render(){
     return (
       <div className="archive">
-      <td>{this.state.day.word1}</td><td>{this.state.day.word2}</td><td>{this.state.day.word3}</td><td>{this.state.day.word4}</td><td>{this.state.day.word5}</td>
+      <p className="oldWords">{this.state.day.word1} {this.state.day.word2} {this.state.day.word3}<p> {this.state.day.word4}</p> {this.state.day.word5}</p>
       <div>{this.getPosts()}</div>
       </div>
       )

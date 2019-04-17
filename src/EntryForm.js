@@ -77,7 +77,7 @@ var toolbarOptions = [
 
   [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
 
-  [{ 'color': ['maroon', 'steelblue'] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'color': ['#873939', '#0554A2', '#5167A4', '#37A8AC', '#6CC475','#D8D801', '#F2B8F6'] }],          // dropdown with defaults from theme
   [{ 'font': ['sans serif', 'monospace', 'serif'] }],
   [{ 'align': [] }],
 

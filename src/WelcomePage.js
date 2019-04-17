@@ -17,21 +17,36 @@ handleLogin=()=>{
 
 handleRegister=()=>{
   this.setState({register:!this.state.register})
+}
 
+backButton=()=>{
+  this.setState({
+    login:false,
+    register:false
+  })
 }
 
 render() {
 return (
-    <div>
-      <p className="titlePage">lemontown</p>
-      <div className="logButtons">
-        <button onClick={this.handleLogin}>{(!this.state.login) ? "return" : "back"}</button>
-        <button onClick={this.handleRegister}>{(!this.state.register) ? "new":"back"}</button>
+    <Fragment>
+      <div className="titlePage">
+      <p className="lemonTown">lemontown</p>
+      {(!this.state.login && !this.state.register) ?
+        <div className="logButtons">
+
+        <button onClick={this.handleLogin}>return</button>
+        <button onClick={this.handleRegister}>new</button>
+        </div>
+        :
+        <button onClick={this.backButton}>back</button>
+
+      }        </div>
+
+      <div className="login">
         {(this.state.login) ? <Login /> : null}
         {(this.state.register) ? <Register /> : null}
-
         </div>
-    </div>
+      </Fragment>
   );
 }
 }
