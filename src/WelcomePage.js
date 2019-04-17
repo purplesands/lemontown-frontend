@@ -29,7 +29,8 @@ backButton=()=>{
 render() {
 return (
     <Fragment>
-      <p className="titlePage">lemontown</p>
+      <div className="titlePage">
+      <p className="lemonTown">lemontown</p>
       {(!this.state.login && !this.state.register) ?
         <div className="logButtons">
 
@@ -39,12 +40,12 @@ return (
         :
         <button onClick={this.backButton}>back</button>
 
-      }
-      <div>
+      }        </div>
+
+      <div className="login">
         {(this.state.login) ? <Login /> : null}
         {(this.state.register) ? <Register /> : null}
         </div>
-
       </Fragment>
   );
 }

@@ -11,7 +11,7 @@
   text-decoration: none;
   outline: none;
   color: black;
-  background-color: thistle;
+  background-color: peachpuff;
   border: none;
   border-radius: 30px;
   box-shadow: 0 9px papayawhip;
@@ -48,7 +48,9 @@ textarea{
 }
 
 div.text-editor{
-  max-width: 760px
+  margin-top:20px;
+  max-width: 760px;
+  z-index:999;
 }
 
 .commentForm {
@@ -62,6 +64,13 @@ button:entryComment {
   float:right;
   margin-left: auto;
   margin-top:auto;
+}
+.userPage {
+  margin-top:20px;
+}
+
+.friendFeed{
+  margin-top:20px;
 }
 
 .postImage{
@@ -81,6 +90,7 @@ button:entryComment {
 }
 body {
   background: transparent;
+  background-color:#FDF5F5;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -103,8 +113,9 @@ body {
 
 .card2 {
   font-family: 'Overpass', sans-serif;
-  opacity:0.9;
   text-align: left;
+  z-index:999;
+  font-weight: 650;
 }
 
 .card3 {
@@ -116,7 +127,7 @@ body {
 .card4 {
   position:relative;
   opacity: 0.8;
-  color: navy;
+  color: #5757FE;
 }
 
 div.userList {
@@ -128,7 +139,6 @@ button {
   display: inline-block;
   padding: 15px 25px;
   font-size: 10px;
-  cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
@@ -143,7 +153,7 @@ button.entryComment {
   padding: 8px 20px;
 }
 
-button:hover, button.logout:hover, button.entryComment:hover, button .archiveMenu:hover {
+button:hover, .logout:hover, button.entryComment:hover, .archiveMenu:hover {
   background-color: seashell;
   animation: old 10s infinite;
 }
@@ -158,7 +168,6 @@ button.nav:focus {
     background-color:lavenderblush;
 }
 
-
 button.postBtn:focus {
     background-color:lavenderblush;
 }
@@ -168,11 +177,6 @@ button.postBtn{
 
 button.logout {
   position:relative;
-  background-color: palegoldenrod;
-
-}
-button.archiveButton {
-  padding: 10px 12px;
 }
 
 .ql-font-serif {
@@ -208,14 +212,36 @@ button.archiveButton {
 
 .titlePage {
   font-size:60px;
-  text-decoration: underline overline wavy mediumpurple;
+  text-decoration: underline overline wavy #F6F667;
   font-family: 'Varela Round', sans-serif;
-  color:navy;
-  position:relative;
-  top:0;
-  left:0;
+  color:#D8D801;
+  text-align: center;
+
+}
+p.lemonTown{
+}
+button.logButtons{
+  margin:auto;
+  bottom:20px;
+  margin-bottom: 200px;
+  padding:20px;
 }
 
+div.login{
+text-align:center;
+  line-height:5px;
+  height:200px;
+}
+input.login{
+  font-family: "karla", sans-serif;
+  text-align:center;
+  height:20px;
+  font-size:20px;
+  width:140px;
+}
+.profilePage {
+  margin-top:30px;
+}
 .entryComment {
   font-size:8px;
   color: purple;
@@ -237,11 +263,13 @@ button.archiveButton {
   position:fixed;
   top:-15px;
   margin:auto;
-  z-index:900;
 }
 .wordCard{
   animation: old 4s infinite;
+}
 
+.userList {
+  margin-top:20px;
 }
 
 button.profileBtn{
@@ -306,7 +334,6 @@ button.profileBtn{
   border-radius: 50%;
   border-style: ridge;
   border-color: beige;
-
 }
 
 
@@ -320,6 +347,7 @@ button.profileBtn{
   align: right;
 
 }
+
 div.chatBtns {
   display:flex;
   flex-direction:row;
@@ -328,14 +356,15 @@ div.chatBtns {
 }
 button.actionBtn {
   position:relative;
-  background-color: #DEABAB;
+  background-color: #F0E7F0;
   border: none;
   border-radius: 30px;
-  box-shadow: 0 5px rosybrown;
+  box-shadow: 0 5px #EAD4EA;
+  color:#064ECA;
+
   right:-5px;
   padding: 9px 18px;
   letter-spacing: 1.5px;
-  color:linen;
 }
 button.actionBtn.two {
   position:relative;
@@ -354,28 +383,40 @@ button.messageBtn {
   bottom:10px;
   float:right;
   padding: 9px 18px;
-  color:#064ECA;
-  background-color: #F0E7F0;
+  background-color: #DEABAB;
+  box-shadow: 0 5px rosybrown;
+  color:linen;
   border: none;
   border-radius: 30px;
-  box-shadow: 0 5px #EAD4EA;
   letter-spacing: 1.5px;
 }
 
 div.wordCard .words {
+  padding-top:3vh;
   font-family:'karla', sans-serif;
   font-style: italic;
   text-shadow: 2px 2px #EF3A3A;
-
 }
 
-
-div.wordCard .date {
-  font-size:15px;
-  font-family:'karla', sans-serif;
+div.wordCard .dates{
+  position:relative;
   float:right;
-  text-shadow: 2px 2px #EF3A3A;
+  font-size:19px;
+  font-family:'Karla', sans-serif;
+  font-style:bold;
+  align:right;
+  text-shadow: 2px 2px #9001FE;
 }
+
+div.wordCard .time{
+  position:relative;
+  font-size:19px;
+  font-family:'Karla', sans-serif;
+  font-style:bold;
+  align-items: right;
+  text-shadow: 2px 2px #9001FE;
+}
+
 
 
 /* .entryCard .entryComment:hover {
@@ -397,6 +438,9 @@ div.wordCard .date {
 
 p.oldWords {
   font-size:2em;
+  font-family:'karla', sans-serif;
+  font-style: italic;
+  text-shadow: 2px 2px #FE8E8E;
   animation: old 20s infinite;
   animation-timing-function: ease-in-out;
   line-height: 4px;

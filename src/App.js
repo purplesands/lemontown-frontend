@@ -99,8 +99,6 @@ class App extends Component {
   }
 
 
-
-
   componentDidMount=()=>{
     this.currentDate()
     this.getWord()

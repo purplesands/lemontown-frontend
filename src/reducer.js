@@ -8,7 +8,8 @@ const initialState = {
   todaysWords: [],
   today: {},
   dateToView: {},
-  currentDate: null
+  currentDate: null,
+  time:null
 }
 
 export default function reducer(state=initialState, action){
