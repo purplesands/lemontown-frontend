@@ -51,6 +51,7 @@ div.text-editor{
   margin-top:20px;
   max-width: 760px;
   z-index:999;
+  padding-left:10px;
 }
 
 .commentForm {
@@ -147,6 +148,7 @@ button {
   border: none;
   border-radius: 30px;
   box-shadow: 0 9px papayawhip;
+  letter-spacing:1.5px;
 }
 
 button.entryComment {
@@ -259,17 +261,24 @@ input.login{
   z-index:1000;
 }
 
+
 .navBar{
   position:fixed;
   top:-15px;
   margin:auto;
 }
 .wordCard{
+  margin-top:-15px;
   animation: old 4s infinite;
+  max-width: 85%;
 }
 
 .userList {
   margin-top:20px;
+}
+.dates {
+  margin-top:8px;
+  line-height:4px;
 }
 
 button.profileBtn{
@@ -504,10 +513,10 @@ p.oldWords {
 
 
 .entryCard {
-  border-color: #BCA7EC;
-  border-width: 1.3px;
-  border-style: inset;
-  border-radius: 5px;
+  /* border-color: #BCA7EC; */
+  /* border-width: 1.3px; */
+  /* border-style: inset;
+  border-radius: 10px; */
 
   /* padding-top: 50px;
   padding-right: 30px;
@@ -515,10 +524,11 @@ p.oldWords {
   padding-left: 80px;
   height: 60%;
   width: 50%;
-  overflow: auto;
   animation-name: example;
   animation-duration: 3s;
   animation-iteration-count: infinite;
+  margin-left:10px;
+  margin-bottom:10px;
 }
 
 div.userListCard {

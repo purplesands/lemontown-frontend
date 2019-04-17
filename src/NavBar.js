@@ -55,7 +55,7 @@ return (
     <table >
       <tbody className="navBar">
         <tr>
-          <td>  <button className="nav" value="UserFeed" onClick={handleClick}>u</button></td>
+          <td>  <button className="nav" value="UserFeed" onClick={handleClick}>me</button></td>
           <td>  <button className="nav" value="FriendFeed" onClick={handleClick}>friends</button></td>
           <td>  <button className="nav" value="LocationTwo" onClick={handleClick}>today</button></td>
           <td>  <button className="nav" value="UserList" onClick={handleClick}>everyone</button></td>

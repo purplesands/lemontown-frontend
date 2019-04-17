@@ -35,7 +35,7 @@ class ArchivedDate extends React.PureComponent {
 
   componentDidMount(){
     this.fetchDay()
-    // setInterval(this.fetchDay, 1000)
+    setInterval(this.fetchDay, 1000)
   }
 
   render(){
