@@ -42,10 +42,10 @@ class UserList extends React.Component {
     return (
 
         <div className="userList">
+        <input className="userSearch" type="text" value={this.state.search} onChange={(e)=>this.handleSearch(e)} ></input>
+        <input className="userSearch" type="text" value={this.state.search} onChange={(e)=>this.handleSearch(e)} ></input>
+        <input className="userSearch" type="text" value={this.state.search} onChange={(e)=>this.handleSearch(e)} ></input>
         <input className="userSearch" type="text" value={this.state.search} placeholder="search" onChange={(e)=>this.handleSearch(e)} ></input>
-        <input className="userSearch" type="text" value={this.state.search} onChange={(e)=>this.handleSearch(e)} ></input>
-        <input className="userSearch" type="text" value={this.state.search} onChange={(e)=>this.handleSearch(e)} ></input>
-        <input className="userSearch" type="text" value={this.state.search} onChange={(e)=>this.handleSearch(e)} ></input>
 
 
           {this.renderList(this.filterUsers())}

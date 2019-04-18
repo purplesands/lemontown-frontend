@@ -18,12 +18,12 @@
 }
 
 .archiveMenu select {
-    width: 130%;
-    border: none;
-    box-shadow: black;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
+  width: 130%;
+  border: none;
+  box-shadow: black;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
 }
 
 .archiveMenu select:focus {
@@ -157,6 +157,36 @@ body {
 
 }
 
+.profilePage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  position:relative;
+  font-family:'karla', sans-serif;
+}
+
+.profileUsername {
+  position:relative;
+  font-size:40px;
+  margin-top:-20px;
+  text-shadow: 3px 0px indigo;
+  text-align:center;
+}
+
+button.editBtn{
+  position:relative;
+  margin-left:20px;
+  margin-bottom:20px;
+}
+
+.profilePageAvatar{
+  max-height:200px;
+  max-width:200px;
+  border: 5px pink dotted;
+  border-radius:50%;
+}
+
 
 
 div.userList {
@@ -166,12 +196,15 @@ div.userList {
 input.userSearch {
   background-color:transparent;
   position:static;
+  color:rosybrown;
+  font-family:'karla', sans-serif;
+  text-shadow: 1px 1px #EF3A3A;
   font-size:20px;
   margin-left:20px;
   /* margin-right:140px; */
   border:none;
   width:205px;
-  max-height:20px;
+  height:30px;
 }
 
 input.userSearch:focus{
@@ -300,6 +333,7 @@ div.login{
 input.login{
   font-family: "karla", sans-serif;
   text-align:center;
+  color:#9F6FC4;
   height:20px;
   font-size:20px;
   width:140px;
@@ -307,8 +341,29 @@ input.login{
   border:none;
 }
 
+input.profileEdit{
+  font-family: "karla", sans-serif;
+  text-align:right;
+  color:navy;
+  height:20px;
+  font-size:15px;
+  background:transparent;
+  border:none;
+}
+input.profileEdit:focus{
+outline:none
+}
+
+input.login:focus{
+  outline:none;
+}
+
+
 .profilePage {
+  display:flex;
+  flex-direction:row;
   margin-top:30px;
+  color:#9F6FC4;
 }
 .entryComment {
   font-size:8px;

@@ -45,34 +45,35 @@ class ProfilePage extends Component {
       <div className="profilePage">
       {(!this.state.editStatus) ?
         <div>
-      <button onClick={this.toggleEdit}>edit details</button>
-      <img className="profilePageAvatar" src={this.props.currentUser.avatar} alt="avatar"></img>
-        <p> {this.props.currentUser.username}</p>
-        <p> {this.props.currentUser.bio}</p>
+        <p className="profileUsername"> {this.props.currentUser.username}</p>
+        <img className="profilePageAvatar" src={this.props.currentUser.avatar} alt="avatar"></img>
+        <p style={{fontStyle:"italic"}}>{this.props.currentUser.bio}</p>
+        <button className="editBtn" onClick={this.toggleEdit}>edit details</button>
         </div>
     :
     <div>
-      <button onClick={this.handleEdit}>save</button>
-      <img src={this.props.currentUser.avatar} alt="avatar"></img>
-      <p className="profilePage edit">avatar:<p><input type="text"
-                name="avatar"
-                value={this.props.currentUser.avatar}
-                onChange={this.updateAttributes}
-                  /></p></p>
-
-      <p className="profilePage edit">handle:<p><input type="text"
+    <p className="profileUsername"> {this.props.currentUser.username}</p>
+      <img className="profilePageAvatar" src={this.props.currentUser.avatar} alt="avatar"></img>
+      <p className="profilePageEdit"><p>username</p><input className="profileEdit" type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.updateAttributes}
                 maxLength="12"
-                  /></p></p>
-      <p><p className="profilePage edit">bio:</p><input type="text"
+                  /></p>
+      <p className="profilePageEdit"><p>avatar</p><input className="profileEdit"type="text"
+                name="avatar"
+                value={this.props.currentUser.avatar}
+                onChange={this.updateAttributes}
+                  /></p>
+
+      <p className="profilePageEdit"><p>bio</p><input className="profileEdit" type="text"
                 name="bio"
                 value={this.state.bio}
                 onChange={this.updateAttributes}
                 maxLength="200"
                 /></p>
 
+                <button className="editBtn" onClick={this.handleEdit}>save</button>
 
     </div>
 
