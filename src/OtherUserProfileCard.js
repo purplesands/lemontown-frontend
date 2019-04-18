@@ -39,7 +39,7 @@ componentDidMount(){
 
   render() {
     return (
-      <div>
+      <div className="otherUser">
         <p>{this.props.userToView.username}</p>
         <img className="user avatar" src={this.props.userToView.avatar} alt="avatar"></img>
         <p>following:{this.props.userToView.followed_users.length}</p>

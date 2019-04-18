@@ -3,6 +3,7 @@ import PostForm from './PostForm'
 import PostCard from './PostCard'
 import CanvasDraw from "react-canvas-draw";
 import birds from './assets/birds'
+import Useful from './Useful'
 
 import { connect } from 'react-redux';
 import { ActionCableConsumer } from 'react-actioncable-provider'
@@ -12,7 +13,8 @@ class LocationTwo extends React.Component {
     posts: [],
     location: {},
     days:[],
-    newPosts:[]
+    newPosts:[],
+    loading: null
   }
 
   fetchLocation = () =>{
@@ -32,16 +34,16 @@ class LocationTwo extends React.Component {
      .then(r=>{
        this.setState({
          posts: this.setPosts(r.reverse())
-       })
+       },this.setState({loading:false}))
      }
    )
   }
 
   setPosts=(arr)=>{
-    let cool = arr.filter(post=>{
-      return post.location_id === 2
-    })
-    return cool.filter(post=>{
+    // let cool = arr.filter(post=>{
+    //   return post.location_id === 2
+    // })
+    return arr.filter(post=>{
       return post.day_id === this.props.today.id
     })
   }
@@ -52,11 +54,24 @@ class LocationTwo extends React.Component {
     })
   }
 
+  loading(){
+    return(
+      <div className="chat loading">loading</div>
+    )
+  }
+
+
 
   componentDidMount(){
+    this.setState({loading:true})
     this.fetchLocation()
     this.fetchPosts()
     }
+
+    componentDidUpdate(){
+      console.log('did update', this.state.loading)
+    }
+
 
   updateComment=(comment)=>{
     let posts = [...this.state.posts]
@@ -141,6 +156,7 @@ render(){
         />
         <div className="locationTwoPostForm"><PostForm handleBird={this.handleBird} handleDelete={this.handleDelete} addPost={this.addPost} updatePosts={this.fetchPosts} location={2} /></div>
         <div className="flex-container">
+        <div>{(!!this.state.loading) ? this.loading() : null}</div>
         {this.renderPosts(this.state.newPosts)}
         {this.renderPosts(this.state.posts)}
 

@@ -40,7 +40,7 @@ class OtherUserFeed extends React.Component {
 
   render() {
     return (
-        <div>
+        <div className="otherUser">
         <OtherUserProfileCard handleFollow={this.props.handleFollow} handleUnfollow={this.props.handleUnfollow}/>
         {this.renderEntries()}
         </div>

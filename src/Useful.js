@@ -10,7 +10,16 @@ class Useful extends React.Component {
   static lineSpacing(num){
     return Math.random() * num
   }
+
+
+static loading(){
+  return(
+    <div className="loading">loading</div>
+  )
 }
+
+}
+
 
 
 function mapStateToProps(state) {

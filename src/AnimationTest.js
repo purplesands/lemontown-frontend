@@ -7,8 +7,8 @@ import './App.css'
 
 function AnimationTest(cool) {
 
-  let userColor = (cool.cool.currentUser.id===cool.cool.user_id )  ?  "mediumvioletred" : "darkblue"
-  let postColor = (cool.cool.currentUser.id===cool.cool.user_id) ? "palevioletred" : "dodgerblue"
+  let userColor = (cool.cool.currentUser.id===cool.cool.user_id )  ?  "#0554A2": "mediumvioletred"
+  let postColor = (cool.cool.currentUser.id===cool.cool.user_id) ? "dodgerblue": "palevioletred"
   let pos = getPos(document.querySelector('.mainContainer'))
   const calc = (x, y) => [x - pos.x / 2, y - pos.y / 1.5]
   const trans1 = (x, y) => `translate3d(${x / 11}px,${y / 9}px,0)`
@@ -20,33 +20,34 @@ function AnimationTest(cool) {
     <div class="container postContainer" onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>
     <div className="boogie">
       <animated.div class="card1 username" style={{ transform: props.xy.interpolate(trans1) }} >      <p style={{color:userColor}} >{cool.cool.user.username}</p>
-</animated.div></div>
+      </animated.div>
+    </div>
       <animated.div class="card2 content" style={{ transform: props.xy.interpolate(trans2) }} >       {(cool.cool.is_image)? <img className="postImage" src={cool.cool.content} alt={cool.cool.content}></img> : <p style={{color:postColor}}>{cool.cool.content}</p>}
-</animated.div>
+      </animated.div>
 {!(cool.cool.currentUser.id===cool.cool.user_id) ?
       <animated.div class="card3 commentBar" style={{ transform: props.xy.interpolate(trans3) }} >
-      <form onSubmit={cool.handleComment}>
-<select class="dropdown" onChange={cool.handleChange}>
-  <option selected="selected" value={cool.cool.today.word1}>{cool.cool.today.word1}</option>
-  <option value={cool.cool.today.word2}>{cool.cool.today.word2}</option>
-  <option value={cool.cool.today.word3}>{cool.cool.today.word3}</option>
-  <option value={cool.cool.today.word4}>{cool.cool.today.word4}</option>
-  <option value={cool.cool.today.word5}>{cool.cool.today.word5}</option>
-  <option value="and">and</option>
-  <option value="the">the</option>
-  <option value="or">or</option>
-  <option value="another">another</option>
+  <form onSubmit={cool.handleComment}>
+    <select class="dropdown" onChange={cool.handleChange}>
+      <option selected="selected" value={cool.cool.today.word1}>{cool.cool.today.word1}</option>
+      <option value={cool.cool.today.word2}>{cool.cool.today.word2}</option>
+      <option value={cool.cool.today.word3}>{cool.cool.today.word3}</option>
+      <option value={cool.cool.today.word4}>{cool.cool.today.word4}</option>
+      <option value={cool.cool.today.word5}>{cool.cool.today.word5}</option>
+      <option value="and">and</option>
+      <option value="the">the</option>
+      <option value="or">or</option>
+      <option value="another">another</option>
+    </select>
+        <button className="postBtn" type="submit" name="text" value="comment">{cool.word}</button>
+  </form>
+      </animated.div>
+    :
+    null
+    }
 
-</select>
-<button className="postBtn" type="submit" name="text" value="comment">{cool.word}</button>
-</form>
-</animated.div>
-:
-null
-}
-
-      <animated.div class="card4 comments" style={{ transform: props.xy.interpolate(trans4) }} >      <p>{cool.renderComments()}</p>
-</animated.div>
+      <animated.div className="card4 comments" style={{ transform: props.xy.interpolate(trans4) }} >
+        <p className="postComments">{cool.renderComments()}</p>
+      </animated.div>
     </div>
   )
 }

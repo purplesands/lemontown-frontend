@@ -66,6 +66,7 @@ button:entryComment {
   margin-left: auto;
   margin-top:auto;
 }
+
 .userPage {
   margin-top:20px;
 }
@@ -115,25 +116,66 @@ body {
 .card2 {
   font-family: 'Overpass', sans-serif;
   text-align: left;
-  z-index:999;
   font-weight: 650;
+  z-index:0;
+  position:relative;
+
 }
 
 .card3 {
-  opacity: 0.8;
+  opacity: 0.9;
+  max-width:100%;
+  z-index:5;
   position:relative;
-  z-index:900;
+
 }
 
 .card4 {
-  position:relative;
   opacity: 0.8;
   color: #5757FE;
+  z-index:5;
+  position:relative;
 }
+
+.card4:nth-child(3){
+  color:steelblue;
+}
+
+.card4 .postComments :nth-child(2){
+  color:mediumvioletred;
+  letter-spacing: 10px;
+}
+
+.card4 .postComments :nth-child(5){
+  color:red
+
+}
+
+.card4 .postComments :nth-child(9){
+  color:red;
+  opacity:0.7;
+
+}
+
+
 
 div.userList {
   display: flex;
   flex-wrap: wrap;
+}
+input.userSearch {
+  background-color:transparent;
+  position:static;
+  font-size:20px;
+  margin-left:20px;
+  /* margin-right:140px; */
+  border:none;
+  width:205px;
+  max-height:20px;
+}
+
+input.userSearch:focus{
+  outline:none;
 }
 
 button {
@@ -157,7 +199,7 @@ button.entryComment {
 
 button:hover, .logout:hover, button.entryComment:hover, .archiveMenu:hover {
   background-color: seashell;
-  animation: old 10s infinite;
+  animation: old 4s infinite;
 }
 
 button:active {
@@ -214,13 +256,34 @@ button.logout {
 
 .titlePage {
   font-size:60px;
+  text-decoration: underline wavy #F6F667;
+  font-family: 'Varela Round', sans-serif;
+  color:#e7e700;
+  text-align: center;
+  text-shadow: 1px 2px #e0bafd;
+}
+
+.titlePage:hover{
+  animation: lemontownShadow 5s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes lemontownShadow {
+  0% {text-shadow: 1px 2px #e0bafd;}
+  17% {text-shadow: 2px 4px #9F6FC4;}
+  33% {text-shadow: 3px 6px #9F6FC4;}
+  49% {text-shadow: 4px 8px #c589a3;}
+  65% {text-shadow: 3px 6px #c589a3;}
+  82% {text-shadow: 2px 4px #e0bafd;}
+  100% {text-shadow: 1px 2px #e0bafd;}
+}
+
+p.lemonTown{
   text-decoration: underline overline wavy #F6F667;
   font-family: 'Varela Round', sans-serif;
   color:#D8D801;
   text-align: center;
-
-}
-p.lemonTown{
+  text-shadow: 2px 2px #9001FE;
 }
 button.logButtons{
   margin:auto;
@@ -230,7 +293,7 @@ button.logButtons{
 }
 
 div.login{
-text-align:center;
+  text-align:center;
   line-height:5px;
   height:200px;
 }
@@ -240,7 +303,10 @@ input.login{
   height:20px;
   font-size:20px;
   width:140px;
+  background:transparent;
+  border:none;
 }
+
 .profilePage {
   margin-top:30px;
 }
@@ -258,7 +324,7 @@ input.login{
   padding-right: 20px;
   color: cornflowerblue;
   border-radius: 5%;
-  z-index:1000;
+  z-index:10;
 }
 
 
@@ -266,6 +332,7 @@ input.login{
   position:fixed;
   top:-15px;
   margin:auto;
+  z-index:100;
 }
 .wordCard{
   margin-top:-15px;
@@ -274,7 +341,9 @@ input.login{
 }
 
 .userList {
+  display:flex;
   margin-top:20px;
+  margin-left:20px;
 }
 .dates {
   margin-top:8px;
@@ -284,6 +353,8 @@ input.login{
 button.profileBtn{
   padding: 9px 15px;
   letter-spacing: 1.5px;
+  margin-top:5px;
+  margin-left:3px;
 }
 
 .userName{
@@ -301,27 +372,31 @@ button.profileBtn{
 
 .entryCard .username {
   position: relative;
-  color: red;
+  color: #5652C7;
+  font-size: 20px;
+  font-weight:900;
+  text-shadow:.5px 1px blue;
+  margin-right:20px;
+  float: right;
+  font-family:'karla', sans-serif;
+}
+
+.entryCard .date {
+  position: relative;
   font-size: 10px;
   float: right;
   padding-right:50px;
 }
 
-.entryCard .date {
-  position: relative;
-  color: green;
-  font-size: 10px;
-  float: right;
-  padding-right:80px;
-}
-
 .entryCard .avatar {
-  position: static;
+  position: relative;
   float: right;
-  padding-right:10px;
+  /* padding-right:10px; */
   width:64px;
   height: 64px;
-  border-radius: 55%;
+  border-radius: 50%;
+  border: ridge 1px beige;
+
 }
 
 .profileCard .avatar {
@@ -331,9 +406,8 @@ button.profileBtn{
   width:64px;
   height: 64px;
   border-radius: 50%;
-  border-style: ridge;
-  border-color: beige;
-
+  border: ridge 1px beige;
+  z-index:10;
 }
 .user.avatar {
   float: left;
@@ -365,12 +439,11 @@ div.chatBtns {
 }
 button.actionBtn {
   position:relative;
-  background-color: #F0E7F0;
+  background-color: #fde4e4;
   border: none;
   border-radius: 30px;
   box-shadow: 0 5px #EAD4EA;
-  color:#064ECA;
-
+  color:DarkSlateGrey;
   right:-5px;
   padding: 9px 18px;
   letter-spacing: 1.5px;
@@ -394,7 +467,7 @@ button.messageBtn {
   padding: 9px 18px;
   background-color: #DEABAB;
   box-shadow: 0 5px rosybrown;
-  color:linen;
+  color:#fde4e4;
   border: none;
   border-radius: 30px;
   letter-spacing: 1.5px;
@@ -464,6 +537,20 @@ p.oldWords {
   100%{color: indigo;}
 }
 
+div.otherUser {
+  margin-left: 20px;
+}
+p.userListName {
+  position:relative;
+  font-size:15px;
+  color:#0554A2;
+  font-weight:600;
+}
+button.viewUserBtn {
+  margin-left:90px;
+  margin-top:-70px;
+  position:absolute;
+}
 
 .archivedPost:nth-child(1){
   color:lightsteelblue;
@@ -495,6 +582,7 @@ p.oldWords {
   letter-spacing: 4px;
 }
 
+
 .archivedPost {
   animation-name: cool;
   animation-duration: 3s;
@@ -504,11 +592,27 @@ p.oldWords {
 @keyframes cool {
   0% {transform:rotateX(20);}
   100% {transform:rotateX(180);}
-
 }
 
 .archive:hover {
   animation: old 10s infinite;
+}
+
+.otherUser .entryCard {
+  /* border-color: #BCA7EC; */
+  /* border-width: 1.3px; */
+  /* border-style: inset;
+  border-radius: 10px; */
+
+  /* padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;*/
+  height: 60%;
+  width: 50%;
+  animation-name: example;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  margin-bottom:10px;
 }
 
 
@@ -531,10 +635,16 @@ p.oldWords {
   margin-bottom:10px;
 }
 
+
+
+button.viewUserBtn{
+  align:right;
+}
+
 div.userListCard {
-  border-color: black;
-  border-width: 1px;
-  border-style: dotted;
+  font-family: 'karla', sans-serif;
+  /* border-radius:20%;
+  border-style: dotted; */
   height: 10%;
   width: 30%;
 }
@@ -546,4 +656,40 @@ div.userListCard:hover {
 img.archiveImage {
   max-height:200px;
   max-width:200px;
+}
+
+@keyframes load-animation {
+  0%   {opacity: 0; top: 0px; color: #FE8E8E; letter-spacing: 40px; transform: skew(-60deg, 20deg)	}
+  1%   {opacity:1;top: 0px; color: #FE8E8E; letter-spacing: 40px; transform: skew(-60deg, 20deg)	}
+  50% {top: 200px; color: #FDF5F5; letter-spacing: 0px; transform: skew(0deg, 0deg)}
+  100%   {top: 0px; color: #FE8E8E; letter-spacing: 40px; transform: skew(50deg, -20deg)	}
+}
+
+
+.chat.loading {
+  font-size:30px;
+  /* margin:auto;
+  width:50%;
+  align:center; */
+  border-radius:30%;
+  animation: load-animation 15s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes load-main {
+  0%   {opacity: 0;letter-spacing: 0px;}
+  50% {opacity:1;letter-spacing: 20px;}
+  100% {opacity:0;letter-spacing: 20px;}
+
+}
+
+
+.main.loading {
+  font-size:30px;
+  color:pink;
+  text-decoration:none;
+  /* margin:auto;
+  width:50%;
+  align:center; */
+  animation: load-main 15s infinite;
 }

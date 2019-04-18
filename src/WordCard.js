@@ -56,6 +56,7 @@ return (
   (this.props.today) ?
     <div className="wordCard">
       <div className="dates">
+      <p className="lemonTown">lemontown</p>
         <p>{this.state.time}</p>
         <p>{this.renderDate()}</p>
       </div>

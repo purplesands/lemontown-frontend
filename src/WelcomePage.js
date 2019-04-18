@@ -2,13 +2,15 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import Login from './Login'
 import Register from './Register'
+import Useful from './Useful'
 
 
 class WelcomePage extends React.Component {
 
 state={
   login:false,
-  register:false
+  register:false,
+  loading:null
 }
 
 handleLogin=()=>{
@@ -26,14 +28,30 @@ backButton=()=>{
   })
 }
 
+componentDidMount(){
+  this.setState({loading:true})
+  setTimeout(this.stopLoad,5000)
+}
+
+stopLoad=()=>{
+  this.setState({loading:false})
+}
+
+loading(){
+  return(
+    <div className="main loading">loading</div>
+  )
+}
+
+
 render() {
 return (
     <Fragment>
       <div className="titlePage">
-      <p className="lemonTown">lemontown</p>
-      {(!this.state.login && !this.state.register) ?
+      <p>lemontown</p>
+      {(!!this.state.loading) ? this.loading() :
+      (!this.state.login && !this.state.register) ?
         <div className="logButtons">
-
         <button onClick={this.handleLogin}>return</button>
         <button onClick={this.handleRegister}>new</button>
         </div>

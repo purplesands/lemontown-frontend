@@ -68,11 +68,11 @@ handleCommentForm=()=>{
 
 render() {
   return (
-      <div className="entryCard">
+    <div className="entryCard">
+      <p><img className="avatar" src={this.props.user.avatar}></img></p>
       <p className="username"> {this.props.user.username}</p>
-      <p className="content">{ReactHtmlParser(this.props.content)} </p>
-      <img className="avatar" src={this.props.user.avatar}></img>
       <p className="date">{this.props.date}</p>
+      <p className="content">{ReactHtmlParser(this.props.content)} </p>
       <div>{this.renderComments()}</div>
 
       {(this.props.currentUser.id===this.props.user.id) ?
@@ -81,13 +81,13 @@ render() {
         <button className="entryComment" onClick={this.handleCommentForm}>?</button>
       :
       <form className="commentForm" onSubmit={this.handleComment} onChange={this.handleChange}>
-      <label>
-        <input type="text" name="comment" value={this.state.comment} minLength="1" maxLength="20" />
-      </label>
+        <label>
+          <input type="text" name="comment" value={this.state.comment} minLength="1" maxLength="20" />
+        </label>
       <button className="entryComment" type="submit" onSubmit={e=>this.handleComment(e)}>{this.state.characters-this.state.comment.length}</button>
     </form>
 
-    }
+      }
 
 
       {(this.state.isClicked)

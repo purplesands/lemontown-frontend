@@ -15,13 +15,9 @@ handleClick=(e)=>{
     }
   }
 
-  showFollowers=(e)=>{
-    // debugger
-    // this.props.dispatch({ type: "CHANGE_LOCATION", payload:"FollowerList"})
-    // this.props.dispatch({ type: "UPDATE_USER_TO_VIEW", payload:this.props})
-    //
-    console.log('followers?')
-  }
+handleFollow=(e)=>{
+  this.props.handleFollow(e)
+}
 
 componentDidMount(){
 
@@ -39,11 +35,11 @@ componentDidMount(){
       </div>
       :
       <div className="userListCard">
-        <p>{this.props.username}</p>
+        <p className="userListName">{this.props.username}</p>
         <img className="user avatar" src={this.props.avatar} alt="avatar"></img>
         <p className="followingList" onClick={this.showFollowers}>following:{this.props.followed_users.length}</p>
         <p className="followerList">followers:{this.props.follower_users.length}</p>
-        <button onClick={this.handleClick}>see</button>
+        <button className="viewUserBtn" onClick={this.handleClick}>?</button>
       </div>
 
     );

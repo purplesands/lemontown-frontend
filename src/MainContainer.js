@@ -33,6 +33,10 @@ const renderComponent = ()=>{
     return <ArchivedDate />
   } else if (props.activeLocation==="ProfilePage") {
     return <ProfilePage />
+  }else if (props.activeLocation===null){
+    return <div className="titlePage">
+          <p>lemontown</p>
+          </div>
 
     // return <FollowerList />
   } else {
@@ -42,6 +46,9 @@ const renderComponent = ()=>{
 
 const handleFollow=(e)=>{
   e.preventDefault();
+
+  let id
+  (!!props.userToView) ? id = props.userToView.id : id = e.target.value
   fetch('http://localhost:3000/followings', {
     method: "POST",
     headers: {
@@ -50,7 +57,7 @@ const handleFollow=(e)=>{
     },
     body:JSON.stringify({
       user_id:props.currentUser.id,
-      followed_user_id:props.userToView.id
+      followed_user_id:id
     })
   }).then(r=>r.json())
   .then(r=>updateFollowers())
