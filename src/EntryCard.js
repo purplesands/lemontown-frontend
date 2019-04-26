@@ -32,7 +32,7 @@ class EntryCard extends React.Component {
 
   handleComment=(e)=>{
     e.preventDefault()
-    fetch('http://localhost:3000/entry_comments', {
+    fetch('https://lemon-town-api.herokuapp.com/entry_comments', {
       method: "POST",
       headers: {
         'Accept': 'application/json',

@@ -19,7 +19,7 @@ class UserList extends React.Component {
   }
 
   fetchUsers(){
-    fetch('http://localhost:3000/users')
+    fetch('https://lemon-town-api.herokuapp.com/users')
     .then(r=>r.json())
     .then(r=>{
       this.setState({

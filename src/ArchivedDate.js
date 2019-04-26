@@ -10,7 +10,7 @@ class ArchivedDate extends React.PureComponent {
   }
 
   fetchDay=(e)=>{
-      fetch(`http://localhost:3000/days/${this.props.dateToView}`)
+      fetch(`https://lemon-town-api.herokuapp.com/days/${this.props.dateToView}`)
       .then(r=>r.json())
       .then(r=>this.setState({day:r, posts:r.posts}))
     }

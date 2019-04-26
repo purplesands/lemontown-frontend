@@ -12,7 +12,8 @@ class Register extends React.Component {
   }
 
   createUser = () => {
-      fetch('http://localhost:3000/users', {
+    const store = require('store')
+      fetch('https://lemon-town-api.herokuapp.com/users', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,11 +26,12 @@ class Register extends React.Component {
         }),
       }).then(r=>r.json())
       .then(r=>{
+        debugger
         if (r.errors) {
           alert(r.errors)
         } else {
       this.props.dispatch({ type: "UPDATE_USER", payload:r.user})
-      localStorage.setItem('jwt', r.jwt)
+      store.set('jwt', r.jwt)
       this.setState({username:'',password:'', password2:''})
     }
     })

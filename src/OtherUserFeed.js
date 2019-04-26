@@ -12,7 +12,7 @@ class OtherUserFeed extends React.Component {
   }
 
   fetchEntries=()=>{
-    fetch('http://localhost:3000/entries')
+    fetch('https://lemon-town-api.herokuapp.com/entries')
     .then(r=>r.json())
     .then(r=>{
       this.setState({

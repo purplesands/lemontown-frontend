@@ -15,7 +15,7 @@ class EntryForm extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault();
-      fetch('http://localhost:3000/entries', {
+      fetch('https://lemon-town-api.herokuapp.com/entries', {
         method: "POST",
         headers: {
           'Accept': 'application/json',
