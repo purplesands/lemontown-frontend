@@ -26,7 +26,7 @@ class App extends Component {
     }
 
     checkDay=()=>{
-      fetch('http://localhost:3000/days')
+      fetch('https://lemon-town-api.herokuapp.com/days')
       .then(r=>r.json())
       .then(r=>{
         this.props.dispatch({ type: "SET_DATE", payload: r[r.length-1]})
@@ -35,7 +35,7 @@ class App extends Component {
     }
 
    fetchDays = () =>{
-    fetch('http://localhost:3000/days')
+    fetch('https://lemon-town-api.herokuapp.com/days')
       .then(r=>r.json())
       .then(r=>{
       this.props.dispatch({ type: "SET_DAYS", payload: r})
@@ -56,7 +56,7 @@ class App extends Component {
   }
 
    newDay=()=>{
-    fetch('http://localhost:3000/days', {
+    fetch('https://lemon-town-api.herokuapp.com/days', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -81,9 +81,10 @@ class App extends Component {
   }
 
   fetchUser=()=>{
-    const jwt = localStorage.getItem('jwt')
+    const store = require('store')
+    const jwt = store.get('jwt')
     if (jwt){
-      fetch("http://localhost:3000/auto_login", {
+      fetch("https://lemon-town-api.herokuapp.com/auto_login", {
         headers: {
           "Authorization": jwt
         }
@@ -110,7 +111,6 @@ class App extends Component {
     this.checkDay()
     setTimeout(this.setDate, 4000)
     setTimeout(this.fetchUser, 4000)
-
   }
 
   render() {

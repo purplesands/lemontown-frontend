@@ -9,8 +9,9 @@ class Login extends React.Component {
   }
 
   handleSubmit = (e) => {
+    const store = require('store')
       e.preventDefault();
-      fetch('http://localhost:3000/login', {
+      fetch('https://lemon-town-api.herokuapp.com/login', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,11 +23,12 @@ class Login extends React.Component {
         })
       }).then(r=>r.json())
       .then(r=>{
+        debugger
         if (r.errors) {
           alert(r.errors)
         } else {
       this.props.dispatch({ type: "UPDATE_USER", payload:r.user})
-      localStorage.setItem('jwt', r.jwt)
+      store.set('jwt', r.jwt);
       // this.props.history.push(`/users/${r.user.id}`)
       this.setState({username:'',password:''})
     }

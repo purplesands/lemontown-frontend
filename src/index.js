@@ -15,7 +15,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 ReactDOM.render(
-  <ActionCableProvider url={'ws://localhost:3000/cable'}>
+  <ActionCableProvider url={'ws://lemon-town-api.herokuapp.com/cable'}>
     <Provider store={store}>
       <Router>
           <Route path="/" component={App}/>

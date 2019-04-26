@@ -18,7 +18,7 @@ class LocationTwo extends React.Component {
   }
 
   fetchLocation = () =>{
-    fetch('http://localhost:3000/locations/2')
+    fetch('https://lemon-town-api.herokuapp.com/locations/2')
     .then(r=>r.json())
     .then(r=>{
       this.setState({
@@ -29,7 +29,7 @@ class LocationTwo extends React.Component {
   }
 
   fetchPosts = () =>{
-     fetch('http://localhost:3000/posts')
+     fetch('https://lemon-town-api.herokuapp.com/posts')
      .then(r=>r.json())
      .then(r=>{
        this.setState({
@@ -97,7 +97,7 @@ class LocationTwo extends React.Component {
       if (post.id === null) {
         this.updateComment(post)
       } else {
-        fetch(`http://localhost:3000/posts/${post.id}`)
+        fetch(`https://lemon-town-api.herokuapp.com/posts/${post.id}`)
         .then(r=>r.json())
         .then(post=> this.setState({
           newPosts:[post, ...this.state.newPosts]
@@ -113,7 +113,7 @@ class LocationTwo extends React.Component {
       this.setState({posts:posts})
       var i;
         for (i = 0; i < toDelete.length; i++) {
-          fetch(`http://localhost:3000/posts/${toDelete[i].id}`,{
+          fetch(`https://lemon-town-api.herokuapp.com/posts/${toDelete[i].id}`,{
             method: "DELETE"
           })
         }
@@ -122,7 +122,7 @@ class LocationTwo extends React.Component {
     handleBird=(e)=>{
       e.preventDefault()
     let bird = birds[Math.floor(Math.random()*birds.length)];
-        fetch('http://localhost:3000/posts', {
+        fetch('https://lemon-town-api.herokuapp.com/posts', {
           method: "POST",
           headers: {
             'Accept': 'application/json',

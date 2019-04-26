@@ -13,7 +13,7 @@ class LocationOne extends React.PureComponent {
   }
 
   fetchLocation = () =>{
-    fetch('http://localhost:3000/locations/1')
+    fetch('https://lemon-town-api.herokuapp.com/locations/1')
     .then(r=>r.json())
     .then(r=>{
       this.setState({
@@ -24,7 +24,7 @@ class LocationOne extends React.PureComponent {
   }
 
   fetchPosts = () =>{
-     fetch('http://localhost:3000/posts')
+     fetch('https://lemon-town-api.herokuapp.com/posts')
      .then(r=>r.json())
      .then(r=>{
        this.setState({

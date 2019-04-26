@@ -14,7 +14,7 @@ class PostForm extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault();
-      fetch('http://localhost:3000/posts', {
+      fetch('https://lemon-town-api.herokuapp.com/posts', {
         method: "POST",
         headers: {
           'Accept': 'application/json',

@@ -27,7 +27,7 @@ class PostCard extends React.Component {
 
   handleComment=(e)=>{
     e.preventDefault();
-    fetch('http://localhost:3000/post_comments', {
+    fetch('https://lemon-town-api.herokuapp.com/post_comments', {
       method: "POST",
       headers: {
         'Accept': 'application/json',

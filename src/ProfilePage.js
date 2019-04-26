@@ -16,7 +16,7 @@ class ProfilePage extends Component {
   }
 
   handleEdit=(e)=>{
-    fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+    fetch(`https://lemon-town-api.herokuapp.com/users/${this.props.currentUser.id}`, {
       method: "PATCH",
       headers: {
         'Accept': 'application/json',
