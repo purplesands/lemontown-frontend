@@ -26,6 +26,7 @@
     "node": "11.6.0"
   },
   "scripts": {
+    "local_start": "PORT=3000 react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
