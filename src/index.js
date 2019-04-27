@@ -14,9 +14,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 
-
-
-
 ReactDOM.render(
   <ActionCableProvider url={'ws://lemon-town-api.herokuapp.com/cable'}>
     <Provider store={store}>
