@@ -2,6 +2,10 @@
   "name": "zone-frontend",
   "version": "0.1.0",
   "private": true,
+  
+  "devDependencies": {
+    "react-scripts": "^2.1.5"},
+
   "dependencies": {
     "axios": "0.9.1",
     "gulp": "^4.0.0",
@@ -19,17 +23,16 @@
     "react-scripts": "2.1.8",
     "react-spring": "^8.0.19",
     "redux": "^4.0.1",
-    "serve": "^11.0.0",
     "store": "^2.0.12"
   },
   "engines": {
     "npm": "6.5.0-next.0",
     "node": "11.6.0"
   },
+
   "scripts": {
-    "start": "node index.js",
-    "build": "ng build",
-    "heroku-postbuild": "ng build --prod",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
