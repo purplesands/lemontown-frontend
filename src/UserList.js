@@ -1,5 +1,6 @@
 import React from 'react';
 import UserCard from './UserCard';
+import { url } from './helpers';
 
 class UserList extends React.Component {
 
@@ -19,7 +20,7 @@ class UserList extends React.Component {
   }
 
   fetchUsers(){
-    fetch('https://lemon-town-api.herokuapp.com/users')
+    fetch(`${url}/users`)
     .then(r=>r.json())
     .then(r=>{
       this.setState({

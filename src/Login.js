@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { url } from './helpers';
+
 
 class Login extends React.Component {
 
@@ -11,7 +13,7 @@ class Login extends React.Component {
   handleSubmit = (e) => {
     const store = require('store')
       e.preventDefault();
-      fetch('https://lemon-town-api.herokuapp.com/login', {
+      fetch(`${url}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

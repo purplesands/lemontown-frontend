@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import vegetables from './assets/vegetables'
+import { url } from './helpers';
+
 
 class Register extends React.Component {
 
@@ -13,7 +15,7 @@ class Register extends React.Component {
 
   createUser = () => {
     const store = require('store')
-      fetch('https://lemon-town-api.herokuapp.com/users', {
+      fetch(`${url}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

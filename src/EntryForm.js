@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill'
+import { url } from './helpers';
+
 
 
 class EntryForm extends Component {
@@ -15,7 +17,7 @@ class EntryForm extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault();
-      fetch('https://lemon-town-api.herokuapp.com/entries', {
+      fetch(`${url}/entries`, {
         method: "POST",
         headers: {
           'Accept': 'application/json',

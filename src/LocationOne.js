@@ -1,6 +1,8 @@
 import React from 'react';
 import PostForm from './PostForm'
 import PostCard from './PostCard'
+import { url } from './helpers';
+
 
 import { connect } from 'react-redux';
 import { ActionCableConsumer } from 'react-actioncable-provider'
@@ -13,7 +15,7 @@ class LocationOne extends React.PureComponent {
   }
 
   fetchLocation = () =>{
-    fetch('https://lemon-town-api.herokuapp.com/locations/1')
+    fetch(`${url}/locations/1`)
     .then(r=>r.json())
     .then(r=>{
       this.setState({
@@ -24,7 +26,7 @@ class LocationOne extends React.PureComponent {
   }
 
   fetchPosts = () =>{
-     fetch('https://lemon-town-api.herokuapp.com/posts')
+     fetch(`${url}/posts`)
      .then(r=>r.json())
      .then(r=>{
        this.setState({

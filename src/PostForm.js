@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { url } from './helpers';
+
 
 
 class PostForm extends Component {
@@ -14,7 +16,7 @@ class PostForm extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault();
-      fetch('https://lemon-town-api.herokuapp.com/posts', {
+      fetch(`${url}/posts`, {
         method: "POST",
         headers: {
           'Accept': 'application/json',

@@ -1,6 +1,7 @@
 import React from 'react';
-import UserCard from './UserCard';
 import { connect } from 'react-redux';
+import { url } from './helpers';
+
 
 class ArchivedDate extends React.PureComponent {
 
@@ -10,7 +11,7 @@ class ArchivedDate extends React.PureComponent {
   }
 
   fetchDay=(e)=>{
-      fetch(`https://lemon-town-api.herokuapp.com/days/${this.props.dateToView}`)
+      fetch(`${url}/days/${this.props.dateToView}`)
       .then(r=>r.json())
       .then(r=>this.setState({day:r, posts:r.posts}))
     }
@@ -27,7 +28,7 @@ class ArchivedDate extends React.PureComponent {
     })
     return this.state.posts.reverse().map(post=>{
       return <p className="archivedPost"> {post.content}
-              <td>{post.content}{post.content}</td>
+              <p>{post.content}{post.content}</p>
               </p>
     })
 
@@ -41,8 +42,8 @@ class ArchivedDate extends React.PureComponent {
   render(){
     return (
       <div className="archive">
-      <p className="oldWords">{this.state.day.word1} {this.state.day.word2} {this.state.day.word3}<p> {this.state.day.word4}</p> {this.state.day.word5}</p>
-      <div>{this.getPosts()}</div>
+        <p className="oldWords">{this.state.day.word1} {this.state.day.word2} {this.state.day.word3}<p> {this.state.day.word4}</p> {this.state.day.word5}</p>
+        <div>{this.getPosts()}</div>
       </div>
       )
     }

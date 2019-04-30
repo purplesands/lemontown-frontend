@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import EntryCard from './EntryCard';
 import EntryForm from './EntryForm';
+import { url } from './helpers';
+
 
 class UserFeed extends React.Component {
 
@@ -10,7 +12,7 @@ state= {
 }
 
 fetchEntries=()=>{
-  fetch('https://lemon-town-api.herokuapp.com/entries')
+  fetch(`${url}/entries`)
   .then(r=>r.json())
   .then(r=>{
     this.setState({

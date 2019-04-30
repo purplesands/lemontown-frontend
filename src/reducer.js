@@ -1,5 +1,3 @@
-import types from './types'
-
 const initialState = {
   posts:[],
   currentUser: null,
@@ -35,12 +33,6 @@ export default function reducer(state=initialState, action){
     return {...initialState, today:state.today, days:state.days}
     case "SET_CURRENT_DATE":
     return {...initialState, currentDate:action.payload}
-
-    // case "SET_FOLLOWINGS":
-    // return {...state, followings: action.payload}
-    // case "SET_FOLLOWERS":
-    // return {...state, followers: action.payload}
-
     default:
     return state;
   }

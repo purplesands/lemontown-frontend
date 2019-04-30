@@ -1,4 +1,6 @@
 import React from 'react';
+import { url } from './helpers';
+
 
 class FriendList extends React.Component {
 
@@ -11,7 +13,7 @@ componentDidMount(){
   this.fetchUsers()
 }
 fetchUsers(){
-  fetch('https://lemon-town-api.herokuapp.com/users')
+  fetch(`${url}/users`)
   .then(r=>r.json())
   .then(r=>this.setState({
     users:{...this.state.users, r}

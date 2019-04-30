@@ -1,9 +1,9 @@
-import React, { Fragment, Component  } from 'react';
+import React, { Fragment } from 'react';
 import PostForm from './PostForm'
 import PostCard from './PostCard'
-import CanvasDraw from "react-canvas-draw";
 import birds from './assets/birds'
-import Useful from './Useful'
+import { url } from './helpers';
+
 
 import { connect } from 'react-redux';
 import { ActionCableConsumer } from 'react-actioncable-provider'
@@ -18,7 +18,7 @@ class LocationTwo extends React.Component {
   }
 
   fetchLocation = () =>{
-    fetch('https://lemon-town-api.herokuapp.com/locations/2')
+    fetch(`${url}/locations/2`)
     .then(r=>r.json())
     .then(r=>{
       this.setState({
@@ -29,7 +29,7 @@ class LocationTwo extends React.Component {
   }
 
   fetchPosts = () =>{
-     fetch('https://lemon-town-api.herokuapp.com/posts')
+     fetch(`${url}/posts`)
      .then(r=>r.json())
      .then(r=>{
        this.setState({
@@ -66,11 +66,11 @@ class LocationTwo extends React.Component {
     this.setState({loading:true})
     this.fetchLocation()
     this.fetchPosts()
-    }
+  }
 
-    componentDidUpdate(){
-      console.log('did update', this.state.loading)
-    }
+  componentDidUpdate(){
+    console.log('did update', this.state.loading)
+  }
 
 
   updateComment=(comment)=>{
@@ -97,7 +97,7 @@ class LocationTwo extends React.Component {
       if (post.id === null) {
         this.updateComment(post)
       } else {
-        fetch(`https://lemon-town-api.herokuapp.com/posts/${post.id}`)
+        fetch(`${url}/posts/${post.id}`)
         .then(r=>r.json())
         .then(post=> this.setState({
           newPosts:[post, ...this.state.newPosts]
@@ -113,7 +113,7 @@ class LocationTwo extends React.Component {
       this.setState({posts:posts})
       var i;
         for (i = 0; i < toDelete.length; i++) {
-          fetch(`https://lemon-town-api.herokuapp.com/posts/${toDelete[i].id}`,{
+          fetch(`${url}/posts/${toDelete[i].id}`,{
             method: "DELETE"
           })
         }
@@ -121,8 +121,8 @@ class LocationTwo extends React.Component {
 
     handleBird=(e)=>{
       e.preventDefault()
-    let bird = birds[Math.floor(Math.random()*birds.length)];
-        fetch('https://lemon-town-api.herokuapp.com/posts', {
+      let bird = birds[Math.floor(Math.random()*birds.length)];
+        fetch(`${url}/posts`, {
           method: "POST",
           headers: {
             'Accept': 'application/json',
@@ -135,14 +135,9 @@ class LocationTwo extends React.Component {
             is_image: true,
             day_id: this.props.today.id
           })
-        }).then(r=>r.json())    }
+        }).then(r=>r.json())
+      }
 
-    cool(){
-
-      const postSound = new Sound("src/assets/post1.wav")
-      const postSound2 = new Sound("src/assets/post2.wav")
-      postSound.play()
-    }
 
 
 
@@ -155,34 +150,32 @@ render(){
           onReceived={post=>this.addPost(post)}
         />
         <div className="locationTwoPostForm"><PostForm handleBird={this.handleBird} handleDelete={this.handleDelete} addPost={this.addPost} updatePosts={this.fetchPosts} location={2} /></div>
-        <div className="flex-container">
-        <div>{(!!this.state.loading) ? this.loading() : null}</div>
-        {this.renderPosts(this.state.newPosts)}
-        {this.renderPosts(this.state.posts)}
-
+          <div className="flex-container">
+          <div>{(!!this.state.loading) ? this.loading() : null}</div>
+          {this.renderPosts(this.state.newPosts)}
+          {this.renderPosts(this.state.posts)}
         </div>
-
       </Fragment>
     );
   }
 }
 
-function Sound(src) {
-this.sound = document.createElement("audio")
-this.sound.src = src
-this.sound.setAttribute("preload", "auto")
-this.sound.setAttribute("controls", "none")
-this.sound.style.display = "none"
-document.body.appendChild(this.sound)
-}
-
-Sound.prototype.play = function(){
-this.sound.play();
-}
-
-Sound.prototype.stop = function(){
-this.sound.pause();
-}
+// function Sound(src) {
+// this.sound = document.createElement("audio")
+// this.sound.src = src
+// this.sound.setAttribute("preload", "auto")
+// this.sound.setAttribute("controls", "none")
+// this.sound.style.display = "none"
+// document.body.appendChild(this.sound)
+// }
+//
+// Sound.prototype.play = function(){
+// this.sound.play();
+// }
+//
+// Sound.prototype.stop = function(){
+// this.sound.pause();
+// }
 
 function mapStateToProps(state) {
   return {

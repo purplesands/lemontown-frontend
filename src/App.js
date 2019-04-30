@@ -9,6 +9,8 @@ import Login from './Login';
 import NavBar from './NavBar';
 import Register from './Register';
 import WelcomePage from './WelcomePage'
+import { url } from './helpers';
+
 
 
 class App extends Component {
@@ -26,7 +28,7 @@ class App extends Component {
     }
 
     checkDay=()=>{
-      fetch('https://lemon-town-api.herokuapp.com/days')
+      fetch(`${url}/days`)
       .then(r=>r.json())
       .then(r=>{
         this.props.dispatch({ type: "SET_DATE", payload: r[r.length-1]})
@@ -35,7 +37,7 @@ class App extends Component {
     }
 
    fetchDays = () =>{
-    fetch('https://lemon-town-api.herokuapp.com/days')
+    fetch(`${url}/days`)
       .then(r=>r.json())
       .then(r=>{
       this.props.dispatch({ type: "SET_DAYS", payload: r})
@@ -56,7 +58,7 @@ class App extends Component {
   }
 
    newDay=()=>{
-    fetch('https://lemon-town-api.herokuapp.com/days', {
+    fetch(`${url}/days`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -84,7 +86,7 @@ class App extends Component {
     const store = require('store')
     const jwt = store.get('jwt')
     if (jwt){
-      fetch("https://lemon-town-api.herokuapp.com/auto_login", {
+      fetch(`${url}/auto_login`, {
         headers: {
           "Authorization": jwt
         }

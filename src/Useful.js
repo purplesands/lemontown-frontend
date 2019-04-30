@@ -11,15 +11,13 @@ class Useful extends React.Component {
     return Math.random() * num
   }
 
+  static loading(){
+    return(
+      <div className="loading">loading</div>
+    )
+  }
 
-static loading(){
-  return(
-    <div className="loading">loading</div>
-  )
 }
-
-}
-
 
 
 function mapStateToProps(state) {

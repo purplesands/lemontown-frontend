@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProfileCard from './ProfileCard';
+import { url } from './helpers';
+
 
 import UserFeed from './UserFeed';
 import FriendFeed from './FriendFeed';
@@ -49,7 +51,7 @@ const handleFollow=(e)=>{
 
   let id
   (!!props.userToView) ? id = props.userToView.id : id = e.target.value
-  fetch('https://lemon-town-api.herokuapp.com/followings', {
+  fetch(`${url}/followings`, {
     method: "POST",
     headers: {
       'Accept': 'application/json',
@@ -64,20 +66,20 @@ const handleFollow=(e)=>{
   }
 
 const handleUnfollow=(e)=>{
-  fetch(`https://lemon-town-api.herokuapp.com/followings/${e.id}`, {
+  fetch(`${url}/followings/${e.id}`, {
       method: "DELETE"})
     .then(r=>updateFollowers())
   }
 
   const updateFollowers =()=>{
-    fetch(`https://lemon-town-api.herokuapp.com/users/${props.currentUser.id}`)
+    fetch(`${url}/users/${props.currentUser.id}`)
     .then(r=>r.json())
     .then(user=>props.dispatch({ type: "UPDATE_USER", payload:user}))
     .then(r=>updateUserToViewFollowers())
   }
 
   const updateUserToViewFollowers =()=>{
-    fetch(`https://lemon-town-api.herokuapp.com/users/${props.userToView.id}`)
+    fetch(`${url}/users/${props.userToView.id}`)
     .then(r=>r.json())
     .then(user=>props.dispatch({ type: "UPDATE_USER_TO_VIEW", payload:user}))
   }

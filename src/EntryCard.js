@@ -3,6 +3,8 @@ import UserCard from './UserCard';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import { connect } from 'react-redux';
 import Useful from './Useful'
+import { url } from './helpers';
+
 import Comment from './Comment'
 
 
@@ -32,7 +34,7 @@ class EntryCard extends React.Component {
 
   handleComment=(e)=>{
     e.preventDefault()
-    fetch('https://lemon-town-api.herokuapp.com/entry_comments', {
+    fetch(`${url}/entry_comments`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',

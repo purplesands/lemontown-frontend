@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { url } from './helpers';
+
 
 
 class ProfilePage extends Component {
@@ -16,7 +18,7 @@ class ProfilePage extends Component {
   }
 
   handleEdit=(e)=>{
-    fetch(`https://lemon-town-api.herokuapp.com/users/${this.props.currentUser.id}`, {
+    fetch(`${url}/users/${this.props.currentUser.id}`, {
       method: "PATCH",
       headers: {
         'Accept': 'application/json',

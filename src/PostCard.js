@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import UserCard from './UserCard';
 import { connect } from 'react-redux';
-import Useful from './Useful'
 import AnimationTest from './AnimationTest'
+import { url } from './helpers';
+
 
 class PostCard extends React.Component {
 
@@ -27,7 +27,7 @@ class PostCard extends React.Component {
 
   handleComment=(e)=>{
     e.preventDefault();
-    fetch('https://lemon-town-api.herokuapp.com/post_comments', {
+    fetch(`${url}/post_comments`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -59,7 +59,7 @@ class PostCard extends React.Component {
 
 
 shouldComponentUpdate(nextProps, nextState){
-  return (this.props.post_comments.length==nextProps.post_comments.length && nextState.chosenWord == this.state.chosenWord) ?  false :  true
+  return (this.props.post_comments.length===nextProps.post_comments.length && nextState.chosenWord === this.state.chosenWord) ?  false :  true
 }
 
 
