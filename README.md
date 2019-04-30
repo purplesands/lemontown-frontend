@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Lemontown
 
-## Available Scripts
+fun friendly community for chatting, reflecting, and creating
 
-In the project directory, you can run:
+Find a stable build of Lemontown hosted [here](https://lemon-town.herokuapp.com).
 
-### `npm start`
++ Lemontown has a few rules
++ Every day there are 5 words
++ Every day there is a room you can post in, and comment on other's posts using today's words. Posts float around.
++ Every next day that day's posts are archived and rendered anonymously.
++ Post journal entries, polemics, poems, essays, whatever to your profile.
++ Follow others and view their posts in your friend feed, comment on them if you wish (anonymously, with a 20 character limit).
 
-Runs the app in the development mode.<br>
-Open [${url}](${url}) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+#### Backend
 
-### `npm test`
+The backend can be found [here](https://github.com/purplesands/lemontown-backend).
+To install run:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
++ `$ git clone git@github.com:purplesands/lemontown-backend.git`
++ `$ cd lemontown-backend`
++ `$ rake db:create`
++ `$ rake db:migrate`
 
-### `npm run build`
+To run the app locally, first do the following:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
++ in `app/controllers/application_controller.rb`, comment out lines 3 and 9, and uncomment lines 4 and 10. Alternatively, if you'd like secure password encryption, you can edit your rails credentials file([info here](https://medium.com/craft-academy/encrypted-credentials-in-ruby-on-rails-9db1f36d8570)) and add the following:
+      jwt: some_unique_string
+Then run:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
++ `$ bundle`
++ `$ rails s`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The database will run at `localhost:3000`.
 
-### `npm run eject`
+#### Frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This repository contains Lemontowns's frontend. To install it, run:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
++ `$ git clone git@github.com:purplesands/lemontown-frontend.git`
++ `$ cd lemontown-frontend`
++ `$ npm install`
++ `$ npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Run at localhost:3001.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
+Lemontown is licensed under the MIT License.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Copyright 2019 Joe Mullen.

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { ws } from './helpers'
 
 import { createStore } from 'redux';
 import store from './store';
@@ -15,7 +16,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 ReactDOM.render(
-  <ActionCableProvider url={'wss://lemon-town-api.herokuapp.com/cable'}>
+  <ActionCableProvider url={`${ws}/cable`}>
     <Provider store={store}>
       <Router>
           <Route path="/" component={App}/>
