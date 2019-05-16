@@ -20,7 +20,7 @@ class App extends Component {
       method: "GET",
       headers: {
         "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
-        'X-RapidAPI-Key':'4d90375dd6mshbfa9800b3e51019p1ebfd0jsn92f7ebed7441'
+        'X-RapidAPI-Key':process.env.REACT_APP_WORDS_API_KEY
       }}).then(r=>r.json())
       .then(word=>{
         this.props.dispatch({ type: "ADD_WORD", payload: word})

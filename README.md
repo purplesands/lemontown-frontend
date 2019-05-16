@@ -36,6 +36,9 @@ The database will run at `localhost:3000`.
 
 #### Frontend
 
+First, you must get a key from [WordsAPI](https://www.wordsapi.com/). Quicker signup through RapidAPI [here](https://rapidapi.com/wordsapi/api/wordsapi/pricing). The free tier allows up to 2,500 requests a day--for personal use there is very little chance you'd hit that in a day!. Get a key, create a .env file in the directory, and enter it like so:
+`REACT_APP_WORDS_API_KEY=(your key here)`
+
 This repository contains Lemontowns's frontend. To install it, run:
 
 + `$ git clone git@github.com:purplesands/lemontown-frontend.git`

@@ -64,7 +64,7 @@ class ProfilePage extends Component {
                   /></p>
       <p className="profilePageEdit"><p>avatar</p><input className="profileEdit"type="text"
                 name="avatar"
-                value={this.props.currentUser.avatar}
+                value={this.state.avatar}
                 onChange={this.updateAttributes}
                   /></p>
 
