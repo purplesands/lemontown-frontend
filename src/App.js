@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import MainContainer from './MainContainer';
 import NavBar from './NavBar';
 import WelcomePage from './WelcomePage'
-import { url } from './helpers';
+import { url, wordsApiKey } from './helpers';
 
 
 
@@ -17,7 +17,7 @@ class App extends Component {
       method: "GET",
       headers: {
         "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
-        'X-RapidAPI-Key':process.env.REACT_APP_WORDS_API_KEY
+        'X-RapidAPI-Key':`${wordsApiKey}`
       }}).then(r=>r.json())
       .then(word=>{
         this.props.dispatch({ type: "ADD_WORD", payload: word})
@@ -76,7 +76,6 @@ class App extends Component {
   setDate=()=>{
     (this.props.todaysWords.length===5 && this.props.today.date !== this.props.currentDate) ?
     this.newDay() :
-    console.log('ha ')
   }
 
   fetchUser=()=>{
