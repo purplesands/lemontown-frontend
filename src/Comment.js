@@ -1,5 +1,4 @@
 import React from 'react';
-import UserCard from './UserCard';
 import { connect } from 'react-redux';
 import Useful from './Useful'
 

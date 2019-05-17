@@ -25,7 +25,6 @@ class Login extends React.Component {
         })
       }).then(r=>r.json())
       .then(r=>{
-        debugger
         if (r.errors) {
           alert(r.errors)
         } else {
@@ -41,7 +40,6 @@ class Login extends React.Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state)
   }
 
   render() {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Useful from './Useful'
 
 class WordCard extends React.Component {
 
@@ -30,7 +29,7 @@ showTime=()=>{
    let s = date.getSeconds(); // 0 - 59
    let session = "AM";
 
-   if(h == 0){
+   if(h === 0){
        h = 12;
    }
 

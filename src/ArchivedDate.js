@@ -26,23 +26,24 @@ class ArchivedDate extends React.PureComponent {
             return  <img className="archiveImage" src={post.content} alt={post.content}></img>
             }
     })
-    return this.state.posts.reverse().map(post=>{
-      return <p className="archivedPost"> {post.content}
+   return this.state.posts.reverse().map(post=>{
+      return (<p className="archivedPost"> {post.content}
               <p>{post.content}{post.content}</p>
-              </p>
+              </p>)
     })
 
   }
 
   componentDidMount(){
     this.fetchDay()
-    setInterval(this.fetchDay, 1000)
+    setInterval(this.fetchDay, 750)
   }
 
   render(){
     return (
       <div className="archive">
-        <p className="oldWords">{this.state.day.word1} {this.state.day.word2} {this.state.day.word3}<p> {this.state.day.word4}</p> {this.state.day.word5}</p>
+        <p className="oldWords">
+        {this.state.day.word1} {this.state.day.word2} {this.state.day.word3} {this.state.day.word4} {this.state.day.word5}</p>
         <div>{this.getPosts()}</div>
       </div>
       )

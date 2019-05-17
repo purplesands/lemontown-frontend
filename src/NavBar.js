@@ -2,14 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ProfileCard from './ProfileCard';
 
-import UserFeed from './UserFeed';
-import FriendFeed from './FriendFeed';
-import LocationOne from './LocationOne';
-import LocationTwo from './LocationTwo';
-import UserList from './UserList';
-import OtherUserFeed from './OtherUserFeed';
 import WordCard from './WordCard';
-import ArchivedDate from './ArchivedDate';
 
 const NavBar = (props) => {
 
@@ -28,8 +21,14 @@ const handleChange=(e)=>{
 
 
 const archivedPosts=()=>{
+  let days = []
+  if(props.days){
+     days = [...props.days]
+  } else {
+     days = ['error! pls reload page']
+  }
   let index=0
-  let days = [...props.days]
+
   days.reverse().splice(0, 1)
   return(
   <form >

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { Switch, Route, Link } from 'react-router-dom'
 
 
 import MainContainer from './MainContainer';
-import Login from './Login';
 import NavBar from './NavBar';
-import Register from './Register';
 import WelcomePage from './WelcomePage'
 import { url } from './helpers';
 

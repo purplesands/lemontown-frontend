@@ -580,7 +580,6 @@ p.oldWords {
   text-shadow: 2px 2px #FE8E8E;
   animation: old 20s infinite;
   animation-timing-function: ease-in-out;
-  line-height: 4px;
   align:right;
 }
 

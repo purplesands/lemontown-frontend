@@ -5,7 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ws } from './helpers'
 
-import { createStore } from 'redux';
 import store from './store';
 import { Provider } from 'react-redux';
 import { ActionCableProvider } from 'react-actioncable-provider'

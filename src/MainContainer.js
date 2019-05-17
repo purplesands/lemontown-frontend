@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProfileCard from './ProfileCard';
 import { url } from './helpers';
-
 
 import UserFeed from './UserFeed';
 import FriendFeed from './FriendFeed';
@@ -10,10 +8,8 @@ import LocationOne from './LocationOne';
 import LocationTwo from './LocationTwo';
 import UserList from './UserList';
 import OtherUserFeed from './OtherUserFeed';
-import WordCard from './WordCard';
 import ArchivedDate from './ArchivedDate';
 import ProfilePage from './ProfilePage';
-import NavBar from './NavBar'
 
 const MainContainer = (props) => {
 
@@ -35,7 +31,7 @@ const renderComponent = ()=>{
     return <ArchivedDate />
   } else if (props.activeLocation==="ProfilePage") {
     return <ProfilePage />
-  }else if (props.activeLocation===null){
+  } else if (props.activeLocation===null){
     return <div className="titlePage">
           <p>lemontown</p>
           </div>
@@ -101,7 +97,6 @@ function mapStateToProps(state) {
     todaysWords: state.todaysWords,
     days:state.days,
     dateToView:state.dateToView
-
   }
 }
 

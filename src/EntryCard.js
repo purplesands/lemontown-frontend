@@ -1,6 +1,6 @@
 import React from 'react';
 import UserCard from './UserCard';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
 import Useful from './Useful'
 import { url } from './helpers';
@@ -71,7 +71,7 @@ handleCommentForm=()=>{
 render() {
   return (
     <div className="entryCard">
-      <p><img className="avatar" src={this.props.user.avatar}></img></p>
+      <p><img className="avatar" src={this.props.user.avatar} alt={this.props.user.username}></img></p>
       <p className="username"> {this.props.user.username}</p>
       <p className="date">{this.props.date}</p>
       <p className="content">{ReactHtmlParser(this.props.content)} </p>

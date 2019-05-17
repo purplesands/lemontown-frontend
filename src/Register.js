@@ -41,12 +41,11 @@ class Register extends React.Component {
 
   handleSubmit=(e)=>{
     e.preventDefault();
-    (this.state.password===this.state.password2) ? this.createUser() : alert('try again')
+    (this.state.password===this.state.password2) ? this.createUser() : alert('passwords dont match. try again')
   }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state)
   }
 
   handleFileChange = (e) => {
@@ -83,8 +82,6 @@ class Register extends React.Component {
               onChange={this.handleChange}
               placeholder="confirm"
             /></p>
-
-
           <button type="submit" value="register">register</button>
         </form>
       </div>
