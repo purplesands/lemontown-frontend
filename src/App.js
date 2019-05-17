@@ -76,6 +76,7 @@ class App extends Component {
   setDate=()=>{
     (this.props.todaysWords.length===5 && this.props.today.date !== this.props.currentDate) ?
     this.newDay() :
+    console.log('ha ')
   }
 
   fetchUser=()=>{
