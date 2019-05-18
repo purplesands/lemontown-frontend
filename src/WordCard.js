@@ -9,6 +9,7 @@ class WordCard extends React.Component {
 
 
 renderDate=()=>{
+  if (this.props.today.date) {
   let date= this.props.today.date
   let monthNames = [
     "january", "february", "march",
@@ -20,6 +21,7 @@ renderDate=()=>{
   let monthIndex = date.substr(5,2)
   let year = date.substr(0, 4);
 return monthNames[parseInt(monthIndex-1)] + ' ' + day + ', ' + year;
+}
 }
 
 showTime=()=>{
