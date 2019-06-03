@@ -80,6 +80,7 @@ class PostForm extends Component {
     <form onSubmit={this.handleSubmit}>
         <p><input type="text"
         name="content"
+        placeholder="image url"
         onChange={this.handleChange}
         ></input></p>
         <div className="chatBtns">
