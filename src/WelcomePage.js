@@ -75,5 +75,4 @@ class WelcomePage extends React.Component {
 }
 
 
-const HOC = connect(mapStateToProps)
-export default HOC(WelcomePage);
+export default WelcomePage;
