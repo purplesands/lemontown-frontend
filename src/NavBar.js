@@ -63,8 +63,10 @@ return (
           <td className="wordCard"><WordCard/></td>
         </tr>
       </tbody>
+      <p className="profileCard">
+      <ProfileCard />
+      </p>
     </table>
-    <ProfileCard />
 
   );
 }
