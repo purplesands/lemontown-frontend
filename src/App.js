@@ -39,8 +39,6 @@ class App extends Component {
         })
       }
 
-
-
   currentDate=()=>{
     let today = new Date();
     let dd = today.getDate();
