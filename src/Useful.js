@@ -16,7 +16,6 @@ class Useful extends React.Component {
       <div className="loading">loading</div>
     )
   }
-
 }
 
 

@@ -53,46 +53,45 @@ class PostForm extends Component {
       {(this.state.isImage===false)
         ?
         <form onSubmit={this.handleSubmit}>
-          <p>  <textarea
-              type="text"
-              name="content"
-              value={this.state.content}
-              onChange={this.handleChange}
-              rows="4" cols="22"
-              maxLength="75"
-              minLength="1"
-              onKeyUp={this.typing}
-              className="textBox"
-            /></p>
-            <div className="chatBtns">
-          <button className="actionBtn two" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
-          <button className="messageBtn" type="submit" name="text" value="💬">
-          {this.state.characters}
-          </button>
-
+          <p>
+            <textarea
+                type="text"
+                name="content"
+                value={this.state.content}
+                onChange={this.handleChange}
+                rows="4" cols="22"
+                maxLength="75"
+                minLength="1"
+                onKeyUp={this.typing}
+                className="textBox"
+              />
+            </p>
+          <div className="chatBtns">
+            <button className="actionBtn two" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
+            <button className="messageBtn" type="submit" name="text" value="💬">
+            {this.state.characters}
+            </button>
           </div>
-
         </form>
         :
         null }
     {(this.state.isImage===true)
       ?
     <form onSubmit={this.handleSubmit}>
-        <p><input type="text"
-        name="content"
-        placeholder="image url"
-        onChange={this.handleChange}
-        ></input></p>
+        <p>
+          <input type="text"
+            name="content"
+            placeholder="image url"
+            onChange={this.handleChange}>
+          </input>
+        </p>
         <div className="chatBtns">
-        <button className="actionBtn two" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
-        <button className="messageBtn" type="submit" name="image" value="ok" >ok</button>
+          <button className="actionBtn two" onClick={this.setPostType}>{(this.state.isImage===true) ? "text?" : "image?"}</button>
+          <button className="messageBtn" type="submit" name="image" value="ok" >ok</button>
         </div>
-
-        </form>
-
+      </form>
         :
         null }
-
       </div>
     );
   }

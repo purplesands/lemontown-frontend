@@ -40,9 +40,6 @@ class LocationTwo extends React.Component {
   }
 
   setPosts=(arr)=>{
-    // let cool = arr.filter(post=>{
-    //   return post.location_id === 2
-    // })
     return arr.filter(post=>{
       return post.day_id === this.props.today.id
     })
@@ -69,7 +66,7 @@ class LocationTwo extends React.Component {
   }
 
   componentDidUpdate(){
-    console.log('did update', this.state.loading)
+    // console.log('did update', this.state.loading)
   }
 
 
@@ -137,9 +134,6 @@ class LocationTwo extends React.Component {
           })
         }).then(r=>r.json())
       }
-
-
-
 
 
 render(){

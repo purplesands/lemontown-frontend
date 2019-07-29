@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { url } from './helpers';
 
-
 class ArchivedDate extends React.PureComponent {
 
   state={
@@ -27,11 +26,12 @@ class ArchivedDate extends React.PureComponent {
             }
     })
    return this.state.posts.reverse().map(post=>{
-      return (<p className="archivedPost"> {post.content}
-              <p>{post.content}{post.content}</p>
-              </p>)
+      return (
+          <p className="archivedPost"> {post.content}
+            <p>{post.content}{post.content}</p>
+          </p>
+        )
     })
-
   }
 
   componentDidMount(){

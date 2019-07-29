@@ -36,7 +36,7 @@ class EntryForm extends Component {
   //
   handleChange = (e) => {
     this.setState({content: e})
-    console.log(this.state.content)
+    // console.log(this.state.content)
   }
 
   modules = {
@@ -49,16 +49,15 @@ render() {
         {(!!this.state.new)
           ?
           <form onSubmit={this.handleSubmit}>
-          <ReactQuill value={this.state.content}
-                      onChange={this.handleChange}
-                      theme="snow"
-                      modules={this.modules}
-                      />
-        <button className="newEntrySubmit" type="submit" value="!" style={{float:"right"}}>!</button>
-        <button classname="newEntryButton" onClick={()=>this.setState({new:!this.state.new})}>
-        {(!!this.state.new) ? "x" : "?"}
-        </button>
-
+            <ReactQuill value={this.state.content}
+                        onChange={this.handleChange}
+                        theme="snow"
+                        modules={this.modules}
+                        />
+            <button className="newEntrySubmit" type="submit" value="!" style={{float:"right"}}>!</button>
+            <button classname="newEntryButton" onClick={()=>this.setState({new:!this.state.new})}>
+            {(!!this.state.new) ? "x" : "?"}
+            </button>
         </form>
           :
           <button classname="newEntryButton" onClick={()=>this.setState({new:!this.state.new})}>

@@ -30,16 +30,17 @@ const archivedPosts=()=>{
   let index=0
 
   days.reverse().splice(0, 1)
+  
   return(
-  <form >
-  <div className="archiveMenu">
-    <select onChange={handleChange}>
-      <option value="nothing">older</option>
-      {days.map(day=>{
-        index++
-      return  <option key={day.id} value={day.id}>{index} {(index===1) ? "day" : "days"} ago</option>
-      })}
-    </select>
+  <form>
+    <div className="archiveMenu">
+      <select onChange={handleChange}>
+        <option value="nothing">older</option>
+        {days.map(day=>{
+          index++
+        return  <option key={day.id} value={day.id}>{index} {(index===1) ? "day" : "days"} ago</option>
+        })}
+      </select>
     </div>
   </form>
   )
@@ -51,7 +52,7 @@ const logout=()=>{
 
 
 return (
-    <table >
+    <table>
       <tbody className="navBar">
         <tr>
           <td>  <button className="nav" value="UserFeed" onClick={handleClick}>me</button></td>
@@ -64,10 +65,9 @@ return (
         </tr>
       </tbody>
       <p className="profileCard">
-      <ProfileCard />
+        <ProfileCard />
       </p>
     </table>
-
   );
 }
 

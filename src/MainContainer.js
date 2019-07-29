@@ -35,8 +35,6 @@ const renderComponent = ()=>{
     return <div className="titlePage">
           <p>lemontown</p>
           </div>
-
-    // return <FollowerList />
   } else {
     return null
   }
@@ -44,7 +42,6 @@ const renderComponent = ()=>{
 
 const handleFollow=(e)=>{
   e.preventDefault();
-
   let id
   (!!props.userToView) ? id = props.userToView.id : id = e.target.value
   fetch(`${url}/followings`, {
@@ -80,12 +77,12 @@ const handleUnfollow=(e)=>{
     .then(user=>props.dispatch({ type: "UPDATE_USER_TO_VIEW", payload:user}))
   }
 
-return (
-    <div>
-      <div className="mainContainer">{renderComponent()}</div>
-    </div>
-  );
-}
+  return (
+      <div>
+        <div className="mainContainer">{renderComponent()}</div>
+      </div>
+    );
+  }
 
 function mapStateToProps(state) {
   return {

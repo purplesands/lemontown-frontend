@@ -28,14 +28,13 @@ class Register extends React.Component {
         }),
       }).then(r=>r.json())
       .then(r=>{
-        debugger
         if (r.errors) {
           alert(r.errors)
         } else {
-      this.props.dispatch({ type: "UPDATE_USER", payload:r.user})
-      store.set('jwt', r.jwt)
-      this.setState({username:'',password:'', password2:''})
-    }
+        this.props.dispatch({ type: "UPDATE_USER", payload:r.user})
+        store.set('jwt', r.jwt)
+        this.setState({username:'',password:'', password2:''})
+      }
     })
   }
 
@@ -58,30 +57,36 @@ class Register extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-            <p><input
-              className="login"
-              type="text"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-              placeholder="name"
-            /></p>
-            <p><input
-              className="login"
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              placeholder="pass"
-            /></p>
-          <p> <input
-              className="login"
-              type="password"
-              name="password2"
-              value={this.state.password2}
-              onChange={this.handleChange}
-              placeholder="confirm"
-            /></p>
+            <p>
+              <input
+                className="login"
+                type="text"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+                placeholder="name"
+              />
+            </p>
+            <p>
+              <input
+                className="login"
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+                placeholder="pass"
+              />
+            </p>
+          <p>
+            <input
+                className="login"
+                type="password"
+                name="password2"
+                value={this.state.password2}
+                onChange={this.handleChange}
+                placeholder="confirm"
+              />
+            </p>
           <button type="submit" value="register">register</button>
         </form>
       </div>

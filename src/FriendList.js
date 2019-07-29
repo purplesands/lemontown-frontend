@@ -8,10 +8,10 @@ class FriendList extends React.Component {
     users:[]
   }
 
-
 componentDidMount(){
   this.fetchUsers()
 }
+
 fetchUsers(){
   fetch(`${url}/users`)
   .then(r=>r.json())

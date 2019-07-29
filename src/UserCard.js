@@ -19,10 +19,6 @@ handleFollow=(e)=>{
   this.props.handleFollow(e)
 }
 
-componentDidMount(){
-
-}
-
   render() {
     return (
     (this.props.user) ?

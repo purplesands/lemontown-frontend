@@ -30,11 +30,9 @@ class ProfilePage extends Component {
         avatar: this.state.avatar
       })
     }).then(r=>r.json())
-    .then(user=>{
-      this.props.dispatch({ type: "UPDATE_USER", payload: user})
-    })
-
-
+      .then(user=>{
+        this.props.dispatch({ type: "UPDATE_USER", payload: user})
+      })
     this.setState({editStatus:false})
   }
 
@@ -54,37 +52,33 @@ class ProfilePage extends Component {
         </div>
     :
     <div>
-    <p className="profileUsername"> {this.props.currentUser.username}</p>
-      <img className="profilePageAvatar" src={this.props.currentUser.avatar} alt="avatar"></img>
-      <p className="profilePageEdit"><p>username</p><input className="profileEdit" type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.updateAttributes}
-                maxLength="12"
+      <p className="profileUsername"> {this.props.currentUser.username}</p>
+        <img className="profilePageAvatar" src={this.props.currentUser.avatar} alt="avatar"></img>
+        <p className="profilePageEdit"><p>username</p><input className="profileEdit" type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.updateAttributes}
+                  maxLength="12"
+                    /></p>
+        <p className="profilePageEdit"><p>avatar</p><input className="profileEdit"type="text"
+                  name="avatar"
+                  value={this.state.avatar}
+                  onChange={this.updateAttributes}
+                    /></p>
+
+        <p className="profilePageEdit"><p>bio</p><input className="profileEdit" type="text"
+                  name="bio"
+                  value={this.state.bio}
+                  onChange={this.updateAttributes}
+                  maxLength="200"
                   /></p>
-      <p className="profilePageEdit"><p>avatar</p><input className="profileEdit"type="text"
-                name="avatar"
-                value={this.state.avatar}
-                onChange={this.updateAttributes}
-                  /></p>
-
-      <p className="profilePageEdit"><p>bio</p><input className="profileEdit" type="text"
-                name="bio"
-                value={this.state.bio}
-                onChange={this.updateAttributes}
-                maxLength="200"
-                /></p>
-
-                <button className="editBtn" onClick={this.handleEdit}>save</button>
-
-    </div>
-
-    }
+              <button className="editBtn" onClick={this.handleEdit}>save</button>
+      </div>
+      }
     </div>
     )
   }
 }
-
 
 
 function mapStateToProps(state) {

@@ -12,7 +12,6 @@ const ProfileCard =(props)=> {
       <div className="profileCard">
         <p><img className="avatar" src={props.currentUser.avatar} alt={props.currentUser.username}></img></p>
         <button className="profileBtn" value="ProfilePage" onClick={handleClick}>{props.currentUser.username}</button>
-
       </div>
     );
   }

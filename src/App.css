@@ -641,8 +641,8 @@ button.viewUserBtn {
   animation-name: cool;
   animation-duration: 3s;
   animation-iteration-count: infinite;
-
 }
+
 @keyframes cool {
   0% {transform:rotateX(20);}
   100% {transform:rotateX(180);}
@@ -669,7 +669,6 @@ button.viewUserBtn {
   margin-bottom:10px;
 }
 
-
 .entryCard {
   /* border-color: #BCA7EC; */
   /* border-width: 1.3px; */
@@ -688,8 +687,6 @@ button.viewUserBtn {
   margin-left:10px;
   margin-bottom:10px;
 }
-
-
 
 button.viewUserBtn{
   align:right;

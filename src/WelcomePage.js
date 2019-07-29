@@ -57,17 +57,17 @@ class WelcomePage extends React.Component {
           {(!!this.state.loading) ? this.loading() :
           (!this.state.login && !this.state.register) ?
             <div className="logButtons">
-            <button onClick={this.handleLogin}>return</button>
-            <button onClick={this.handleRegister}>new</button>
+              <button onClick={this.handleLogin}>return</button>
+              <button onClick={this.handleRegister}>new</button>
             </div>
             :
             <button onClick={this.backButton}>back</button>
 
           }        </div>
 
-          <div className="login">
-            {(this.state.login) ? <Login /> : null}
-            {(this.state.register) ? <Register /> : null}
+            <div className="login">
+              {(this.state.login) ? <Login /> : null}
+              {(this.state.register) ? <Register /> : null}
             </div>
           </Fragment>
       );

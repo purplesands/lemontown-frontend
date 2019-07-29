@@ -22,7 +22,6 @@ fetchEntries=()=>{
 }
 
 filterEntries=(arr)=>{
-
   return arr.filter(e=>{
     return e.user_id === this.props.currentUser.id
   })
@@ -42,10 +41,10 @@ renderEntries=()=>{
 render() {
   return (
       <div>
-      <EntryForm updateEntries={this.fetchEntries} />
-      <div className="userPage">
-      {this.renderEntries()}
-      </div>
+        <EntryForm updateEntries={this.fetchEntries} />
+        <div className="userPage">
+          {this.renderEntries()}
+        </div>
       </div>
     );
   }

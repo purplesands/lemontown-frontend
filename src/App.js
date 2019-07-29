@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-
-
 import MainContainer from './MainContainer';
 import NavBar from './NavBar';
 import WelcomePage from './WelcomePage'
 import { url, wordsApiKey } from './helpers';
-
+import { hotjar } from 'react-hotjar';
 
 
 class App extends Component {
@@ -100,6 +98,7 @@ class App extends Component {
 
 
   componentDidMount=()=>{
+    hotjar.initialize(hjid, hjsv);
     this.currentDate()
     this.getWord()
     this.getWord()
