@@ -57,8 +57,6 @@ class LocationTwo extends React.Component {
     )
   }
 
-
-
   componentDidMount(){
     this.setState({loading:true})
     this.fetchLocation()
@@ -68,7 +66,6 @@ class LocationTwo extends React.Component {
   componentDidUpdate(){
     // console.log('did update', this.state.loading)
   }
-
 
   updateComment=(comment)=>{
     let posts = [...this.state.posts]

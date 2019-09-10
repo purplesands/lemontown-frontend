@@ -5,7 +5,6 @@ import MainContainer from './MainContainer';
 import NavBar from './NavBar';
 import WelcomePage from './WelcomePage'
 import { url, wordsApiKey } from './helpers';
-import { hotjar } from 'react-hotjar';
 
 
 class App extends Component {
@@ -15,7 +14,7 @@ class App extends Component {
       method: "GET",
       headers: {
         "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
-        'X-RapidAPI-Key':"4d90375dd6mshbfa9800b3e51019p1ebfd0jsn92f7ebed7441"
+        'X-RapidAPI-Key':`${wordsApiKey}`
       }}).then(r=>r.json())
       .then(word=>{
         this.props.dispatch({ type: "ADD_WORD", payload: word})
@@ -31,7 +30,7 @@ class App extends Component {
       )
     }
 
-   fetchDays = () =>{
+   fetchDays =()=>{
     fetch(`${url}/days`)
       .then(r=>r.json())
       .then(r=>{
@@ -39,16 +38,16 @@ class App extends Component {
         })
       }
 
-  currentDate=()=>{
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth()+1
-    let yyyy = today.getFullYear();
-    if(dd<10) {dd = '0'+dd}
-    if(mm<10) {mm = '0'+mm}
-    today = mm + '-' + dd + '-' + yyyy;
-    this.props.dispatch({ type: "SET_CURRENT_DATE", payload: today})
-  }
+    currentDate=()=>{
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth()+1
+      let yyyy = today.getFullYear();
+      if(dd<10) {dd = '0'+dd}
+      if(mm<10) {mm = '0'+mm}
+      today = mm + '-' + dd + '-' + yyyy;
+      this.props.dispatch({ type: "SET_CURRENT_DATE", payload: today})
+    }
 
    newDay=()=>{
     fetch(`${url}/days`, {
@@ -96,7 +95,6 @@ class App extends Component {
 
 
   componentDidMount=()=>{
-    hotjar.initialize(hjid, hjsv);
     this.currentDate()
     this.getWord()
     this.getWord()

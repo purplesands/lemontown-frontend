@@ -12,10 +12,10 @@ renderDate=()=>{
   if (this.props.today.date) {
   let date= this.props.today.date
   let monthNames = [
-    "january", "february", "march",
-    "april", "may", "june", "july",
-    "august", "september", "october",
-    "november", "december"
+    "jan", "feb", "mar",
+    "apr", "may", "jun", "jul",
+    "aug", "sep", "oct",
+    "nov", "dec"
   ];
   let day = date.substr(8,2)
   let monthIndex = date.substr(5,2)

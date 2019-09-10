@@ -12,11 +12,11 @@ const handleClick=(e)=>{
 
 const handleChange=(e)=>{
   if (e.target.value==="nothing") {
-  return  null
-} else {
-  props.dispatch({ type: "UPDATE_DATE_TO_VIEW", payload:e.target.value})
-  props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
-}
+    return  null
+  } else {
+    props.dispatch({ type: "UPDATE_DATE_TO_VIEW", payload:e.target.value})
+    props.dispatch({ type: "CHANGE_LOCATION", payload:"ArchivedDate"})
+  }
 }
 
 
@@ -30,7 +30,7 @@ const archivedPosts=()=>{
   let index=0
 
   days.reverse().splice(0, 1)
-  
+
   return(
   <form>
     <div className="archiveMenu">
@@ -55,12 +55,12 @@ return (
     <table>
       <tbody className="navBar">
         <tr>
-          <td>  <button className="nav" value="UserFeed" onClick={handleClick}>me</button></td>
-          <td>  <button className="nav" value="FriendFeed" onClick={handleClick}>friends</button></td>
-          <td>  <button className="nav" value="LocationTwo" onClick={handleClick}>today</button></td>
-          <td>  <button className="nav" value="UserList" onClick={handleClick}>everyone</button></td>
-          <td>  {archivedPosts()}</td>
-          <td>  <button className="logout" onClick={logout}>leave</button></td>
+          <td> <button className="nav" value="UserFeed" onClick={handleClick}>me</button> </td>
+          <td> <button className="nav" value="FriendFeed" onClick={handleClick}>friends</button> </td>
+          <td> <button className="nav" value="LocationTwo" onClick={handleClick}>today</button> </td>
+          <td> <button className="nav" value="UserList" onClick={handleClick}>everyone</button> </td>
+          <td> {archivedPosts()} </td>
+          <td> <button className="logout" onClick={logout}>leave</button> </td>
           <td className="wordCard"><WordCard/></td>
         </tr>
       </tbody>

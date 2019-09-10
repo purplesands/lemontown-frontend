@@ -4,7 +4,6 @@ import { url } from './helpers';
 
 import UserFeed from './UserFeed';
 import FriendFeed from './FriendFeed';
-import LocationOne from './LocationOne';
 import LocationTwo from './LocationTwo';
 import UserList from './UserList';
 import OtherUserFeed from './OtherUserFeed';
@@ -19,8 +18,6 @@ const renderComponent = ()=>{
     return <UserFeed/>
   } else if (props.activeLocation==="FriendFeed") {
     return <FriendFeed/>
-  } else if (props.activeLocation==="LocationOne") {
-    return <LocationOne/>
   } else if (props.activeLocation==="LocationTwo") {
     return <LocationTwo/>
   } else if (props.activeLocation==="OtherUserFeed") {

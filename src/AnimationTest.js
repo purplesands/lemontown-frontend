@@ -59,11 +59,4 @@ function getPos(el) {
     return {x: lx,y: ly};
 }
 
-
-
-
-
-
-
-
 export default AnimationTest
