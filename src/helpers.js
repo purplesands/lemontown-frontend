@@ -4,5 +4,5 @@
 export const url= 'https://lemon-town-api.herokuapp.com'
 export const ws = 'wss://lemon-town-api.herokuapp.com'
 
-export const wordsApiKey = ENV['WORDS_API_KEY']
-// export const wordsApiKey = process.env.WORDS_API_KEY
+// export const wordsApiKey = ENV['WORDS_API_KEY']
+export const wordsApiKey = process.env.WORDS_API_KEY
