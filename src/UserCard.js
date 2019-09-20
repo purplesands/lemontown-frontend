@@ -31,10 +31,12 @@ handleFollow=(e)=>{
       </div>
       :
       <div className="userListCard">
+        <div>
         <p className="userListName">{this.props.username}</p>
         <img className="user avatar" src={this.props.avatar} alt="avatar"></img>
         <p className="followingList" onClick={this.showFollowers}>following:{this.props.followed_users.length}</p>
         <p className="followerList">followers:{this.props.follower_users.length}</p>
+        </div>
         <button className="viewUserBtn" onClick={this.handleClick}>?</button>
       </div>
 
