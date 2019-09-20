@@ -607,7 +607,7 @@ p.userListName {
 }
 
 button.viewUserBtn {
-  margin-left:160px;
+  margin-left:90px;
   margin-top:-70px;
   position:absolute;
 }
@@ -698,6 +698,7 @@ button.viewUserBtn{
 }
 
 div.userListCard {
+  padding-top: 1px;
   font-family: 'karla', sans-serif;
   /* border-radius:20%;
   border-style: dotted; */
